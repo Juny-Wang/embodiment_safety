@@ -1,0 +1,49 @@
+# RSL-RL PPO hyperparameters — Stage 1A
+# Flat keys are mapped to rsl_rl 5.x train_cfg by runner.build_rsl_train_cfg.
+# Do NOT copy values from franka_sim/t1_rl blindly.
+
+stage: stage1a
+algo: rsl_rl_ppo
+
+# Parallel envs (aspirational until DirectRLEnv exists)
+num_envs: 64
+seed: 42
+device: cuda:0
+
+# Runner
+num_steps_per_env: 24
+max_iterations: 2000
+save_interval: 50
+experiment_name: task1_dimm_insert_stage1a
+run_name: ""
+logger: tensorboard
+
+# Artifacts (under Embodied_Safety root)
+output_dir: outputs/runs/task1_dimm_insert/rsl_rl_ppo/stage1a
+
+# PPO core
+learning_rate: 1.0e-3
+gamma: 0.99
+lam: 0.95
+clip_param: 0.2
+entropy_coef: 0.01
+value_loss_coef: 1.0
+max_grad_norm: 1.0
+num_learning_epochs: 5
+num_mini_batches: 4
+desired_kl: 0.01
+use_clipped_value_loss: true
+schedule: adaptive
+init_noise_std: 1.0
+
+# Network (MLP on low-dim obs; no CNN in Stage 1A)
+actor_hidden_dims: [256, 256, 128]
+critic_hidden_dims: [256, 256, 128]
+activation: elu
+actor_obs_normalization: false
+critic_obs_normalization: false
+
+notes: |
+  Stage 1A = proprio + object state only (see tasks/.../env/OBS_SPEC.md).
+  FakeEnv smoke uses a single fake instance; FakeVecEnv construct smoke may
+  use a small num_envs on CPU. Force limits from scene/safety_config.json.

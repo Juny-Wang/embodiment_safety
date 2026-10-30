@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "status": "TASK2_CTRL_SAFETY_SKELETON_2026-10-24",
+  "task_id": "task2_riser_io",
+  "units": {
+    "length": "m",
+    "angle": "rad",
+    "force": "N",
+    "torque": "N_m",
+    "time": "s",
+    "quaternion": "wxyz"
+  },
+  "paths": {
+    "robot": "/World/Robot",
+    "wire_root": "/wire1",
+    "ring_terminal": "/wire1/_0347300_ring_terminal",
+    "stud_a": "/TBY21_M3_1",
+    "stud_b": "/TBY21_M3_02",
+    "connector": "/TE_L26620011_4_connector_v2",
+    "pcb_holder": "/PCB_holder",
+    "cage": "/Electronics_140mm_19mm_cage",
+    "board": "/Task1PCB",
+    "optional_riser_task": "/SCV_Riser_Insert_Task",
+    "pcb_4_terminal": "/PCB_4_Terminal",
+    "seat_targets": [
+      "/PCB_4_Terminal/Terminal_1_M4Stud",
+      "/PCB_4_Terminal/Terminal_2_M4Stud",
+      "/PCB_4_Terminal/Terminal_3_M4Stud",
+      "/PCB_4_Terminal/Terminal_4_M4Stud"
+    ],
+    "stud_a_legacy": "/TBY21_M3_1",
+    "stud_b_legacy": "/TBY21_M3_02",
+    "parts_tray": "/ScrewTray",
+    "screws_note": "proxy_m4_present",
+    "nut_plate_note": "proxy_present_kinematic",
+    "phase2_note": "S2_nut_plate S3_screws S4_tray_nests missing; Phase2 after Phase1",
+    "nut_plate": "/NutPlate_M4",
+    "screw_tray": "/ScrewTray",
+    "screws": [
+      "/Screw_1",
+      "/Screw_2",
+      "/Screw_3",
+      "/Screw_4"
+    ]
+  },
+  "geometry_calib_file": "geometry_calib.json",
+  "wire1_baseline_file": "wire1_physics_baseline.json",
+  "plan_d": {
+    "enabled": true,
+    "note": "Task2 demo thresholds; retune after teleop. Color alarm via plan_d_runtime.apply_task2_alarms.",
+    "wire_joint_max_force_N": 0.3,
+    "wire_joint_limit_deg": 90.0,
+    "wire_joint_damping": 0.8,
+    "ring_seat_axial_N": 5.0,
+    "ring_seat_lateral_N": 2.0,
+    "grip_force_limit_N": 15.0,
+    "forbidden_contacts": [
+      "Electronics_140mm_19mm_cage/internals_TBD",
+      "ProtectedZone"
+    ],
+    "gates": {
+      "not_aligned_block_down": true,
+      "overforce_terminate": true
+    }
+  },
+  "riser_io_card_envelope": {
+    "source": "assets/riser_io_card/task_parameters.yaml",
+    "max_normal_contact_force_N": 25.0,
+    "warning_normal_contact_force_N": 15.0,
+    "max_lateral_contact_force_N": 8.0,
+    "warning_lateral_contact_force_N": 5.0,
+    "max_bending_moment_Nm": 0.8,
+    "max_insertion_speed_mps": 0.03,
+    "max_latch_angular_speed_radps": 1.2,
+    "max_actuation_torque_Nm": 0.35,
+    "target_insertion_depth_m": 0.12
+  },
+  "rules": [
+    {
+      "key": "wire_joint_force",
+      "label": "Wire segment joint drive force",
+      "unit": "N",
+      "limit": 0.3,
+      "steps": [
+        4,
+        5,
+        6
+      ],
+      "phase": 1,
+      "step_names": [
+        "route_to_stud",
+        "align_ring_stud",
+        "seat_ring"
+      ]
+    },
+    {
+      "key": "ring_axial_N",
+      "label": "Ring terminal axial seat force",
+      "unit": "N",
+      "limit": 5.0,
+      "steps": [
+        6,
+        7
+      ],
+      "phase": 1,
+      "step_names": [
+        "seat_ring",
+        "hold_verify"
+      ]
+    },
+    {
+      "key": "ring_lateral_N",
+      "label": "Ring terminal lateral force",
+      "unit": "N",
+      "limit": 2.0,
+      "steps": [
+        5,
+        6
+      ],
+      "phase": 1,
+      "step_names": [
+        "align_ring_stud",
+        "seat_ring"
+      ]
+    },
+    {
+      "key": "grip_force_N",
+      "label": "Gripper force",
+      "unit": "N",
+      "limit": 15.0,
+      "steps": [
+        2,
+        8,
+        11,
+        17
+      ],
+      "phase": "1+2",
+      "step_names": [
+        "grasp_ring",
+        "release_retract",
+        "grasp_screw",
+        "release_verify"
+      ]
+    },
+    {
+      "key": "screw_axial_N",
+      "label": "Screw insert axial force",
+      "unit": "N",
+      "limit": 8.0,
+      "steps": [
+        15,
+        16
+      ],
+      "phase": 2,
+      "step_names": [
+        "insert_start",
+        "fasten_turn"
+      ]
+    },
+    {
+      "key": "screw_torque_Nm",
+      "label": "Screw fasten torque",
+      "unit": "N_m",
+      "limit": 0.5,
+      "steps": [
+        16
+      ],
+      "phase": 2,
+      "step_names": [
+        "fasten_turn"
+      ]
+    },
+    {
+      "key": "card_normal_N",
+      "label": "IO card normal contact (deferred branch)",
+      "unit": "N",
+      "limit": 25.0,
+      "steps": [],
+      "phase": "deferred"
+    },
+    {
+      "key": "card_lateral_N",
+      "label": "IO card lateral contact (deferred branch)",
+      "unit": "N",
+      "limit": 8.0,
+      "steps": [],
+      "phase": "deferred"
+    }
+  ],
+  "traffic_light": {
+    "warning_ratio": 0.7,
+    "warning_clear_ratio": 0.7,
+    "yellow_min_duration_s": 0.15,
+    "green_min_duration_s": 0.15,
+    "red_immediate": true,
+    "red_requires_ack": false,
+    "color_alarm_channels": [
+      "wire_joint_force",
+      "ring_axial_N",
+      "ring_lateral_N",
+      "grip_force_N",
+      "screw_axial_N",
+      "screw_torque_Nm",
+      "forbidden_contact"
+    ]
+  },
+  "step_fsm": {
+    "source": "TASK_FLOW.md Phase1+Phase2",
+    "superseded": [
+      "ring_only_incomplete",
+      "task_S_screw_only",
+      "io_card_in_mainline"
+    ],
+    "phases": [
+      {
+        "id": 1,
+        "name": "wire_connection",
+        "steps": [
+          "home",
+          "select_wire",
+          "grasp_ring",
+          "lift_clear",
+          "route_to_stud",
+          "align_ring_stud",
+          "seat_ring",
+          "hold_verify",
+          "release_retract",
+          "repeat_wire_or_phase2"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "screw_fasten",
+        "after": "phase1_complete",
+        "steps": [
+          "select_screw",
+          "grasp_screw",
+          "lift_from_tray",
+          "transport_to_hole",
+          "align_screw_hole",
+          "insert_start",
+          "fasten_turn",
+          "release_verify",
+          "repeat_screw_or_done"
+        ],
+        "missing_assets": [],
+        "proxy_assets": [
+          "S2_NutPlate_M4",
+          "S3_Screw_1..4",
+          "S4_ScrewTray"
+        ],
+        "note": "Proxy geometry present; true threads / calibrated poses TBD"
+      }
+    ],
+    "note": "Phase2 assets mostly MISSING — doc only. Pure Task-S-only is wrong."
+  },
+  "intent": "phase1_wire_connection_then_phase2_screw_fasten_x4",
+  "contact_gate_N": 0.05,
+  "warning_ratio": 0.7,
+  "warning_clear_ratio": 0.7,
+  "control": {
+    "translation_speed_m_s": 0.01,
+    "rotation_speed_rad_s": 0.174532925,
+    "arm_joint_speed_rad_s": 0.5,
+    "gripper_speed_m_s": 0.04,
+    "translation_jog_m": 0.00025,
+    "rotation_jog_rad": 0.008726646,
+    "tracking_error_stop_m": 0.003,
+    "ik_period_s": 0.02,
+    "ee_frame": "panda_hand",
+    "ik_position_tolerance_m": 2e-05,
+    "ik_rotation_tolerance_rad": 0.0005,
+    "ik_max_evaluations": 80,
+    "contact_slow_translation_m_s": 0.001,
+    "contact_slow_rotation_rad_s": 0.034906585,
+    "contact_force_gate_N": 0.05
+  }
+}

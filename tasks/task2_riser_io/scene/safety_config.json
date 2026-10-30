@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "status": "PRINTABLE_CUSTOM_D10_P2_PROTOTYPE_NOT_PHYSICS_ACCEPTED",
+  "task_id": "task2_riser_io",
+  "units": {
+    "length": "m",
+    "angle": "rad",
+    "force": "N",
+    "torque": "N_m",
+    "time": "s",
+    "quaternion": "wxyz"
+  },
+  "paths": {
+    "robot": "/World/Robot",
+    "wire_root": "/wire1",
+    "ring_terminal": "/wire1/_0347300_ring_terminal",
+    "connector": "/TE_L26620011_4_connector_v2",
+    "pcb_holder": "/PCB_holder",
+    "cage": "/Electronics_140mm_19mm_cage",
+    "board": "/PCB_4_Terminal",
+    "optional_riser_task": "/SCV_Riser_Insert_Task",
+    "pcb_4_terminal": "/PCB_4_Terminal",
+    "seat_targets": [
+      "/PCB_4_Terminal/Terminal_1_Seat",
+      "/PCB_4_Terminal/Terminal_2_Seat",
+      "/PCB_4_Terminal/Terminal_3_Seat",
+      "/PCB_4_Terminal/Terminal_4_Seat"
+    ],
+    "stud_a_legacy": "/TBY21_M3_1",
+    "stud_b_legacy": "/TBY21_M3_02",
+    "parts_tray": "/ScrewTray",
+    "screws_note": "proxy_m4_present",
+    "nut_plate_note": "proxy_present_kinematic",
+    "phase2_note": "Custom D10 P2 true helical printable meshes; not M4, not runtime accepted",
+    "nut_plate": "/NutPlate_Coarse",
+    "screw_tray": "/ScrewTray",
+    "screws": [
+      "/ScrewTray/Nest_1/Screw_1",
+      "/ScrewTray/Nest_2/Screw_2",
+      "/ScrewTray/Nest_3/Screw_3",
+      "/ScrewTray/Nest_4/Screw_4"
+    ],
+    "ring_paths": [
+      "/wire1/_0347300_ring_terminal",
+      "/wire2/_0347300_ring_terminal",
+      "/wire3/_0347300_ring_terminal",
+      "/wire4/_0347300_ring_terminal"
+    ],
+    "nut_paths": [
+      "/NutPlate_Coarse/Nut_1",
+      "/NutPlate_Coarse/Nut_2",
+      "/NutPlate_Coarse/Nut_3",
+      "/NutPlate_Coarse/Nut_4"
+    ],
+    "selected_screw": "/ScrewTray/Nest_1/Screw_1",
+    "screw_nest_world_m": {
+      "/ScrewTray/Nest_1/Screw_1": [
+        0.2,
+        -0.23,
+        0.77
+      ],
+      "/ScrewTray/Nest_2/Screw_2": [
+        0.2,
+        -0.19,
+        0.77
+      ],
+      "/ScrewTray/Nest_3/Screw_3": [
+        0.24,
+        -0.23,
+        0.77
+      ],
+      "/ScrewTray/Nest_4/Screw_4": [
+        0.24,
+        -0.19,
+        0.77
+      ]
+    },
+    "screw_frame_note": "SCREW_ON_NEST_20261025: Screws parented under Nest_*; local (0,0,0); PhysX teleport on reseat",
+    "screw_nests": [
+      "/ScrewTray/Nest_1",
+      "/ScrewTray/Nest_2",
+      "/ScrewTray/Nest_3",
+      "/ScrewTray/Nest_4"
+    ],
+    "screw_local_rest_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "geometry_calib_file": "geometry_calib.json",
+  "wire1_baseline_file": "wire1_physics_baseline.json",
+  "plan_d": {
+    "enabled": true,
+    "note": "Task2 demo thresholds; retune after teleop. Color alarm via plan_d_runtime.apply_task2_alarms.",
+    "wire_joint_max_force_N": 0.3,
+    "wire_joint_limit_deg": 90.0,
+    "wire_joint_damping": 0.8,
+    "ring_seat_axial_N": 5.0,
+    "ring_seat_lateral_N": 2.0,
+    "grip_force_limit_N": 15.0,
+    "forbidden_contacts": [
+      "Electronics_140mm_19mm_cage/internals_TBD",
+      "ProtectedZone"
+    ],
+    "gates": {
+      "not_aligned_block_down": true,
+      "overforce_terminate": false
+    }
+  },
+  "riser_io_card_envelope": {
+    "source": "assets/riser_io_card/task_parameters.yaml",
+    "max_normal_contact_force_N": 25.0,
+    "warning_normal_contact_force_N": 15.0,
+    "max_lateral_contact_force_N": 8.0,
+    "warning_lateral_contact_force_N": 5.0,
+    "max_bending_moment_Nm": 0.8,
+    "max_insertion_speed_mps": 0.03,
+    "max_latch_angular_speed_radps": 1.2,
+    "max_actuation_torque_Nm": 0.35,
+    "target_insertion_depth_m": 0.12
+  },
+  "rules": [
+    {
+      "key": "wire_joint_force",
+      "label": "Wire joint reaction (unavailable until measured)",
+      "unit": "N",
+      "limit": 0.3,
+      "steps": [
+        4,
+        5,
+        6
+      ],
+      "phase": 1,
+      "step_names": [
+        "route_to_stud",
+        "align_ring_stud",
+        "seat_ring"
+      ]
+    },
+    {
+      "key": "ring_axial_N",
+      "label": "Ring terminal axial seat force",
+      "unit": "N",
+      "limit": 5.0,
+      "steps": [
+        6,
+        7
+      ],
+      "phase": 1,
+      "step_names": [
+        "seat_ring",
+        "hold_verify"
+      ]
+    },
+    {
+      "key": "ring_lateral_N",
+      "label": "Ring terminal lateral force",
+      "unit": "N",
+      "limit": 2.0,
+      "steps": [
+        5,
+        6
+      ],
+      "phase": 1,
+      "step_names": [
+        "align_ring_stud",
+        "seat_ring"
+      ]
+    },
+    {
+      "key": "grip_force_N",
+      "label": "Gripper force",
+      "unit": "N",
+      "limit": 15.0,
+      "steps": [
+        2,
+        8,
+        11,
+        17
+      ],
+      "phase": "1+2",
+      "step_names": [
+        "grasp_ring",
+        "release_retract",
+        "grasp_screw",
+        "release_verify"
+      ]
+    },
+    {
+      "key": "screw_axial_N",
+      "label": "Screw insert axial force",
+      "unit": "N",
+      "limit": 8.0,
+      "steps": [
+        15,
+        16
+      ],
+      "phase": 2,
+      "step_names": [
+        "insert_start",
+        "fasten_turn"
+      ]
+    },
+    {
+      "key": "screw_torque_Nm",
+      "label": "Thread torque (unavailable; not inferred from drive maxForce)",
+      "unit": "N_m",
+      "limit": 0.5,
+      "steps": [
+        16
+      ],
+      "phase": 2,
+      "step_names": [
+        "fasten_turn"
+      ]
+    },
+    {
+      "key": "card_normal_N",
+      "label": "IO card normal contact (deferred branch)",
+      "unit": "N",
+      "limit": 25.0,
+      "steps": [],
+      "phase": "deferred"
+    },
+    {
+      "key": "card_lateral_N",
+      "label": "IO card lateral contact (deferred branch)",
+      "unit": "N",
+      "limit": 8.0,
+      "steps": [],
+      "phase": "deferred"
+    }
+  ],
+  "traffic_light": {
+    "warning_ratio": 0.7,
+    "warning_clear_ratio": 0.7,
+    "yellow_min_duration_s": 0.15,
+    "green_min_duration_s": 0.15,
+    "red_immediate": true,
+    "red_requires_ack": false,
+    "color_alarm_channels": [
+      "wire_joint_force",
+      "ring_axial_N",
+      "ring_lateral_N",
+      "grip_force_N",
+      "screw_axial_N",
+      "screw_torque_Nm",
+      "forbidden_contact"
+    ]
+  },
+  "step_fsm": {
+    "source": "TASK_FLOW.md Phase1+Phase2",
+    "superseded": [
+      "ring_only_incomplete",
+      "task_S_screw_only",
+      "io_card_in_mainline"
+    ],
+    "phases": [
+      {
+        "id": 1,
+        "name": "wire_connection",
+        "steps": [
+          "home",
+          "select_wire",
+          "grasp_ring",
+          "lift_clear",
+          "route_to_stud",
+          "align_ring_stud",
+          "seat_ring",
+          "hold_verify",
+          "release_retract",
+          "repeat_wire_or_phase2"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "screw_fasten",
+        "after": "phase1_complete",
+        "steps": [
+          "select_screw",
+          "grasp_screw",
+          "lift_from_tray",
+          "transport_to_hole",
+          "align_screw_hole",
+          "insert_start",
+          "fasten_turn",
+          "release_verify",
+          "repeat_screw_or_done"
+        ],
+        "missing_assets": [],
+        "proxy_assets": [
+          "S2_NutPlate_M4",
+          "S3_Screw_1..4",
+          "S4_ScrewTray"
+        ],
+        "note": "Proxy geometry present; true threads / calibrated poses TBD"
+      }
+    ],
+    "note": "Phase1 wires then Phase2 printable coarse screws; no automatic success from step selection"
+  },
+  "intent": "phase1_wire_connection_then_phase2_screw_fasten_x4",
+  "contact_gate_N": 0.05,
+  "warning_ratio": 0.7,
+  "warning_clear_ratio": 0.7,
+  "control": {
+    "translation_speed_m_s": 0.05,
+    "rotation_speed_rad_s": 0.35,
+    "arm_joint_speed_rad_s": 0.8,
+    "gripper_speed_m_s": 0.04,
+    "translation_jog_m": 0.001,
+    "rotation_jog_rad": 0.008726646,
+    "tracking_error_stop_m": 0.1,
+    "ik_period_s": 0.02,
+    "ee_frame": "panda_hand",
+    "ik_position_tolerance_m": 0.005,
+    "ik_rotation_tolerance_rad": 0.02,
+    "ik_max_evaluations": 80,
+    "contact_slow_translation_m_s": 0.001,
+    "contact_slow_rotation_rad_s": 0.034906585,
+    "contact_force_gate_N": 0.05,
+    "note_fix3": "2026-10-25: raised tracking envelope + speeds to Task1-usable teleop (was 3mm stop killing motion)",
+    "note_screw_frame_fix": "SCREW_FRAME_FIX_20261025"
+  },
+  "warning_only": true,
+  "geometry_config_file": "printable_v001/geometry_config.json",
+  "cameras": {
+    "enabled": true,
+    "wrist_parent_name": "panda_hand",
+    "wrist_look_local": [
+      0.0,
+      0.0,
+      0.12
+    ],
+    "wrist_left": {
+      "name": "WristCam_L",
+      "translate_local": [
+        0.048,
+        -0.055,
+        0.0
+      ],
+      "look_local": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "up_local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 11.0,
+      "horizontal_aperture": 24.0,
+      "clip_near": 0.008,
+      "clip_far": 1.5,
+      "role": "wrist_grasp_left"
+    },
+    "wrist_right": {
+      "name": "WristCam_R",
+      "translate_local": [
+        0.048,
+        0.055,
+        0.0
+      ],
+      "look_local": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "up_local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 11.0,
+      "horizontal_aperture": 24.0,
+      "clip_near": 0.008,
+      "clip_far": 1.5,
+      "role": "wrist_grasp_right"
+    },
+    "external_root": "/World/Cameras",
+    "external": {
+      "name": "ExternalOverview",
+      "translate_world": [
+        0.32,
+        0.55,
+        1.2
+      ],
+      "look_world": [
+        -0.05,
+        -0.071,
+        0.768
+      ],
+      "up_world": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 14.0,
+      "horizontal_aperture": 20.955,
+      "clip_near": 0.05,
+      "clip_far": 8.0,
+      "role": "scene_overview"
+    },
+    "note": "2026-10-23: wrist cams reframed to see gripper pads (L/R on ±Y, look @ z=0.12, wider FOV). Session-applied by cameras_setup.",
+    "split_ui": {
+      "enabled": true,
+      "width": 360,
+      "height": 270,
+      "margin_x": 24,
+      "margin_y": 72,
+      "gap": 10,
+      "titles": {
+        "wrist_left": "Cam · Wrist L",
+        "wrist_right": "Cam · Wrist R",
+        "external": "Cam · External"
+      },
+      "note": "Three small viewport windows stacked on the right; opened by camera_viewports.open_camera_split after session cameras apply.",
+      "hide_hud": true,
+      "match_resolution": true
+    }
+  },
+  "breakable_neck": {
+    "enabled": true,
+    "status": "DEMO_PROXY_CALIBRATE_BY_HAND",
+    "note": "Axial stretch×stiffness proxy at ring↔Segment_23 FixedJoint. Not constitutive stress. Calibrate F_warn/F_break via teleop pull.",
+    "F_warn_N": 3.0,
+    "F_break_N": 8.0,
+    "T_break_Nm": 0.5,
+    "break_hold_frames": 5,
+    "proxy_stiffness_N_per_m": 200.0,
+    "rest_len_m": 0.023,
+    "neck_height_m": 0.012,
+    "neck_radius_m": 0.0035,
+    "neck_local_translate_m": [
+      0.0,
+      0.017,
+      0.0035
+    ],
+    "wires": [
+      "wire1",
+      "wire2",
+      "wire3",
+      "wire4"
+    ],
+    "joint_path_template": "/{wire}/FixedJoint",
+    "neck_path_template": "/{wire}/_0347300_ring_terminal/BreakableNeck",
+    "calibrate": "Hand-pull each ring until yellow (warn) then break (red). Record peak proxy force; replace F_warn_N / F_break_N."
+  }
+}

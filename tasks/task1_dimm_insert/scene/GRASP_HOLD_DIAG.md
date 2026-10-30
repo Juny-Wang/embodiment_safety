@@ -1,0 +1,2 @@
+# Grasp hold diagnostic
+CLOSE or GRASP DIAG samples 1.5s -> HOLD_OK / FRICTION_SLIP / IMPULSE_KICK / NEVER_SECURED / AMBIGUOUS

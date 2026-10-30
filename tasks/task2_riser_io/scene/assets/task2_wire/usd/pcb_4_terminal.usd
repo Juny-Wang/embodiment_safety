@@ -1,0 +1,492 @@
+#usda 1.0
+(
+    defaultPrim = "PCB_4_Terminal"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "PCB_4_Terminal" (
+    kind = "component"
+)
+{
+    def Cube "PCB"
+    {
+        float3 xformOp:scale = (0.07, 0.04, 0.001)
+        double3 xformOp:translate = (0, 0, 0.001)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.015, 0.28, 0.1)] (interpolation = "constant")
+    }
+    def Cylinder "MountPad_1"
+    {
+        double3 xformOp:translate = (-0.06, -0.03, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0055
+        double height = 0.0014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "MountHole_1"
+    {
+        double3 xformOp:translate = (-0.06, -0.03, 0.003)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.0018
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "MountPad_2"
+    {
+        double3 xformOp:translate = (0.06, -0.03, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0055
+        double height = 0.0014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "MountHole_2"
+    {
+        double3 xformOp:translate = (0.06, -0.03, 0.003)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.0018
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "MountPad_3"
+    {
+        double3 xformOp:translate = (-0.06, 0.03, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0055
+        double height = 0.0014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "MountHole_3"
+    {
+        double3 xformOp:translate = (-0.06, 0.03, 0.003)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.0018
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "MountPad_4"
+    {
+        double3 xformOp:translate = (0.06, 0.03, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0055
+        double height = 0.0014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "MountHole_4"
+    {
+        double3 xformOp:translate = (0.06, 0.03, 0.003)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.0018
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_1_CopperPad"
+    {
+        double3 xformOp:translate = (-0.042, -0.021, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.009
+        double height = 0.0015
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_1_Insulator"
+    {
+        double3 xformOp:translate = (-0.042, -0.021, 0.0048)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0065
+        double height = 0.004
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_1_Washer"
+    {
+        double3 xformOp:translate = (-0.042, -0.021, 0.0072)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0054
+        double height = 0.001
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_1_M4Stud"
+    {
+        double3 xformOp:translate = (-0.042, -0.021, 0.011)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.009
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_1_Nut"
+    {
+        double3 xformOp:translate = (-0.042, -0.021, 0.0163)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.004
+        double height = 0.0024
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cube "Terminal_1_Marker"
+    {
+        float3 xformOp:scale = (0.006, 0.0015, 0.0004)
+        double3 xformOp:translate = (-0.042, -0.031, 0.0023)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.02, 0.25, 0.75)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_2_CopperPad"
+    {
+        double3 xformOp:translate = (-0.014, -0.021, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.009
+        double height = 0.0015
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_2_Insulator"
+    {
+        double3 xformOp:translate = (-0.014, -0.021, 0.0048)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0065
+        double height = 0.004
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_2_Washer"
+    {
+        double3 xformOp:translate = (-0.014, -0.021, 0.0072)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0054
+        double height = 0.001
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_2_M4Stud"
+    {
+        double3 xformOp:translate = (-0.014, -0.021, 0.011)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.009
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_2_Nut"
+    {
+        double3 xformOp:translate = (-0.014, -0.021, 0.0163)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.004
+        double height = 0.0024
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cube "Terminal_2_Marker"
+    {
+        float3 xformOp:scale = (0.006, 0.0015, 0.0004)
+        double3 xformOp:translate = (-0.014, -0.031, 0.0023)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.94, 0.76, 0.05)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_3_CopperPad"
+    {
+        double3 xformOp:translate = (0.014, -0.021, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.009
+        double height = 0.0015
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_3_Insulator"
+    {
+        double3 xformOp:translate = (0.014, -0.021, 0.0048)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0065
+        double height = 0.004
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_3_Washer"
+    {
+        double3 xformOp:translate = (0.014, -0.021, 0.0072)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0054
+        double height = 0.001
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_3_M4Stud"
+    {
+        double3 xformOp:translate = (0.014, -0.021, 0.011)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.009
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_3_Nut"
+    {
+        double3 xformOp:translate = (0.014, -0.021, 0.0163)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.004
+        double height = 0.0024
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cube "Terminal_3_Marker"
+    {
+        float3 xformOp:scale = (0.006, 0.0015, 0.0004)
+        double3 xformOp:translate = (0.014, -0.031, 0.0023)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.88)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_4_CopperPad"
+    {
+        double3 xformOp:translate = (0.042, -0.021, 0.0022)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.009
+        double height = 0.0015
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.82, 0.31, 0.07)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_4_Insulator"
+    {
+        double3 xformOp:translate = (0.042, -0.021, 0.0048)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0065
+        double height = 0.004
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_4_Washer"
+    {
+        double3 xformOp:translate = (0.042, -0.021, 0.0072)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0054
+        double height = 0.001
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_4_M4Stud"
+    {
+        double3 xformOp:translate = (0.042, -0.021, 0.011)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.002
+        double height = 0.009
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "Terminal_4_Nut"
+    {
+        double3 xformOp:translate = (0.042, -0.021, 0.0163)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.004
+        double height = 0.0024
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cube "Terminal_4_Marker"
+    {
+        float3 xformOp:scale = (0.006, 0.0015, 0.0004)
+        double3 xformOp:translate = (0.042, -0.031, 0.0023)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.08, 0.08, 0.08)] (interpolation = "constant")
+    }
+    def Cube "MainConnector"
+    {
+        float3 xformOp:scale = (0.017, 0.006, 0.007)
+        double3 xformOp:translate = (0, 0.017, 0.009)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_1"
+    {
+        double3 xformOp:translate = (-0.012, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_2"
+    {
+        double3 xformOp:translate = (-0.0093, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_3"
+    {
+        double3 xformOp:translate = (-0.0066, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_4"
+    {
+        double3 xformOp:translate = (-0.0039000000000000007, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_5"
+    {
+        double3 xformOp:translate = (-0.0011999999999999997, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_6"
+    {
+        double3 xformOp:translate = (0.0015000000000000013, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_7"
+    {
+        double3 xformOp:translate = (0.004199999999999999, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_8"
+    {
+        double3 xformOp:translate = (0.0069, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_9"
+    {
+        double3 xformOp:translate = (0.009600000000000001, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "ConnectorPin_10"
+    {
+        double3 xformOp:translate = (0.012300000000000002, 0.017, 0.0165)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.00065
+        double height = 0.003
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.72, 0.48, 0.08)] (interpolation = "constant")
+    }
+    def Cylinder "Capacitor_1"
+    {
+        double3 xformOp:translate = (-0.032, 0.01, 0.009)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "CapacitorCap_1"
+    {
+        double3 xformOp:translate = (-0.032, 0.01, 0.0162)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.0005
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.02, 0.25, 0.75)] (interpolation = "constant")
+    }
+    def Cylinder "Capacitor_2"
+    {
+        double3 xformOp:translate = (-0.02, 0.02, 0.009)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "CapacitorCap_2"
+    {
+        double3 xformOp:translate = (-0.02, 0.02, 0.0162)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.0005
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.02, 0.25, 0.75)] (interpolation = "constant")
+    }
+    def Cylinder "Capacitor_3"
+    {
+        double3 xformOp:translate = (0.03, 0.018, 0.009)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.014
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.55, 0.58, 0.6)] (interpolation = "constant")
+    }
+    def Cylinder "CapacitorCap_3"
+    {
+        double3 xformOp:translate = (0.03, 0.018, 0.0162)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        double radius = 0.0045
+        double height = 0.0005
+        uniform token axis = "Z"
+        color3f[] primvars:displayColor = [(0.02, 0.25, 0.75)] (interpolation = "constant")
+    }
+    def Cube "IC_1"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (-0.045, 0.02, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cube "IC_2"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (-0.04, 0.013, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cube "IC_3"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (0.038, 0.004, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cube "IC_4"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (0.047, 0.011, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cube "IC_5"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (0.02, 0.027, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+    def Cube "IC_6"
+    {
+        float3 xformOp:scale = (0.004, 0.003, 0.0014)
+        double3 xformOp:translate = (-0.005, 0.029, 0.0033)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)] (interpolation = "constant")
+    }
+}

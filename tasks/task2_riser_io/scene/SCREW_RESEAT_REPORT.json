@@ -1,0 +1,50 @@
+{
+  "tag": "SCREW_RESEAT_20261025",
+  "diagnosis": "All four Screw_1..4 prims already existed at nest poses in USDA. Empty bottom-right hole in live Play was Screw_4 falling out (dynamic RigidBody + shallow tray pockets), not a missing prim.",
+  "empty_hole": "ScrewTray Nest_4 / Screw_4",
+  "before_disk": {
+    "/Screw_1": [
+      0.2,
+      -0.23,
+      0.75205
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.75205
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.23,
+      0.75205
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.75205
+    ]
+  },
+  "after_session_reseat": {
+    "/Screw_1": [
+      0.2,
+      -0.23,
+      0.755
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.755
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.23,
+      0.755
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.755
+    ]
+  },
+  "fix": "reseat_screws() on panel load + START; kinematicEnabled=true so they stay in pockets"
+}

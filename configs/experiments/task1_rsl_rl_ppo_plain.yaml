@@ -1,0 +1,23 @@
+# Experiment: task1_dimm_insert × rsl_rl_ppo × PLAIN (no safety constraints)
+task_id: task1_dimm_insert
+algo_id: rsl_rl_ppo_plain
+stage: plain
+reward_mode: plain
+
+scene_path: tasks/task1_dimm_insert/scene
+
+backend: fake
+max_episode_steps: 500
+num_envs: 64
+seed: 42
+device: cuda:0
+
+algo_cfg: algos/rsl_rl_ppo/cfg/plain_insert.yaml
+
+output_dir: outputs/runs/task1_dimm_insert/rsl_rl_ppo/task1_plain_ppo
+
+notes: |
+  Plain PPO: insert success only. Safety terms intentionally OFF.
+  FakeEnv dry-run: --dry-run (default backend=fake).
+  Kit long train: runners/kit_train_plain.py (see algos/rsl_rl_ppo/PLAIN_PPO.md).
+  Stage1A safety trainer remains configs/experiments/task1_rsl_rl_ppo_stage1a.yaml.

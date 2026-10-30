@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#2563eb"/></marker></defs>
+<rect width="1440" height="920" fill="#f3f6fa"/>
+<g font-family="Noto Sans CJK SC,Microsoft YaHei,WenQuanYi Zen Hei,sans-serif" fill="#182b43">
+<text x="55" y="62" font-size="34" font-weight="bold">Task2：先放环端子，再用螺丝压紧</text>
+<text x="55" y="102" font-size="20" fill="#64748b">候选结构示意 · 非当前 USD 资产截图 · 不按比例 · 孔径、间隙、螺纹与载荷均待验证</text>
+<rect x="40" y="135" width="660" height="575" rx="18" fill="white" stroke="#d5dde8"/>
+<rect x="740" y="135" width="660" height="575" rx="18" fill="white" stroke="#d5dde8"/>
+<text x="70" y="180" font-size="27" font-weight="bold">① 第一阶段：放环、松爪，暂时定位</text>
+<text x="770" y="180" font-size="27" font-weight="bold">② 第二阶段：螺杆穿孔、螺丝头压环</text>
+<!-- Centerlines: coaxial bore, not material -->
+<path d="M370 235 V650 M1070 235 V650" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/>
+<!-- Phase 1 fixed support, threaded seat with central opening -->
+<path d="M185 565 H350 V640 H185 Z M390 565 H555 V640 H390 Z" fill="#52627b"/>
+<path d="M225 510 H350 V565 H225 Z M390 510 H515 V565 H390 Z" fill="#a8b4c5" stroke="#64748b" stroke-width="2"/>
+<path d="M350 514 l-7 6 7 6 -7 6 7 6 -7 6 7 6 -7 6 7 6 M390 514 l7 6 -7 6 7 6 -7 6 7 6 -7 6 7 6 -7 6" fill="none" stroke="#475569" stroke-width="2"/>
+<!-- Board and conductive support surface with real through hole -->
+<path d="M185 455 H350 V510 H185 Z M390 455 H555 V510 H390 Z" fill="#4a9672"/>
+<path d="M245 438 H350 V455 H245 Z M390 438 H495 V455 H390 Z" fill="#c5a05b"/>
+<!-- ring end represented in cross section -->
+<path d="M265 410 H350 V438 H265 Z M390 410 H475 V438 H390 Z" fill="#e8bd66" stroke="#98672c" stroke-width="2"/>
+<path d="M90 424 H265" stroke="#2563eb" stroke-width="20"/>
+<!-- peripheral low shoulders, NOT center stud -->
+<path d="M245 415 H259 V455 H245 Z M481 415 H495 V455 H481 Z" fill="#8bb5d9" stroke="#47779f"/>
+<path d="M312 292 V385" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+<text x="85" y="395" font-size="18">软线</text>
+<text x="275" y="278" font-size="21">环端子放入浅定位槽</text>
+<text x="414" y="347" font-size="19">中央保持畅通</text>
+<path d="M435 355 L373 400" stroke="#64748b" fill="none"/>
+<text x="80" y="675" font-size="19" fill="#475569">靠承托面与外围挡边定位；尚未压紧，不能判锁定成功。</text>
+<!-- Phase 2 same geometry -->
+<path d="M885 565 H1050 V640 H885 Z M1090 565 H1255 V640 H1090 Z" fill="#52627b"/>
+<path d="M925 510 H1050 V565 H925 Z M1090 510 H1215 V565 H1090 Z" fill="#a8b4c5" stroke="#64748b" stroke-width="2"/>
+<path d="M885 455 H1050 V510 H885 Z M1090 455 H1255 V510 H1090 Z" fill="#4a9672"/>
+<path d="M945 438 H1050 V455 H945 Z M1090 438 H1195 V455 H1090 Z" fill="#c5a05b"/>
+<path d="M965 410 H1050 V438 H965 Z M1090 410 H1175 V438 H1090 Z" fill="#e8bd66" stroke="#98672c" stroke-width="2"/>
+<path d="M790 424 H965" stroke="#2563eb" stroke-width="20"/>
+<path d="M945 415 H959 V455 H945 Z M1181 415 H1195 V455 H1181 Z" fill="#8bb5d9" stroke="#47779f"/>
+<!-- Screw head bears ring; shank travels through bore -->
+<rect x="1005" y="377" width="130" height="33" rx="5" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+<rect x="1055" y="410" width="30" height="142" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+<path d="M1050 514 l5 6 -5 6 5 6 -5 6 5 6 -5 6 5 6 M1090 514 l-5 6 5 6 -5 6 5 6 -5 6 5 6 -5 6" fill="none" stroke="#475569" stroke-width="2"/>
+<path d="M1028 303 V360 M1112 303 V360" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+<text x="958" y="278" font-size="21">螺丝头下表面压紧环端子</text>
+<text x="1205" y="430" font-size="18">环端子</text>
+<text x="1260" y="490" font-size="18">PCB</text>
+<text x="1225" y="548" font-size="18">螺纹座</text>
+<text x="1200" y="615" font-size="18" fill="white">固定工装</text>
+<text x="780" y="675" font-size="19" fill="#475569">螺纹仅示意啮合位置；实际旋入与压紧机构尚待实现。</text>
+<rect x="40" y="735" width="1360" height="145" rx="16" fill="#e8eef8"/>
+<text x="70" y="773" font-size="23" font-weight="bold">四个单元共用同一装配逻辑</text>
+<text x="70" y="812" font-size="21">wire_i → ring_i → 接线孔_i → Screw_i → 螺纹座_i；四根线全部放好，再依次装四颗螺丝。</text>
+<text x="70" y="849" font-size="20" fill="#9a3412">关键：中央不能有实心柱挡路；外围定位挡边不能顶住螺丝头；安装孔不等于接线孔。</text>
+</g></svg>

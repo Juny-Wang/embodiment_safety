@@ -1,0 +1,71 @@
+{
+  "timestamp": "20261024_195904",
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene",
+  "root_cause": "launch_panel exec() used a fresh globals dict each run, so old Task2KeyboardPanel update subscriptions were never closed and kept calling cached plan_d_runtime.GetPrimAtPath(str).",
+  "fixed_call_sites": [
+    {
+      "file": "cameras_setup.py",
+      "line": 27,
+      "code": "return stage.GetPrimAtPath(p)",
+      "via": "_get_prim"
+    },
+    {
+      "file": "cameras_setup.py",
+      "line": 86,
+      "code": "prim = stage.DefinePrim(_as_path(path), \"Camera\")",
+      "via": "_as_path"
+    },
+    {
+      "file": "cameras_setup.py",
+      "line": 171,
+      "code": "stage.DefinePrim(_as_path(root), \"Xform\")",
+      "via": "_as_path"
+    },
+    {
+      "file": "camera_viewports.py",
+      "line": 19,
+      "code": "return stage.GetPrimAtPath(p)",
+      "via": "_get_prim"
+    },
+    {
+      "file": "plan_d_runtime.py",
+      "line": 19,
+      "code": "return stage.GetPrimAtPath(Sdf.Path(path_str))",
+      "via": "_prim"
+    },
+    {
+      "file": "plan_d_runtime.py",
+      "line": 20,
+      "code": "return stage.GetPrimAtPath(path_str)",
+      "via": "_prim"
+    }
+  ],
+  "files_edited": [
+    "cameras_setup.py",
+    "camera_viewports.py",
+    "plan_d_runtime.py",
+    "keyboard_panel.py",
+    "launch_panel.py"
+  ],
+  "unchecked_no_GetPrim": [
+    "franka_teleop.py",
+    "safety_core.py",
+    "step_fsm.py",
+    "grasp_hold_diag.py",
+    "baseline_logger.py",
+    "keyboard_input.py"
+  ],
+  "backups_glob": "printable_v001/backups/*.bak_20261024_195904",
+  "py_compile": "OK all edited + franka_teleop/safety_core/step_fsm",
+  "residual_GetPrimAtPath_str_risks": [
+    "printable_v001/backups/* historical bare GetPrimAtPath(str); not on import path",
+    "No active scene/*.py passes bare str into GetPrimAtPath (all via _prim/_get_prim/Sdf.Path)"
+  ],
+  "reload": [
+    "Do NOT kill Isaac / Do NOT reopen USDA",
+    "Re-run launch_panel.py in Script Editor",
+    "Console must show: GETPRIM_FIX 20261024",
+    "Click START TELEOP"
+  ],
+  "launch_panel_zombie_sweep": "gc.get_objects() closes all Task2KeyboardPanel before reload"
+}

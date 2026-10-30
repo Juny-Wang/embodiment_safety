@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "units": "m",
+  "stl_units": "mm",
+  "thread": {
+    "name": "CUSTOM_D10_P2",
+    "major_diameter_m": 0.01,
+    "pitch_m": 0.002,
+    "radial_clearance_m": 0.0003,
+    "true_helical_mesh": true,
+    "validated": false
+  },
+  "fixture_origin_world_m": [
+    -0.05,
+    -0.071,
+    0.75
+  ],
+  "seat_world_m": [
+    [
+      -0.092,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.064,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.036000000000000004,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.008,
+      -0.071,
+      0.768
+    ]
+  ],
+  "seat_paths": [
+    "/PCB_4_Terminal/Terminal_1_Seat",
+    "/PCB_4_Terminal/Terminal_2_Seat",
+    "/PCB_4_Terminal/Terminal_3_Seat",
+    "/PCB_4_Terminal/Terminal_4_Seat"
+  ],
+  "ring_paths": [
+    "/wire1/_0347300_ring_terminal",
+    "/wire2/_0347300_ring_terminal",
+    "/wire3/_0347300_ring_terminal",
+    "/wire4/_0347300_ring_terminal"
+  ],
+  "screw_paths": [
+    "/Screw_1",
+    "/Screw_2",
+    "/Screw_3",
+    "/Screw_4"
+  ],
+  "nut_paths": [
+    "/NutPlate_Coarse/Nut_1",
+    "/NutPlate_Coarse/Nut_2",
+    "/NutPlate_Coarse/Nut_3",
+    "/NutPlate_Coarse/Nut_4"
+  ],
+  "collision_mode": "static triangle surfaces; dynamic SDF256; not Kit-validated",
+  "physics_ready": false
+}

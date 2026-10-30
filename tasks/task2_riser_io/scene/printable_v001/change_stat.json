@@ -1,0 +1,47 @@
+[
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/PRINT_BOM.md",
+    "added": 50,
+    "removed": 29
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/TASK_FLOW.md",
+    "added": 4,
+    "removed": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/geometry_calib.json",
+    "added": 49,
+    "removed": 46
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/step_fsm.py",
+    "added": 1,
+    "removed": 1
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json",
+    "added": 31,
+    "removed": 18
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+    "added": 671,
+    "removed": 670
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/LAUNCH.md",
+    "added": 4,
+    "removed": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py",
+    "added": 79,
+    "removed": 30
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/plan_d_runtime.py",
+    "added": 26,
+    "removed": 22
+  }
+]

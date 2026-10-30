@@ -1,0 +1,128 @@
+{
+  "tag": "SCREW_FRAME_FIX_20261025",
+  "timestamp_local": "20261025_160833",
+  "timezone": "Asia/Shanghai",
+  "why_prior_fix_still_failed": [
+    "Prior _set_translate still fell through to xf.AddTranslateOp() when session-layer GetOrderedXformOps missed root translate — exact console ErrorException.",
+    "Nest Z was 0.755 but Nest world Z = 0.75+0.02 = 0.77 (ScrewTray+Nest local)."
+  ],
+  "frame_math": {
+    "screw_prims": "/Screw_1..4 root siblings, absolute/world translate",
+    "nest_prims": "/ScrewTray/Nest_1..4",
+    "ScrewTray_translate": [
+      0.22,
+      -0.21,
+      0.75
+    ],
+    "Nest_local": {
+      "/Screw_1": [
+        -0.02,
+        -0.02,
+        0.02
+      ],
+      "/Screw_2": [
+        -0.02,
+        0.02,
+        0.02
+      ],
+      "/Screw_3": [
+        0.02,
+        -0.02,
+        0.02
+      ],
+      "/Screw_4": [
+        0.02,
+        0.02,
+        0.02
+      ]
+    },
+    "target_world": {
+      "/Screw_1": [
+        0.2,
+        -0.22999999999999998,
+        0.77
+      ],
+      "/Screw_2": [
+        0.2,
+        -0.19,
+        0.77
+      ],
+      "/Screw_3": [
+        0.24,
+        -0.22999999999999998,
+        0.77
+      ],
+      "/Screw_4": [
+        0.24,
+        -0.19,
+        0.77
+      ]
+    },
+    "formula": "screw_translate = ScrewTray.translate + Nest_i.translate"
+  },
+  "before_disk_translate": {
+    "/Screw_1": [
+      0.2,
+      -0.22999999999999998,
+      0.755
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.755
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.22999999999999998,
+      0.755
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.755
+    ]
+  },
+  "after_disk_translate": {
+    "/Screw_1": [
+      0.2,
+      -0.22999999999999998,
+      0.77
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.77
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.22999999999999998,
+      0.77
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.77
+    ]
+  },
+  "xform_fix": "XformCommonAPI / attr Set / CreateAttribute+order — NEVER .AddTranslateOp(",
+  "teleop_Z": {
+    "root_cause": "tick() called stop() on IK residual > 0.0001m → armed=False while panel still READY; PgDn events still counted (cmds rise) but no Z motion",
+    "fix": "skip-frame stay armed; ik_position_tolerance_m 0.0001→0.005; HOME/END/NUMPAD_9/3 = Z aliases",
+    "FIX4": "preserved"
+  },
+  "files_changed": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/breakable_neck.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/franka_teleop.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_input.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py"
+  ],
+  "user_steps": [
+    "FETCH USD dialog",
+    "exec(compile(open('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py').read(), 'launch_panel.py', 'exec'))",
+    "Console must show SCREW_FRAME_FIX_20261025 with reseated [/Screw_1..4] and err []",
+    "START TELEOP, click MAIN viewport, PgUp/PgDn or Home/End for Z",
+    "Four screws in ScrewTray nests at z≈0.77"
+  ]
+}

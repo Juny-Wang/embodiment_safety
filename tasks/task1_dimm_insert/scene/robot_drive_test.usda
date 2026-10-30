@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Xform "Robot" (
+        prepend references = @/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_manual_safety_v002/manual_franka_scene.usda@</World/Robot>
+    )
+    {
+    }
+
+    def PhysicsScene "physicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.81
+        bool physxScene:enableGPUDynamics = 0
+        uniform token physxScene:solverType = "TGS"
+        uint physxScene:timeStepsPerSecond = 1000
+    }
+
+    def Cube "ControlFloor" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        double size = 0.01
+        double3 xformOp:translate = (1, 0, 0.005)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Cube "ControlBox" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxContactReportAPI"]
+    )
+    {
+        float physics:mass = 0.02
+        float physxContactReport:threshold = 0
+        double size = 0.01
+        double3 xformOp:translate = (1, 0, 0.018)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "built": [
+    "L0_sensor_bench.usda",
+    "L1_one_guide.usda",
+    "L2_two_guides.usda"
+  ],
+  "wire_nominal": {
+    "diameter_mm": 7.0,
+    "length_mm": 460.0,
+    "segments": 24,
+    "mass_g": 24.0
+  },
+  "disabled_until_calibrated": {
+    "length_variants": true,
+    "diameter_variants": true,
+    "bending_stiffness_variants": true,
+    "friction_randomization": true,
+    "four_wire_crossing": true
+  },
+  "reason": "No calibrated elastic model or complete route feasibility/retention validation; these are not active RL variants."
+}

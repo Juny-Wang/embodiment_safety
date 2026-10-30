@@ -1,0 +1,89 @@
+{
+  "tag": "SCREW_RESEAT_ALL_20261025",
+  "timestamp_local": "20261025_155018",
+  "timezone": "Asia/Shanghai (box local)",
+  "root_cause": [
+    "reseat_screws used RemoveXformOp+AddTranslateOp; USD raised 'xformOp:translate already exists' so START reseat failed for all Screws (console ErrorException).",
+    "screw_custom_D10_P2.usda authored dynamic RigidBody + physxRigidBody:enableCCD=1; after Play screws fall through/off shallow ScrewTray nests.",
+    "PhysX: kinematic bodies with CCD enabled are not supported — prior kinematic reseat left CCD on."
+  ],
+  "prim_paths": [
+    "/Screw_1",
+    "/Screw_2",
+    "/Screw_3",
+    "/Screw_4"
+  ],
+  "nest_map": {
+    "/Screw_1": "ScrewTray/Nest_1",
+    "/Screw_2": "ScrewTray/Nest_2",
+    "/Screw_3": "ScrewTray/Nest_3",
+    "/Screw_4": "ScrewTray/Nest_4"
+  },
+  "before_disk_translate": {
+    "/Screw_1": [
+      0.2,
+      -0.22999999999999998,
+      0.75205
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.75205
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.22999999999999998,
+      0.75205
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.75205
+    ]
+  },
+  "after_disk_translate": {
+    "/Screw_1": [
+      0.2,
+      -0.23,
+      0.755
+    ],
+    "/Screw_2": [
+      0.2,
+      -0.19,
+      0.755
+    ],
+    "/Screw_3": [
+      0.24,
+      -0.23,
+      0.755
+    ],
+    "/Screw_4": [
+      0.24,
+      -0.19,
+      0.755
+    ]
+  },
+  "physics_overrides": {
+    "physics:kinematicEnabled": true,
+    "physxRigidBody:enableCCD": false,
+    "note": "kinematic until grasp; CCD off to silence PhysX kinematic+CCD error and stop fall-through"
+  },
+  "files_changed": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/breakable_neck.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/screw_custom_D10_P2.usda",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py"
+  ],
+  "user_steps": [
+    "In Isaac Nucleus/USD dialog, click FETCH (Base USD files have been changed).",
+    "Script Editor re-run: exec(compile(open('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py').read(), 'launch_panel.py', 'exec'))",
+    "Console should show SCREW_RESEAT_ALL_20261025 and/or breakable_neck reseat of /Screw_1..4 with empty errors.",
+    "Verify four M4 screws visible in ScrewTray nests (not padboard holes); wrist cams should see them."
+  ],
+  "constraints_honored": [
+    "no Isaac kill",
+    "no GPU grab",
+    "disk edits only",
+    "FIX4 teleop untouched"
+  ]
+}

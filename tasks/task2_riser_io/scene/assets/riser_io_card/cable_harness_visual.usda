@@ -1,0 +1,90 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary omni_layer = {
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "CableHarness"
+    endTimeCode = 100
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+}
+
+def Xform "CableHarness"
+{
+    def Cube "Segment_0"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (-0.08, 0.03, 0.0262)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_1"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (-0.054000000000000006, 0.03, 0.0172)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_2"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (-0.028000000000000004, 0.03, 0.0118)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_3"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (-0.0020000000000000018, 0.03, 0.01)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_4"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (0.023999999999999994, 0.03, 0.0118)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_5"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (0.05, 0.03, 0.0172)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Segment_6"
+    {
+        color3f[] primvars:displayColor = [(0.025, 0.025, 0.025)]
+        double size = 1
+        float3 xformOp:scale = (0.031, 0.006, 0.006)
+        double3 xformOp:translate = (0.076, 0.03, 0.0262)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+}
+

@@ -1,0 +1,72 @@
+[
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L0_sensor_bench.usda",
+    "added_lines": 937,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L1_one_guide.usda",
+    "added_lines": 958,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L2_two_guides.usda",
+    "added_lines": 976,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/README.md",
+    "added_lines": 82,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/config.json",
+    "added_lines": 78,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/fixture_assembly.usda",
+    "added_lines": 94,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/build.py",
+    "added_lines": 145,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/finalize.py",
+    "added_lines": 113,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/launch_monitor.py",
+    "added_lines": 119,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/metrics.py",
+    "added_lines": 27,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/monitor_smoke.py",
+    "added_lines": 27,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/package.py",
+    "added_lines": 71,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/run_bench.py",
+    "added_lines": 114,
+    "removed_lines": 0
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/variant_catalog.json",
+    "added_lines": 22,
+    "removed_lines": 0
+  }
+]

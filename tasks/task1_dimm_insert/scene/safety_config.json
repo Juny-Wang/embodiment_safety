@@ -1,0 +1,472 @@
+{
+  "schema_version": 1,
+  "status": "PLAN_D_LOCAL_CALIB_DEMO_THRESHOLDS_NOT_MATERIAL_LIMITS",
+  "units": {
+    "length": "m",
+    "angle": "rad",
+    "force": "N",
+    "torque": "N*m",
+    "time": "s",
+    "quaternion": "wxyz"
+  },
+  "paths": {
+    "robot": "/World/Robot",
+    "socket": "/World/MatchedSocket/Asset",
+    "dimm": "/World/MatchedDIMM"
+  },
+  "control": {
+    "translation_speed_m_s": 0.001,
+    "rotation_speed_rad_s": 0.034906585,
+    "arm_joint_speed_rad_s": 0.1,
+    "gripper_speed_m_s": 0.004,
+    "translation_jog_m": 0.00025,
+    "rotation_jog_rad": 0.008726646,
+    "tracking_error_stop_m": 0.003,
+    "ik_period_s": 0.02,
+    "ee_frame": "panda_hand"
+  },
+  "geometry": {
+    "dimm_length_m": 0.13335,
+    "dimm_long_axis": [
+      1,
+      0,
+      0
+    ],
+    "dimm_normal_axis": [
+      0,
+      1,
+      0
+    ],
+    "socket_insertion_axis": [
+      0,
+      0,
+      1
+    ],
+    "seated_reference_calibrated": false
+  },
+  "grasp_regions": {
+    "calibrated": false,
+    "allowed_boxes": [],
+    "forbidden_boxes": []
+  },
+  "rules": [
+    {
+      "key": "left_press_N",
+      "label": "Left latch contact",
+      "unit": "N",
+      "limit": 30.0,
+      "steps": [
+        0
+      ],
+      "note": "Demo gate 30N (smooth open). Material overstress ref >=35N; actuation max 34-39N."
+    },
+    {
+      "key": "right_press_N",
+      "label": "Right latch contact",
+      "unit": "N",
+      "limit": 30.0,
+      "steps": [
+        0
+      ],
+      "note": "Demo gate 30N (smooth open). Material overstress ref >=35N; actuation max 34-39N."
+    },
+    {
+      "key": "left_angle_abs_deg",
+      "label": "Left opening magnitude",
+      "unit": "deg",
+      "limit": 16,
+      "steps": [
+        0
+      ]
+    },
+    {
+      "key": "right_angle_abs_deg",
+      "label": "Right opening magnitude",
+      "unit": "deg",
+      "limit": 16,
+      "steps": [
+        0
+      ]
+    },
+    {
+      "key": "left_torque_Nm",
+      "label": "Left external hinge torque",
+      "unit": "N*m",
+      "limit": null,
+      "steps": [
+        0
+      ]
+    },
+    {
+      "key": "right_torque_Nm",
+      "label": "Right external hinge torque",
+      "unit": "N*m",
+      "limit": null,
+      "steps": [
+        0
+      ]
+    },
+    {
+      "key": "finger_left_N",
+      "label": "Left finger contact",
+      "unit": "N",
+      "limit": 15.0,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "note": "Grip clamp demo 15N; not insertion force."
+    },
+    {
+      "key": "finger_right_N",
+      "label": "Right finger contact",
+      "unit": "N",
+      "limit": 15.0,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "note": "Grip clamp demo 15N; not insertion force."
+    },
+    {
+      "key": "axial_contact_N",
+      "label": "DIMM environment axial contact",
+      "unit": "N",
+      "limit": 80.0,
+      "steps": [
+        4,
+        5
+      ],
+      "note": "Demo insert gate 80N. Practical seating 70-100N; max ~106.8N. NOT rip-out."
+    },
+    {
+      "key": "lateral_contact_N",
+      "label": "DIMM environment lateral contact",
+      "unit": "N",
+      "limit": 40.0,
+      "steps": [
+        4,
+        5
+      ],
+      "note": "Demo lateral 40N within PCB side-load approx 30-50N."
+    },
+    {
+      "key": "tilt_deg",
+      "label": "DIMM plane/axis deviation",
+      "unit": "deg",
+      "limit": 2,
+      "steps": [
+        4,
+        5
+      ],
+      "contact_gated": true
+    },
+    {
+      "key": "end_difference_mm",
+      "label": "DIMM end height difference",
+      "unit": "mm",
+      "limit": 1,
+      "steps": [
+        4,
+        5
+      ],
+      "contact_gated": true
+    },
+    {
+      "key": "dimm_moment_Nm",
+      "label": "Environment moment about DIMM origin",
+      "unit": "N*m",
+      "limit": null,
+      "steps": [
+        4,
+        5
+      ]
+    },
+    {
+      "key": "slip_mm",
+      "label": "DIMM relative-hand displacement",
+      "unit": "mm",
+      "limit": null,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "forbidden_contact",
+      "label": "Calibrated forbidden-region contact",
+      "unit": "bool",
+      "limit": 0.5,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "penetration_mm",
+      "label": "Solver overlap diagnostic",
+      "unit": "mm",
+      "limit": 0.1,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "tracking_error_mm",
+      "label": "Hand measured/goal position error",
+      "unit": "mm",
+      "limit": 3,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "ee_speed_mm_s",
+      "label": "Hand measured speed",
+      "unit": "mm/s",
+      "limit": null,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "unexpected_robot_contact_N",
+      "label": "Unexpected moving-robot contact",
+      "unit": "N",
+      "limit": 0.05,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "latch_overforce",
+      "label": "Latch over-force breakage alarm",
+      "unit": "bool",
+      "limit": 0.5,
+      "steps": [
+        0,
+        5,
+        6
+      ]
+    },
+    {
+      "key": "align_xy_m",
+      "label": "DIMM-Socket XY offset (socket local)",
+      "unit": "m",
+      "limit": 0.0025,
+      "steps": [
+        3,
+        4
+      ]
+    },
+    {
+      "key": "insertion_clearance",
+      "limit": 1.0,
+      "steps": [
+        3,
+        4
+      ],
+      "contact_gated": false,
+      "note": "Item3 unified ratio max(xy/xy_tol, tilt/tilt_tol, end/end_tol); limit=1.0 means at tolerance. Replaces conflicting separate gates for block_down.",
+      "label": "Insertion geometric clearance (unified ratio)",
+      "unit": "ratio"
+    }
+  ],
+  "warning_ratio": 0.8,
+  "warning_clear_ratio": 0.7,
+  "contact_gate_N": 0.05,
+  "traffic_light": {
+    "warning_ratio": 0.8,
+    "warning_clear_ratio": 0.7,
+    "yellow_min_duration_s": 0.05,
+    "green_min_duration_s": 0.05,
+    "red_immediate": true,
+    "red_requires_ack": true
+  },
+  "plan_d": {
+    "enabled": true,
+    "latch_damping": 0.02,
+    "latch_stiffness": 0.08,
+    "latch_max_force": 0.06,
+    "latch_overforce_N": 30.0,
+    "thin_contact_offset_m": 5e-05,
+    "grip_force_limit_N": 15.0,
+    "dense_pins_visual_only": true,
+    "gates": {
+      "not_aligned_block_down": true,
+      "not_dual_latched_block_release": true,
+      "insertion_clearance_block_down": true,
+      "note_item3": "not_aligned_block_down now backed by insertion_clearance_ok; old align_xy/tilt/end rules remain for display/compat"
+    },
+    "grip_force_note": "grip_force_limit_N=15N: finger-DIMM clamp / block_close only; NOT axial insertion. latch_overforce_N raised 3->30N (demo smooth-open band); material overstress still ~>=35N.",
+    "latch_reset_closed_on_session": true,
+    "latch_hold_note": "2026-10-23b: soft closed hold ONLY when |angle|<=5deg and press<0.15N; past band or on contact stiffness=0 (damping only) so opened latches stay open. Prior 2026-10-23a always-on k=0.08 pulled open latches closed.",
+    "latch_hold_band_deg": 5.0,
+    "latch_release_on_contact_N": 0.15,
+    "latch_overforce_note": "Demo latch overforce alarm at 30N. Distinct from material: overstress >=35N / break ~35-45N."
+  },
+  "geometry_calib_file": "geometry_calib.json",
+  "insertion_clearance": {
+    "schema_version": 1,
+    "note": "Item3 unified geometric gate. Demo numbers reused from alignment + end_difference rule; Item4 retunes. Seated depth is NOT part of block_down.",
+    "xy_tol_m": 0.0025,
+    "tilt_tol_deg": 2.0,
+    "end_difference_tol_mm": 1.0,
+    "warning_ratio": 0.8,
+    "include_end_when_available": true,
+    "gate_components_required": [
+      "xy",
+      "tilt"
+    ],
+    "decision": {
+      "GREEN": "ratio < warning_ratio",
+      "YELLOW": "warning_ratio <= ratio < 1.0",
+      "RED": "ratio >= 1.0  -> block_down in ALIGN/INSERT via alignment_ok"
+    },
+    "block_down_mapping": "step_fsm.alignment_ok uses insertion_clearance_ok; RED <=> not ok",
+    "compat_keys_kept": [
+      "align_xy_m",
+      "tilt_deg",
+      "end_difference_mm",
+      "seated_depth_m",
+      "seated_ok"
+    ]
+  },
+  "cameras": {
+    "enabled": true,
+    "wrist_parent_name": "panda_hand",
+    "wrist_look_local": [
+      0.0,
+      0.0,
+      0.12
+    ],
+    "wrist_left": {
+      "name": "WristCam_L",
+      "translate_local": [
+        0.048,
+        -0.055,
+        0.0
+      ],
+      "look_local": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "up_local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 11.0,
+      "horizontal_aperture": 24.0,
+      "clip_near": 0.008,
+      "clip_far": 1.5,
+      "role": "wrist_grasp_left"
+    },
+    "wrist_right": {
+      "name": "WristCam_R",
+      "translate_local": [
+        0.048,
+        0.055,
+        0.0
+      ],
+      "look_local": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "up_local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 11.0,
+      "horizontal_aperture": 24.0,
+      "clip_near": 0.008,
+      "clip_far": 1.5,
+      "role": "wrist_grasp_right"
+    },
+    "external_root": "/World/Cameras",
+    "external": {
+      "name": "ExternalOverview",
+      "translate_world": [
+        0.32,
+        0.55,
+        1.2
+      ],
+      "look_world": [
+        -0.01,
+        0.03,
+        0.77
+      ],
+      "up_world": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "focal_length": 14.0,
+      "horizontal_aperture": 20.955,
+      "clip_near": 0.05,
+      "clip_far": 8.0,
+      "role": "scene_overview"
+    },
+    "note": "2026-10-23: wrist cams reframed to see gripper pads (L/R on ±Y, look @ z=0.12, wider FOV). Session-applied by cameras_setup.",
+    "split_ui": {
+      "enabled": true,
+      "width": 360,
+      "height": 270,
+      "margin_x": 24,
+      "margin_y": 72,
+      "gap": 10,
+      "titles": {
+        "wrist_left": "Cam · Wrist L",
+        "wrist_right": "Cam · Wrist R",
+        "external": "Cam · External"
+      },
+      "note": "Three small viewport windows stacked on the right; opened by camera_viewports.open_camera_split after session cameras apply.",
+      "hide_hud": true,
+      "match_resolution": true
+    }
+  },
+  "demonstration_vs_material_note": "All force limits below are DEMONSTRATION / SERL safety_pass gates, NOT Nylon66/LCP material ultimate strengths. Updated 2026-10-27: latch demo 30N; axial insert demo 80N; lateral demo 40N; grip 15N."
+}

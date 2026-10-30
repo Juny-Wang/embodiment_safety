@@ -1,0 +1,60 @@
+{
+  "manual_control_prototype_ready": true,
+  "native_sensor_feedback_ready": true,
+  "unit_tests_passed": 10,
+  "real_contact_green_yellow_red_verified": true,
+  "red_peak_latching_verified": true,
+  "candidate_scene": "/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_manual_safety_v002/manual_franka_scene.usda",
+  "physics_fps": 1000,
+  "meters_per_unit": 1.0,
+  "up_axis": "Z",
+  "hinges": {
+    "Left": {
+      "world_axis": [
+        1.0,
+        2.220446049250313e-16,
+        0.0
+      ],
+      "world_pivot_m": [
+        -0.07667055052946861,
+        0.10412571726760313,
+        0.7690000011585653
+      ],
+      "drive_damping": 0.0010000000474974513
+    },
+    "Right": {
+      "world_axis": [
+        1.0,
+        2.220446049250313e-16,
+        0.0
+      ],
+      "world_pivot_m": [
+        -0.07667055052946858,
+        -0.03587428332844332,
+        0.7690000011585653
+      ],
+      "drive_damping": 0.0010000000474974513
+    }
+  },
+  "dimm_local_aabb_m": {
+    "min": [
+      -0.06667500621865052,
+      -0.0011411847124738353,
+      -7.530335244254616e-10
+    ],
+    "max": [
+      0.06667500621865052,
+      0.0011210674277341798,
+      0.03131209923732414
+    ]
+  },
+  "main_scene_and_socket_source_unchanged": true,
+  "full_mechanical_task_accepted": false,
+  "ppo_ready": false,
+  "grasp_regions_calibrated": false,
+  "damage_model_validated": false,
+  "friction_response_validated": false,
+  "known_warning": "Existing SDF material-face index warnings remain; normal-contact feedback validation is not friction/material or full task acceptance.",
+  "threshold_status": "DEMONSTRATION_THRESHOLDS_NOT_MATERIAL_LIMITS",
+  "code_location": "remote isaac-b only"
+}

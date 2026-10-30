@@ -1,0 +1,182 @@
+[
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/PRINT_BOM.md",
+    "bytes": 4321,
+    "sha256": "1936f3a8826686ec69c7e45174304e9eaebf4ba754ac7733fe86a17e6fe48b5f"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/TASK_FLOW.md",
+    "bytes": 10305,
+    "sha256": "5d3203c7fd5f05021aa03a5526b83a9c58df214606abe6dad318505ca5f97e24"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/LAUNCH.md",
+    "bytes": 2770,
+    "sha256": "e9e5d403cbfd63ed49ccc47c430ea73aa387180725fb818cd4f0f264f7d3287b"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/fixture_base.usda",
+    "bytes": 233701,
+    "sha256": "b77d70932c23e353a535527a6675f08841ff81501d5ae3ce97e8db9ad0f13b46"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/nut_custom_D10_P2_clearance_030.usda",
+    "bytes": 991448,
+    "sha256": "022c9e57136305ebe4d42ded61d1106f18e6f68f19edec1f574bcd52a0c9b2d8"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/ring_terminal_surrogate.usda",
+    "bytes": 36718,
+    "sha256": "6746cec77681dbc38cec7c3c1f829d88c69d89705df8e38f42a0ecc36f2cf1ce"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/screw_custom_D10_P2.usda",
+    "bytes": 1964763,
+    "sha256": "9526d0a55cca37d658ae891e7b37fe8530f5b5e0f74ad754236f4bc724214c78"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/screw_tray_four_real_pockets.usda",
+    "bytes": 55446,
+    "sha256": "b15c4b2a591404d08acfe3bd52863d57df6e99d7d4e593c915fbea87e58c9fb4"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/printable_v001/terminal_board_with_open_ring_seats.usda",
+    "bytes": 213467,
+    "sha256": "0eeede2d947c9dc6c0555d7b6d9915d8e990e2ec0ee675e38ed1fc5cb7d12c7a"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/geometry_calib.json",
+    "bytes": 1082,
+    "sha256": "8cfaa24c1c234e2f9f3697bc349ea8e7a37e282432b3cd705168a169a8994a24"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py",
+    "bytes": 20743,
+    "sha256": "e2a2c584fdce94060aca09d8ea25f7b84e1d507cd64a9a1285c36671bc548669"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/plan_d_runtime.py",
+    "bytes": 5824,
+    "sha256": "65001b831bf70825d414d5993321215a0663cfe8d60e6d9d80d1883dd06a9eeb"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/PRINT_AND_ASSEMBLE.md",
+    "bytes": 4321,
+    "sha256": "1936f3a8826686ec69c7e45174304e9eaebf4ba754ac7733fe86a17e6fe48b5f"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/assembly.png",
+    "bytes": 68126,
+    "sha256": "e06626efacd82cc1864b57d1e0ef6ccb5816ccccf08841b8f6c4de097b6c2d2f"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/change_stat.json",
+    "bytes": 1229,
+    "sha256": "38a142287f7b6469cbaf61cf711bc37630dfbc93b254bfef8c25ae6e2309eda6"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/changes.patch",
+    "bytes": 144941,
+    "sha256": "88899a42493e30423eb432604bf74fc6d965a86377e7d9e343e9b6cb98428817"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/delivery_validation.json",
+    "bytes": 1787,
+    "sha256": "a7ef3dd07af1d4cf2ebbb474750ab5ba6911a11837e8b835ef4edc3a51b0795b"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/exploded.png",
+    "bytes": 93974,
+    "sha256": "8d4fac9417a08279835302be3ad233ab52c7485e6d8326eac59ca17d6ebccb12"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/geometry_audit.json",
+    "bytes": 8070,
+    "sha256": "f309499fc81774f806b46c919988d5917bb79ab6bd6630a70e53074af994ad6c"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/geometry_config.json",
+    "bytes": 1253,
+    "sha256": "1e17552f7dd663bc8bd9cf20cccda730cef3c6885f693878fc5b2e1e3bf6e52b"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/source_geometry.json",
+    "bytes": 6833,
+    "sha256": "08c5a43df418fba4ae637e041f248d8db1da067bb2dc6c8afe51f55daa9096fa"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fit_nut_clearance_020.stl",
+    "bytes": 1210884,
+    "sha256": "1259c0298c04942b971fefd6059ea5ec240b77fd3de3eae0bd5421e85110778f"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fit_nut_clearance_040.stl",
+    "bytes": 1210884,
+    "sha256": "4449350bc72cbe7ab3c996f52e9d80ad5f55162a1807814dbe0bad89775fd970"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fixture_base.stl",
+    "bytes": 314284,
+    "sha256": "633b62340eeb6c0238d52b1610b79c65f62fe6daeb84fca60414d7aeb3193bf1"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/nut_custom_D10_P2_clearance_030.stl",
+    "bytes": 1210884,
+    "sha256": "fd59777a7d8e358814a1b2d2498d2270405989f096b9a7d78192614fb075b8f7"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/ring_terminal_surrogate.stl",
+    "bytes": 50484,
+    "sha256": "108625f2725ab7818388acbb6e9f76f3f7a308a7db3c2f1cf8901eefaa7529f0"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/screw_custom_D10_P2.stl",
+    "bytes": 2319284,
+    "sha256": "63b7dc0de07d4007e168f44f72efe6c85d273e81046ef77b034c472904512431"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/screw_tray_four_real_pockets.stl",
+    "bytes": 77884,
+    "sha256": "c675a788b95309ec94b38f464b90be75c1af3904a2d4a95261c9a73d9365b389"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/terminal_board_with_open_ring_seats.stl",
+    "bytes": 287084,
+    "sha256": "973437b319111866855db083bd01a2a6ebbd92b7dc49e799c6c2d0c28fd9a0a8"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+    "bytes": 269676,
+    "sha256": "c03f387bb379067d7d4db340a83f89f87ab0927ee37657aeced853dd90d17be6"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_printable_v001.usda",
+    "bytes": 269676,
+    "sha256": "c03f387bb379067d7d4db340a83f89f87ab0927ee37657aeced853dd90d17be6"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json",
+    "bytes": 7376,
+    "sha256": "db7c80bc902afc34ce593a694f4c69503612f1deadb62fc707a0e78fd0ca3c8c"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/step_fsm.py",
+    "bytes": 8871,
+    "sha256": "76fb82440ccd79f0c643f0b4a3e2df31ba046fd9523f360ed4c9447c6d651a08"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/audit_render_printable_v001.py",
+    "bytes": 4609,
+    "sha256": "913597915d6da6627fd350904969da709002bd299da1a11676af35553b1d3ab4"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/build_printable_v001.py",
+    "bytes": 16905,
+    "sha256": "afc26294fb9a3b2ee1a76b5beadd6fa366b6168428e4ede6065ce21048ac037b"
+  },
+  {
+    "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/promote_printable_v001.py",
+    "bytes": 17291,
+    "sha256": "f4268fd7611c00180798cf8440f325660207c113a1e3dec183099b67f65a7a96"
+  }
+]

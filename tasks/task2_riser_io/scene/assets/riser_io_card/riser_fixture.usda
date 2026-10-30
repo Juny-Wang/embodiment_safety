@@ -1,0 +1,156 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary omni_layer = {
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "Fixture"
+    endTimeCode = 100
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+}
+
+def Xform "Fixture" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+)
+{
+    bool physics:kinematicEnabled = 1
+    bool physics:rigidBodyEnabled = 1
+    custom float task:guide_clearance_per_side_m = 0.0025
+    custom string task:insertion_axis = "world_minus_Z"
+    custom string task:mount = "bolted_to_table"
+
+    def Cube "BasePlate" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.24, 0.14, 0.008)
+        double3 xformOp:translate = (0, 0, 0.004)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "LeftGuideRail" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.205, 0.008, 0.036)
+        double3 xformOp:translate = (0, 0.044, 0.022)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "RightGuideRail" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.205, 0.008, 0.036)
+        double3 xformOp:translate = (0, -0.044, 0.022)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "BottomStop" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.3, 0.32, 0.34)]
+        double size = 1
+        float3 xformOp:scale = (0.184, 0.074, 0.004)
+        double3 xformOp:translate = (0, 0, 0.01)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "BackStop" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.006, 0.092, 0.032)
+        double3 xformOp:translate = (0.104, 0, 0.022)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "LeftLeadIn"
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.02, 0.012, 0.012)
+        double3 xformOp:translate = (-0.104, 0.042, 0.04)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "RightLeadIn"
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.02, 0.012, 0.012)
+        double3 xformOp:translate = (-0.104, -0.042, 0.04)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "Retainer"
+    {
+        color3f[] primvars:displayColor = [(0.88, 0.88, 0.86)]
+        double size = 1
+        float3 xformOp:scale = (0.022, 0.085, 0.004)
+        double3 xformOp:translate = (0.091, 0, 0.05)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def "Bolts"
+    {
+        def Cylinder "Bolt_0"
+        {
+            double height = 0.003
+            color3f[] primvars:displayColor = [(0.3, 0.32, 0.34)]
+            double radius = 0.004
+            double3 xformOp:translate = (-0.1, -0.052, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "Bolt_1"
+        {
+            double height = 0.003
+            color3f[] primvars:displayColor = [(0.3, 0.32, 0.34)]
+            double radius = 0.004
+            double3 xformOp:translate = (-0.1, 0.052, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "Bolt_2"
+        {
+            double height = 0.003
+            color3f[] primvars:displayColor = [(0.3, 0.32, 0.34)]
+            double radius = 0.004
+            double3 xformOp:translate = (0.1, -0.052, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "Bolt_3"
+        {
+            double height = 0.003
+            color3f[] primvars:displayColor = [(0.3, 0.32, 0.34)]
+            double radius = 0.004
+            double3 xformOp:translate = (0.1, 0.052, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

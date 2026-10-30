@@ -1,0 +1,58 @@
+{
+  "physics_ready": false,
+  "print_fit_verified": false,
+  "live_panel_verified": false,
+  "main_composition_errors": [],
+  "required_prims": [
+    "/World/Robot",
+    "/PCB_holder",
+    "/PCB_4_Terminal",
+    "/NutPlate_Coarse",
+    "/ScrewTray",
+    "/Screw_1",
+    "/Screw_2",
+    "/Screw_3",
+    "/Screw_4",
+    "/wire1/_0347300_ring_terminal",
+    "/wire2/_0347300_ring_terminal",
+    "/wire3/_0347300_ring_terminal",
+    "/wire4/_0347300_ring_terminal"
+  ],
+  "robot_articulation_roots": [
+    "/World/Robot"
+  ],
+  "scene_python_syntax_pass": true,
+  "synthetic_contact_channel_test": {
+    "pass": true,
+    "not_PhysX_measurement": true,
+    "values": {
+      "finger_left_N": 0.0,
+      "finger_right_N": 0.0,
+      "ring_axial_N": 2.0,
+      "ring_lateral_N": 0.0,
+      "screw_axial_N": 4.0
+    }
+  },
+  "missing_alignment_rejects": true,
+  "initial_alignment": {
+    "align_xy_m": 0.281209829179603,
+    "tilt_deg": 0.0,
+    "axial_offset_m": -0.018001684319877143,
+    "alignment_source": "composed_USD_live_refresh_required"
+  },
+  "color_test": [
+    "GRAY",
+    "GREEN",
+    "YELLOW",
+    "RED"
+  ],
+  "limitations": [
+    "No Isaac Kit/PhysX started.",
+    "Synthetic tests validate data handling, not real sensor availability.",
+    "Contact force arrows and calibrated torque sensing not implemented.",
+    "Original cable poses retained; cable/printed-barrel fit and table contacts need runtime acceptance.",
+    "All-print scope is rigid tooling/terminals/fasteners; flexible harness and bench anchoring are not supplied."
+  ],
+  "source_backup": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/riser_io_preview.original.usda",
+  "main_scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda"
+}

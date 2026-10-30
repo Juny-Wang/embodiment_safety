@@ -1,0 +1,114 @@
+#usda 1.0
+(
+    defaultPrim = "SCV_Riser_Insert_Task"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "SCV_Riser_Insert_Task"
+{
+    def Xform "Materials"
+    {
+        def Material "PCB_Green" { token outputs:surface.connect = </SCV_Riser_Insert_Task/Materials/PCB_Green/Preview.outputs:surface>
+            def Shader "Preview" { uniform token info:id = "UsdPreviewSurface"; color3f inputs:diffuseColor = (0.015, 0.34, 0.23); float inputs:metallic = 0.0; float inputs:roughness = 0.42; token outputs:surface }
+        }
+        def Material "PowderCoat" { token outputs:surface.connect = </SCV_Riser_Insert_Task/Materials/PowderCoat/Preview.outputs:surface>
+            def Shader "Preview" { uniform token info:id = "UsdPreviewSurface"; color3f inputs:diffuseColor = (0.64, 0.68, 0.70); float inputs:metallic = 0.75; float inputs:roughness = 0.32; token outputs:surface }
+        }
+        def Material "BlackPolymer" { token outputs:surface.connect = </SCV_Riser_Insert_Task/Materials/BlackPolymer/Preview.outputs:surface>
+            def Shader "Preview" { uniform token info:id = "UsdPreviewSurface"; color3f inputs:diffuseColor = (0.018, 0.022, 0.024); float inputs:metallic = 0.0; float inputs:roughness = 0.55; token outputs:surface }
+        }
+        def Material "DellBlue" { token outputs:surface.connect = </SCV_Riser_Insert_Task/Materials/DellBlue/Preview.outputs:surface>
+            def Shader "Preview" { uniform token info:id = "UsdPreviewSurface"; color3f inputs:diffuseColor = (0.15, 0.55, 0.82); float inputs:metallic = 0.12; float inputs:roughness = 0.36; token outputs:surface }
+        }
+        def Material "Gold" { token outputs:surface.connect = </SCV_Riser_Insert_Task/Materials/Gold/Preview.outputs:surface>
+            def Shader "Preview" { uniform token info:id = "UsdPreviewSurface"; color3f inputs:diffuseColor = (0.83, 0.64, 0.18); float inputs:metallic = 0.95; float inputs:roughness = 0.22; token outputs:surface }
+        }
+    }
+
+    # Coordinate convention: X = insertion, Y = card width, Z = vertical. Dimensions are metres.
+    def Xform "Fixture" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+    )
+    {
+        bool physics:kinematicEnabled = 1
+        def Cube "BasePlate" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.210, 0.105, 0.006); double3 xformOp:translate = (0.0, 0.0, -0.006); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PowderCoat> }
+        def Cube "LeftGuide" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.115, 0.004, 0.028); double3 xformOp:translate = (0.025, -0.058, 0.022); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PowderCoat> }
+        def Cube "RightGuide" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.115, 0.004, 0.028); double3 xformOp:translate = (0.025, 0.058, 0.022); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PowderCoat> }
+        def Cube "EndStop" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.004, 0.054, 0.020); double3 xformOp:translate = (0.142, 0.0, 0.016); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/BlackPolymer> }
+        def Cube "RiserSocket" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.006, 0.047, 0.009); double3 xformOp:translate = (0.130, 0.0, 0.015); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/BlackPolymer> }
+        def Cylinder "ThumbScrew" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { double radius = 0.009; double height = 0.020; float3 xformOp:rotateXYZ = (0, 90, 0); double3 xformOp:translate = (-0.090, -0.065, 0.024); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/DellBlue> }
+    }
+
+    # Free rigid I/O card: approximates a full-height PCIe I/O card, 168 x 111.15 x 1.60 mm.
+    def Xform "IO_Card" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    )
+    {
+        float physics:mass = 0.19
+        float physics:centerOfMass = (0.0, 0.0, 0.0)
+        float physxRigidBody:maxLinearVelocity = 1.0
+        float physxRigidBody:maxAngularVelocity = 6.0
+        def Cube "PCB" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI"]
+        ) { float3 xformOp:scale = (0.084, 0.055575, 0.0008); double3 xformOp:translate = (-0.035, 0.0, 0.035); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PCB_Green> }
+        def Cube "EdgeConnector" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.006, 0.044, 0.0012); double3 xformOp:translate = (0.049, 0.0, 0.035); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/Gold> }
+        def Cube "RearBracket" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.003, 0.060, 0.044); double3 xformOp:translate = (-0.121, 0.0, 0.030); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PowderCoat> }
+        def Cube "Heatsink" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.022, 0.018, 0.006); double3 xformOp:translate = (-0.060, -0.015, 0.042); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/PowderCoat> }
+        def Cube "ProtectedZone" { float3 xformOp:scale = (0.023, 0.030, 0.003); double3 xformOp:translate = (-0.015, 0.015, 0.039); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/BlackPolymer> }
+        custom string safety:grasp_zone = "PCB edges only; avoid protected components"
+        custom float safety:max_normal_contact_force_N = 25.0
+        custom float safety:max_lateral_contact_force_N = 8.0
+        custom float safety:max_bending_moment_Nm = 0.80
+        custom float safety:max_insertion_speed_mps = 0.030
+        custom float safety:target_insertion_depth_m = 0.120
+    }
+
+    # Rotating hold-down mechanism. The joint has a 0..95 degree range and is deliberately a separate rigid body.
+    def Xform "Retainer" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+    )
+    {
+        float physics:mass = 0.045
+        def Cube "Arm" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { float3 xformOp:scale = (0.040, 0.010, 0.008); double3 xformOp:translate = (-0.095, 0.0, 0.060); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/BlackPolymer> }
+        def Cylinder "Handle" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        ) { double radius = 0.011; double height = 0.025; float3 xformOp:rotateXYZ = (90, 0, 0); double3 xformOp:translate = (-0.128, 0.0, 0.050); uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]; rel material:binding = </SCV_Riser_Insert_Task/Materials/BlackPolymer> }
+        custom string safety:actuation = "rotate only after card is seated"
+        custom float safety:max_actuation_torque_Nm = 0.35
+    }
+    def PhysicsRevoluteJoint "RetainerHinge"
+    {
+        rel physics:body0 = </SCV_Riser_Insert_Task/Fixture>
+        rel physics:body1 = </SCV_Riser_Insert_Task/Retainer>
+        token physics:axis = "Y"
+        point3f physics:localPos0 = (-0.090, 0.0, 0.045)
+        point3f physics:localPos1 = (0.005, 0.0, -0.015)
+        float physics:lowerLimit = 0
+        float physics:upperLimit = 95
+        float physxJoint:maxJointVelocity = 2.0
+        float drive:angular:physics:stiffness = 12.0
+        float drive:angular:physics:damping = 1.0
+        float drive:angular:physics:maxForce = 0.35
+    }
+}

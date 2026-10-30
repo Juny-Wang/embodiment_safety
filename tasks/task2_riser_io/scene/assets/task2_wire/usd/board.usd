@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    defaultPrim = "AdapterBoard"
+    metersPerUnit = 0.01
+    upAxis = "Z"
+)
+
+def Xform "AdapterBoard" (
+    kind = "component"
+    customData = {
+        string description = "Thin rectangular adapter board only. Attach between the ATI Mini40 and the PCB/card holder."
+        string role = "rigid_force_transfer_plate"
+        string units = "centimetres"
+    }
+)
+{
+    def Cube "Plate"
+    {
+        double3 xformOp:translate = (0, 0, 0)
+        float3 xformOp:scale = (4.0, 3.0, 0.15)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        color3f[] primvars:displayColor = [(0.10, 0.12, 0.14)]
+        uniform token primvars:displayColor:interpolation = "constant"
+    }
+
+    def Xform "MountFrame" (
+        customData = {
+            string purpose = "Align this frame with the lower mounting face of ATI Mini40."
+        }
+    ) {}
+
+    def Xform "ToolFrame" (
+        customData = {
+            string purpose = "Rigid attachment point for the PCB/card holder."
+        }
+    )
+    {
+        double3 xformOp:translate = (0, 0, -0.15)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}

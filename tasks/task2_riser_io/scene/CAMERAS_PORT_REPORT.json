@@ -1,0 +1,61 @@
+{
+  "ts": "20261024_192108",
+  "files_changed": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/cameras_setup.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/camera_viewports.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/LAUNCH.md"
+  ],
+  "backups": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/cameras_setup.py.bak_20261024_192108",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/camera_viewports.py.bak_20261024_192108",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py.bak_20261024_192108",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json.bak_20261024_192108"
+  ],
+  "keyboard_panel_wired": true,
+  "cameras_config_present": true,
+  "apply_session_cameras_real": true,
+  "cameras_summary": {
+    "enabled": true,
+    "wrist_left": "WristCam_L",
+    "wrist_right": "WristCam_R",
+    "external": "ExternalOverview",
+    "look_world": [
+      -0.05,
+      -0.071,
+      0.768
+    ],
+    "split_ui.enabled": true
+  },
+  "retune_notes": [
+    "ExternalOverview.look_world [-0.01, 0.03, 0.77] -> [-0.05, -0.071, 0.768] (centroid of geometry_calib.seat_world_m); translate_world kept Task1 — retune after open if framing off"
+  ],
+  "patch_notes": [
+    "added import cameras_setup / camera_viewports",
+    "wired apply_session_cameras + open_camera_split after plan_d in __init__",
+    "added show_cam_split method",
+    "added SHOW CAM SPLIT button after STOP"
+  ],
+  "py_compile": {
+    "cameras_setup.py": {
+      "ok": true,
+      "rc": 0
+    },
+    "camera_viewports.py": {
+      "ok": true,
+      "rc": 0
+    },
+    "keyboard_panel.py": {
+      "ok": true,
+      "rc": 0
+    }
+  },
+  "blockers": [],
+  "success": true,
+  "how_to_use": [
+    "Open riser_io_preview.usda",
+    "Script Editor: exec launch_panel.py / keyboard_panel",
+    "Viewport → Cameras or click SHOW CAM SPLIT"
+  ]
+}

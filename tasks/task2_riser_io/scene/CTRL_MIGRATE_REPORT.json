@@ -1,0 +1,27 @@
+{
+  "copied_from_task1": [
+    "safety_core.py",
+    "keyboard_input.py",
+    "franka_teleop.py"
+  ],
+  "authored_task2": [
+    "step_fsm.py",
+    "plan_d_runtime.py",
+    "keyboard_panel.py",
+    "launch_panel.py",
+    "baseline_logger.py",
+    "cameras_setup.py",
+    "camera_viewports.py",
+    "grasp_hold_diag.py",
+    "geometry_calib.json",
+    "LAUNCH.md"
+  ],
+  "updated": [
+    "safety_config.json",
+    "README.md",
+    "SCENE.md"
+  ],
+  "launch": "exec(compile(open('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py').read(), 'launch_panel.py', 'exec'))",
+  "open_scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+  "kit_smoke": "skipped_file_port_first_gpu_free_but_no_gui_session"
+}

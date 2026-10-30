@@ -1,0 +1,937 @@
+#usda 1.0
+(
+    customLayerData = {
+        bool diagnosticOnly = 1
+        bool notMaterialCalibrated = 1
+        bool sourceSceneUntouched = 1
+        bool strainReliefClampValidated = 0
+    }
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "PhysicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.81
+        custom bool physxScene:enableGPUDynamics = 0
+        custom token physxScene:solverType = "TGS"
+        custom uint physxScene:timeStepsPerSecond = 960
+    }
+
+    def "Materials"
+    {
+        def Material "CableContact" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.3
+            float physics:restitution = 0
+            float physics:staticFriction = 0.4
+        }
+    }
+
+    def Cube "Table" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+    )
+    {
+        rel material:binding:physics = </World/Materials/CableContact>
+        bool physics:collisionEnabled = 1
+        custom float physxCollision:contactOffset = 0.0001
+        custom float physxCollision:restOffset = 0
+        color3f[] primvars:displayColor = [(0.5, 0.52, 0.55)]
+        double size = 1
+        float3 xformOp:scale = (0.7, 0.35, 0.02)
+        double3 xformOp:translate = (0.23, 0, -0.01)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "Cable" (
+        prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+    )
+    {
+        custom bool physxArticulation:enabledSelfCollisions = 1
+        custom int physxArticulation:solverPositionIterationCount = 64
+        custom int physxArticulation:solverVelocityIterationCount = 16
+
+        def Capsule "Segment_00" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.01916666666666667
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_01>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.009583333333333334, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Capsule "Segment_01" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.01916666666666667
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_02>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.028750000000000005, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_00"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_00>
+            rel physics:body1 = </World/Cable/Segment_01>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_02" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_03>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.04791666666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_01"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_01>
+            rel physics:body1 = </World/Cable/Segment_02>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_03" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666672
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_04>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.06708333333333334, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_02"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_02>
+            rel physics:body1 = </World/Cable/Segment_03>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_04" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_05>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.08625000000000001, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_03"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_03>
+            rel physics:body1 = </World/Cable/Segment_04>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_05" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_06>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.10541666666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_04"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_04>
+            rel physics:body1 = </World/Cable/Segment_05>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_06" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.01916666666666668
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_07>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.12458333333333335, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_05"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_05>
+            rel physics:body1 = </World/Cable/Segment_06>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_07" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_08>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.14375000000000002, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_06"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_06>
+            rel physics:body1 = </World/Cable/Segment_07>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_08" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_09>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.16291666666666668, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_07"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_07>
+            rel physics:body1 = </World/Cable/Segment_08>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_09" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_10>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.18208333333333335, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_08"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_08>
+            rel physics:body1 = </World/Cable/Segment_09>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_10" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_11>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.20125, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_09"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_09>
+            rel physics:body1 = </World/Cable/Segment_10>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_11" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_12>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.22041666666666668, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_10"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_10>
+            rel physics:body1 = </World/Cable/Segment_11>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_12" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_13>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.23958333333333334, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_11"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_11>
+            rel physics:body1 = </World/Cable/Segment_12>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_13" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666693
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_14>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.25875000000000004, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_12"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_12>
+            rel physics:body1 = </World/Cable/Segment_13>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_14" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_15>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.2779166666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_13"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_13>
+            rel physics:body1 = </World/Cable/Segment_14>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_15" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_16>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.29708333333333337, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_14"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_14>
+            rel physics:body1 = </World/Cable/Segment_15>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_16" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_17>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.31625000000000003, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_15"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_15>
+            rel physics:body1 = </World/Cable/Segment_16>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_17" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_18>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.3354166666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_16"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_16>
+            rel physics:body1 = </World/Cable/Segment_17>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_18" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_19>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.35458333333333336, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_17"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_17>
+            rel physics:body1 = </World/Cable/Segment_18>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_19" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_20>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.37375, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_18"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_18>
+            rel physics:body1 = </World/Cable/Segment_19>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_20" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_21>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.3929166666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_19"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_19>
+            rel physics:body1 = </World/Cable/Segment_20>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_21" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_22>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.41208333333333336, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_20"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_20>
+            rel physics:body1 = </World/Cable/Segment_21>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_22" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_23>
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.43125, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_21"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_21>
+            rel physics:body1 = </World/Cable/Segment_22>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Capsule "Segment_23" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            uniform token axis = "X"
+            double height = 0.019166666666666665
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            float physics:mass = 0.001
+            bool physics:rigidBodyEnabled = 1
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            custom float physxContactReport:threshold = 0
+            custom float physxRigidBody:angularDamping = 0.02
+            custom bool physxRigidBody:enableCCD = 1
+            custom float physxRigidBody:linearDamping = 0.02
+            color3f[] primvars:displayColor = [(0.08, 0.45, 0.7)]
+            double radius = 0.0035
+            double3 xformOp:translate = (0.4504166666666667, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsSphericalJoint "Joint_22"
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/Cable/Segment_22>
+            rel physics:body1 = </World/Cable/Segment_23>
+            bool physics:collisionEnabled = 0
+            float physics:coneAngle0Limit = 70
+            float physics:coneAngle1Limit = 70
+            point3f physics:localPos0 = (0.0095833335, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+
+        def Cube "ConnectorStub" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            rel material:binding:physics = </World/Materials/CableContact>
+            bool physics:collisionEnabled = 1
+            prepend rel physics:filteredPairs = </World/Cable/Segment_00>
+            float physics:mass = 0.05
+            custom float physxCollision:contactOffset = 0.0001
+            custom float physxCollision:restOffset = 0
+            double size = 0.02
+            double3 xformOp:translate = (-0.014, 0, 0.01)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def PhysicsFixedJoint "AnchorJoint"
+        {
+            rel physics:body1 = </World/Cable/ConnectorStub>
+            point3f physics:localPos0 = (-0.014, 0, 0.01)
+            point3f physics:localPos1 = (0, 0, 0)
+        }
+
+        def PhysicsFixedJoint "CableAttachment"
+        {
+            rel physics:body0 = </World/Cable/ConnectorStub>
+            rel physics:body1 = </World/Cable/Segment_00>
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0.014, 0, 0)
+            point3f physics:localPos1 = (-0.0095833335, 0, 0)
+        }
+    }
+
+    def Cube "ControlBox" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "MaterialBindingAPI", "PhysxRigidBodyAPI", "PhysxContactReportAPI"]
+    )
+    {
+        rel material:binding:physics = </World/Materials/CableContact>
+        bool physics:collisionEnabled = 1
+        float physics:mass = 0.1
+        custom float physxCollision:contactOffset = 0.0001
+        custom float physxCollision:restOffset = 0
+        custom float physxContactReport:threshold = 0
+        custom float physxRigidBody:sleepThreshold = 0
+        double size = 0.02
+        double3 xformOp:translate = (0.5, 0.1, 0.02)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

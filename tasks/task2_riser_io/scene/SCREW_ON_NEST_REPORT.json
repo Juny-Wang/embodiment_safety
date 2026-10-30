@@ -1,0 +1,103 @@
+{
+  "tag": "SCREW_ON_NEST_20261025",
+  "measured_after_reparent_pxr": {
+    "nests": {
+      "Nest_1": [
+        0.2,
+        -0.22999999999999998,
+        0.77
+      ],
+      "Nest_2": [
+        0.2,
+        -0.19,
+        0.77
+      ],
+      "Nest_3": [
+        0.24,
+        -0.22999999999999998,
+        0.77
+      ],
+      "Nest_4": [
+        0.24,
+        -0.19,
+        0.77
+      ]
+    },
+    "screws": {
+      "Screw_1": [
+        0.2,
+        -0.22999999999999998,
+        0.77
+      ],
+      "Screw_2": [
+        0.2,
+        -0.19,
+        0.77
+      ],
+      "Screw_3": [
+        0.24,
+        -0.22999999999999998,
+        0.77
+      ],
+      "Screw_4": [
+        0.24,
+        -0.19,
+        0.77
+      ]
+    },
+    "deltas": {
+      "Nest_1": {
+        "delta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": 0.0,
+        "ok_1cm": true
+      },
+      "Nest_2": {
+        "delta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": 0.0,
+        "ok_1cm": true
+      },
+      "Nest_3": {
+        "delta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": 0.0,
+        "ok_1cm": true
+      },
+      "Nest_4": {
+        "delta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": 0.0,
+        "ok_1cm": true
+      }
+    }
+  },
+  "one_line_proof": "Nest_1≈Screw_1 maxΔ=0.0000m; Nest_2≈Screw_2 maxΔ=0.0000m; Nest_3≈Screw_3 maxΔ=0.0000m; Nest_4≈Screw_4 maxΔ=0.0000m",
+  "all_within_1cm": true,
+  "files_changed": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/breakable_neck.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/safety_config.json",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/geometry_calib.json",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/keyboard_panel.py"
+  ],
+  "user_steps": [
+    "FETCH USD (Screws now under Nest_* — required).",
+    "exec(compile(open('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py').read(), 'launch_panel.py', 'exec'))",
+    "Console: SCREW_ON_NEST_20261025 with proof nest≈screw; err [].",
+    "Click START TELEOP once so PhysX teleport runs if bodies were stale.",
+    "Four gold M4s must sit in ScrewTray cups (not left of table)."
+  ]
+}

@@ -1,0 +1,155 @@
+#usda 1.0
+(
+    defaultPrim = "ScrewTray"
+    metersPerUnit = 1
+    upAxis = "Z"
+    customLayerData = {
+        string purpose = "Phase2 S4 screw tray with 4 nest slots"
+        string metric = "M4"
+        string generated = "20261024_174724"
+    }
+)
+
+def Xform "ScrewTray" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+)
+{
+    bool physics:kinematicEnabled = 1
+    bool physics:rigidBodyEnabled = 1
+    customData = {
+        string id = "S4"
+    }
+
+    def Cube "TrayBody" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.40, 0.32, 0.22)]
+        double size = 1
+        bool physics:collisionEnabled = 1
+        float3 xformOp:scale = (0.12, 0.08, 0.012)
+        double3 xformOp:translate = (0, 0, 0.006)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Xform "Nest_1"
+    {
+        double3 xformOp:translate = (-0.014, -0.014, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        customData = {
+            int screw_index = 1
+        }
+
+        def Cylinder "PocketVisual"
+        {
+            color3f[] primvars:displayColor = [(0.25, 0.25, 0.28)]
+            double height = 0.006
+            double radius = 0.006
+            double3 xformOp:translate = (0, 0, 0.009000000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "PocketCollider" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.22)]
+            double height = 0.001
+            double radius = 0.006
+            bool physics:collisionEnabled = 0
+            double3 xformOp:translate = (0, 0, 0.006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    def Xform "Nest_2"
+    {
+        double3 xformOp:translate = (0.014, -0.014, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        customData = {
+            int screw_index = 2
+        }
+
+        def Cylinder "PocketVisual"
+        {
+            color3f[] primvars:displayColor = [(0.25, 0.25, 0.28)]
+            double height = 0.006
+            double radius = 0.006
+            double3 xformOp:translate = (0, 0, 0.009000000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "PocketCollider" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.22)]
+            double height = 0.001
+            double radius = 0.006
+            bool physics:collisionEnabled = 0
+            double3 xformOp:translate = (0, 0, 0.006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    def Xform "Nest_3"
+    {
+        double3 xformOp:translate = (-0.014, 0.014, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        customData = {
+            int screw_index = 3
+        }
+
+        def Cylinder "PocketVisual"
+        {
+            color3f[] primvars:displayColor = [(0.25, 0.25, 0.28)]
+            double height = 0.006
+            double radius = 0.006
+            double3 xformOp:translate = (0, 0, 0.009000000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "PocketCollider" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.22)]
+            double height = 0.001
+            double radius = 0.006
+            bool physics:collisionEnabled = 0
+            double3 xformOp:translate = (0, 0, 0.006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    def Xform "Nest_4"
+    {
+        double3 xformOp:translate = (0.014, 0.014, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        customData = {
+            int screw_index = 4
+        }
+
+        def Cylinder "PocketVisual"
+        {
+            color3f[] primvars:displayColor = [(0.25, 0.25, 0.28)]
+            double height = 0.006
+            double radius = 0.006
+            double3 xformOp:translate = (0, 0, 0.009000000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Cylinder "PocketCollider" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.22)]
+            double height = 0.001
+            double radius = 0.006
+            bool physics:collisionEnabled = 0
+            double3 xformOp:translate = (0, 0, 0.006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+}

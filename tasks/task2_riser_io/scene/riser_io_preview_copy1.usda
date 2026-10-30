@@ -1,0 +1,1989 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.27616669972599406, 0.5897599655759326, 1.1786942306732249)
+                double3 target = (-0.587024639373546, -3.356143940814057, -2.217091877552164)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary metricsAssembler = {
+            dictionary "/Electronics_140mm_19mm_cage" = {
+            }
+            dictionary "/FlexibleCable_460mm_Physics_anchored" = {
+                string write_layer = "metrics:UnitsAdjust-c78b14cd5da1ecb5adf8667145f10de3.metricsAssembler"
+            }
+            dictionary "/FlexibleCable_460mm_Physics_anchored_01" = {
+            }
+            dictionary "/PCB_holder" = {
+            }
+            dictionary "/TBY21_M3_1" = {
+            }
+            dictionary "/TE_L26620011_4_connector_v2" = {
+                string write_layer = "metrics:UnitsAdjust-c78b14cd5da1ecb5adf8667145f10de3.metricsAssembler"
+            }
+            dictionary "/TE_L26620011_4_wire_connector" = {
+            }
+            dictionary "/ati_mini40" = {
+            }
+            dictionary "/board" = {
+            }
+            dictionary "/pcb_guide" = {
+            }
+            dictionary "/wire01" = {
+            }
+            int version = 1
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./riser_io_preview.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    endTimeCode = 100
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @metrics:UnitsAdjust-c78b14cd5da1ecb5adf8667145f10de3.metricsAssembler@
+    ]
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "physicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        custom float gravityMagnitude = 9.81
+        vector3f physics:gravityDirection = (0, 0, -1)
+        custom int physxScene:maxPositionIterationCount = 32
+        custom int physxScene:maxVelocityIterationCount = 4
+    }
+
+    def Cube "Floor" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        color3f[] primvars:displayColor = [(0.1, 0.1, 0.1)]
+        double size = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (4, 4, 0.04)
+        double3 xformOp:translate = (0, 0, -0.02)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Table"
+    {
+        def Cube "Top" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.48, 0.36, 0.25)]
+            double size = 1
+            token visibility = "inherited"
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1.2, 0.8, 0.05)
+            double3 xformOp:translate = (0, 0.007187116212367783, 0.7250000000000046)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Cube "Leg_FL" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.2)]
+            double size = 1
+            float3 xformOp:scale = (0.05, 0.05, 0.7)
+            double3 xformOp:translate = (-0.52, -0.32, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Leg_FR" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.2)]
+            double size = 1
+            float3 xformOp:scale = (0.05, 0.05, 0.7)
+            double3 xformOp:translate = (-0.52, 0.32, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Leg_RL" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.2)]
+            double size = 1
+            float3 xformOp:scale = (0.05, 0.05, 0.7)
+            double3 xformOp:translate = (0.52, -0.32, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Leg_RR" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.2, 0.2, 0.2)]
+            double size = 1
+            float3 xformOp:scale = (0.05, 0.05, 0.7)
+            double3 xformOp:translate = (0.52, 0.32, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Xform "Robot" (
+        prepend references = @https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/FrankaEmika/panda_instanceable.usd@
+    )
+    {
+        double3 xformOp:translate = (-0.43, 0, 0.75)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        over "panda_link0"
+        {
+        }
+
+        over "panda_link1"
+        {
+        }
+
+        over "panda_link2"
+        {
+        }
+
+        over "panda_link3"
+        {
+        }
+
+        over "panda_link4"
+        {
+        }
+
+        over "panda_link5"
+        {
+        }
+
+        over "panda_link6"
+        {
+        }
+
+        over "panda_link7"
+        {
+        }
+
+        over "panda_hand"
+        {
+        }
+
+        over "panda_leftfinger"
+        {
+        }
+
+        over "panda_rightfinger"
+        {
+        }
+    }
+
+    def "ResetTray"
+    {
+    }
+
+    def Xform "WireBundle"
+    {
+    }
+
+    def Xform "WireBundle_Flexa"
+    {
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:dlss:frameGeneration = 0
+                string omni:rtx:material:db:rtSensorNameToIdMap = "DefaultMaterial:0;AsphaltStandardMaterial:1;AsphaltWeatheredMaterial:2;VegetationGrassMaterial:3;WaterStandardMaterial:4;GlassStandardMaterial:5;FiberGlassMaterial:6;MetalAlloyMaterial:7;MetalAluminumMaterial:8;MetalAluminumOxidizedMaterial:9;PlasticStandardMaterial:10;RetroMarkingsMaterial:11;RetroSignMaterial:12;RubberStandardMaterial:13;SoilClayMaterial:14;ConcreteRoughMaterial:15;ConcreteSmoothMaterial:16;OakTreeBarkMaterial:17;FabricStandardMaterial:18;PlexiGlassStandardMaterial:19;MetalSilverMaterial:20"
+                bool omni:rtx:material:db:syncLoads = 1
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+
+over "Mesh"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5.507821683181646e-7, 16.091325057804593, -13.053012961570971)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+over "Mesh_01"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (3.0797963, 1, 1)
+    double3 xformOp:translate = (-140.34104274951335, 16.091339137173822, -13.053012961573359)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def "TBY21_M3_1" (
+    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend payload = @../../assets/task2_wire/usd/TBY21_M3_1.usd@
+)
+{
+    bool physics:kinematicEnabled = 1
+    bool physics:rigidBodyEnabled = 1
+    quatf xformOp:orient = (0.70710677, -8.967287e-18, -0.70710677, -8.967288e-18)
+    float3 xformOp:scale = (10.98881, 0.7162141, 0.7162141)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.013508299062884905, -0.010826314242431974, 0.7432384797739549)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Mesh" (
+        delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexDecomposition"
+        bool physics:collisionEnabled = 1
+        int physxConvexDecompositionCollision:maxConvexHulls = 128
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-8.017366326384945e-9, 0, -3.5951626520216085)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "TBY21_M3_02" (
+    delete apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend payload = @file:/mnt/data2/SERL/franka_sim/assets/task2_wire/usd/TBY21_M3_1.usd@
+)
+{
+    bool physics:kinematicEnabled = 1
+    bool physics:rigidBodyEnabled = 1
+    quatf xformOp:orient = (0.70710677, -8.9672764e-18, -0.70710677, -8.967277e-18)
+    float3 xformOp:scale = (6.12, 6.12, 6.12)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.12093778669032883, 0.223443295249529, 0.743239303274926)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Mesh" (
+        delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexHull"
+        bool physics:collisionEnabled = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (4.133931241767641e-7, -6.110667527536862e-13, 12.077432445638756)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "PCB_holder" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend payload = @../../assets/task2_wire/usd/PCB_holder.usd@
+)
+{
+    bool physics:kinematicEnabled = 0
+    bool physics:rigidBodyEnabled = 1
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.1542184054851532, -0.04915443553426385, 0.7500000596046448)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Mesh" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexDecomposition"
+        bool physics:collisionEnabled = 1
+        int physxConvexDecompositionCollision:maxConvexHulls = 128
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1.38, 1.38, 1.38)
+        double3 xformOp:translate = (108.22750472244799, -74.78109150312126, -1.4779288903810084e-12)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "Meshy_AI_Circuit_Board_Assembly" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend payload = @../../assets/task2_wire/usd/Meshy_AI_Circuit_Board_Assembly.usd@
+)
+{
+    bool physics:kinematicEnabled = 0
+    bool physics:rigidBodyEnabled = 1
+    quatf xformOp:orient = (0.6931454, -0.16864376, -0.16914004, -0.6800738)
+    float3 xformOp:scale = (0.678912, 0.678912, 0.678912)
+    double3 xformOp:translate = (-0.0526972132826128, -0.09525118125584012, 0.8899944093944814)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Mesh" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexDecomposition"
+        bool physics:collisionEnabled = 1
+        int physxConvexDecompositionCollision:maxConvexHulls = 128
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010138672922154202, 0.000008161213852900251, -0.001936341513650186)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "Electronics_140mm_19mm_cage" (
+    prepend payload = @../../assets/task2_wire/usd/Electronics_140mm_19mm_cage.usd@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.008463357180942321, 0.0571332673837895, 0.7499999999999976)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Mesh" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexDecomposition"
+        bool physics:collisionEnabled = 1
+        int physxConvexDecompositionCollision:hullVertexLimit = 64
+        int physxConvexDecompositionCollision:voxelResolution = 5000000
+        token visibility = "inherited"
+        quatf xformOp:orient = (0.70710677, 0, 0, 0.70710677)
+        float3 xformOp:scale = (1.4363999, 1.4363999, 1.0574318)
+        double3 xformOp:translate = (164.08848371973642, -1.1866845284203009e-7, -6.366462912410498e-12)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "TE_L26620011_4_connector_v2" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    prepend payload = @../../assets/task2_wire/usd/TE_L26620011_4_connector_v2.usd@
+)
+{
+    bool physics:kinematicEnabled = 1
+    bool physics:rigidBodyEnabled = 1
+    quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
+    float3 xformOp:scale = (2.18, 2.18, 2.18)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.005645406798653833, 0.3261623049210932, 0.7504589787698138)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Mesh" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI"]
+    )
+    {
+        uniform token physics:approximation = "convexHull"
+        bool physics:collisionEnabled = 1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1.22, 1.22, 1.22)
+        double3 xformOp:translate = (-4.234357102723887, -3.509819634928135e-8, -1.0254391190788965)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "wire1" (
+    prepend payload = @../../assets/task2_wire/usd/FlexibleCable_460mm_Physics_anchored.usd@
+)
+{
+    quatf xformOp:orient = (0.70710677, 0, 0, -0.70710677)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:scale:unitsResolve = (0.001, 0.001, 0.001)
+    double3 xformOp:translate = (-0.04478020328343471, 0.32316562606993665, 0.7612071207643512)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+    over "Segment_00" (
+        active = true
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        bool physics:collisionEnabled = 1
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 1
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        bool physxArticulation:enabledSelfCollisions = 0
+        int physxArticulation:solverPositionIterationCount = 32
+        int physxArticulation:solverVelocityIterationCount = 4
+        custom float physxRigidBody:angularDamping = 8
+        uniform bool physxRigidBody:kinematicEnabled = 1
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        token visibility = "inherited"
+        quatf xformOp:orient = (0.97501326, 0.10217497, 0.154131, -0.123097785)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (6.131858551532389, 1.7292807954309097, 2.576453447366589)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_01" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.92908657, 0.18274224, 0.32146233, -0.008083721)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (27.798564910888672, -0.26715660095214844, -3.0304362773895264)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_02" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.97845095, 0.19519106, -0.022005051, -0.06363886)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (43.908836364746094, -1.1593891382217407, -6.120639324188232)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_03" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.95653564, 0.16131584, 0.0065031196, -0.2428466)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (61.68395233154297, -6.428286552429199, -6.836312294006348)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_04" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.9502842, 0.1408231, -0.10178762, -0.2583953)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (78.20396423339844, -15.859610557556152, -6.541388511657715)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_05" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.5583214, -0.04883394, -0.029969461, 0.8276438)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (82.29309844970703, -30.310503005981445, -6.615536689758301)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_06" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.55821174, -0.02359428, -0.010430108, -0.8292974)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (75.1335220336914, -47.98521041870117, -7.214205741882324)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_07" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.8585266, -0.12643185, 0.10483833, -0.48575303)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (75.41881561279297, -65.68000793457031, -7.212596416473389)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_08" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.87765235, -0.16753231, 0.004609398, -0.44904122)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (86.20890045166016, -81.45105743408203, -6.3388519287109375)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_09" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.960028, -0.2331365, 0.036398213, 0.1505617)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (102.25032806396484, -86.29315948486328, -6.362991809844971)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_10" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.95879674, -0.21483845, -0.06791677, 0.17303337)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (120.27649688720703, -80.22158813476562, -7.166164398193359)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_11" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.89432025, -0.31946903, -0.0724831, 0.3047573)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (136.9916229248047, -70.64026641845703, -7.0813469886779785)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_12" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.87756646, -0.29934236, -0.16164291, 0.3378503)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (151.56118774414062, -58.36577224731445, -6.92744779586792)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_13" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.7925272, -0.39009628, -0.17137767, 0.43629718)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (163.97299194335938, -43.671104431152344, -7.059114456176758)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_14" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.7666076, -0.3407099, -0.26064402, 0.47780147)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (173.05709838867188, -26.90634536743164, -6.993728160858154)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_15" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.6698987, -0.4353341, -0.28536436, 0.52942157)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (179.44894409179688, -8.670408248901367, -6.945984840393066)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_16" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.6360173, -0.38623592, -0.34835017, 0.57004905)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (183.11131286621094, 10.003019332885742, -7.6816253662109375)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_17" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.5846156, -0.45997515, -0.4133302, 0.52517194)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (185.16134643554688, 29.235931396484375, -7.707076549530029)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_18" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (0.58803993, -0.4632352, -0.41047174, 0.5207064)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (187.3488311767578, 48.28157424926758, -7.709162712097168)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_19" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.5269965, 0.53163433, 0.47094962, -0.46673986)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (189.70059204101562, 67.44949340820312, -7.707612991333008)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_20" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.506645, 0.51075333, 0.49313563, -0.48914117)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (191.20333862304688, 86.5326919555664, -7.707136154174805)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_21" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_22>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.4719611, 0.53710824, 0.57202816, -0.40193436)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (191.75709533691406, 105.76454162597656, -6.660776615142822)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_22" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_23>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.45361784, 0.5666738, 0.5824721, -0.36583865)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (192.4742431640625, 124.88001251220703, -4.488902568817139)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "Segment_23" (
+        prepend apiSchemas = ["PhysxForceAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        prepend rel physics:filteredPairs = [
+            </wire1/Segment_00>,
+            </wire1/Segment_01>,
+            </wire1/Segment_02>,
+            </wire1/Segment_03>,
+            </wire1/Segment_04>,
+            </wire1/Segment_05>,
+            </wire1/Segment_06>,
+            </wire1/Segment_07>,
+            </wire1/Segment_08>,
+            </wire1/Segment_09>,
+            </wire1/Segment_10>,
+            </wire1/Segment_11>,
+            </wire1/Segment_12>,
+            </wire1/Segment_13>,
+            </wire1/Segment_14>,
+            </wire1/Segment_15>,
+            </wire1/Segment_16>,
+            </wire1/Segment_17>,
+            </wire1/Segment_18>,
+            </wire1/Segment_19>,
+            </wire1/Segment_20>,
+            </wire1/Segment_21>,
+            </wire1/Segment_22>,
+        ]
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        custom float physxRigidBody:angularDamping = 8
+        custom bool physxRigidBody:kinematicEnabled = 0
+        custom float physxRigidBody:linearDamping = 0.2
+        custom float physxRigidBody:maxAngularVelocity = 6
+        custom float physxRigidBody:maxDepenetrationVelocity = 0.05
+        custom float physxRigidBody:maxLinearVelocity = 0.8
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 4
+        quatf xformOp:orient = (-0.4139284, 0.62311935, 0.52164817, -0.41020572)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (194.13259887695312, 143.8716278076172, -4.1579179763793945)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "_0347300_ring_terminal" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+        prepend payload = @../../assets/task2_wire/usd/10347300_ring_terminal.usd@
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        quatf xformOp:orient = (0.3760991, -0.6479467, -0.53983355, 0.38378927)
+        float3 xformOp:scale = (2200, 2200, 2200)
+        double3 xformOp:translate = (217.8369140625, 177.50473022460938, -8.077757835388184)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Mesh" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1.18, 1.18, 1.18)
+            double3 xformOp:translate = (0.001288068836885186, -0.005692888786850592, 0.007705056379591124)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    over "Joint_00" (
+        active = true
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.016435634
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.01643
+        float physics:upperLimit = 89.98357
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_22" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.030774465
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.96922
+        float physics:upperLimit = 90.03078
+        float physxJoint:jointFriction = 0.06
+    }
+
+    def PhysicsFixedJoint "FixedJoint"
+    {
+        rel physics:body0 = </wire1/_0347300_ring_terminal>
+        rel physics:body1 = </wire1/Segment_23>
+        float physics:breakForce = 3.4028235e38
+        float physics:breakTorque = 3.4028235e38
+        point3f physics:localPos0 = (-0.016551597, -0.0040331655, 0.007848183)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (0.50011355, -0.00045426466, -0.000008981834, -0.000008981834)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+    }
+
+    over "Joint_01" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.06704534
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.06705
+        float physics:upperLimit = 89.93295
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_02" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.022423714
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.02242
+        float physics:upperLimit = 89.97758
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_03" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.035294518
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.03529
+        float physics:upperLimit = 89.96471
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_04" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.27661073
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.27661
+        float physics:upperLimit = 89.72339
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_05" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.035756525
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.03576
+        float physics:upperLimit = 89.96424
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_06" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.20051184
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.79949
+        float physics:upperLimit = 90.20051
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_07" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.042806167
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.04281
+        float physics:upperLimit = 89.95719
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_08" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 179.66423
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = 89.66423
+        float physics:upperLimit = 180
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_09" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.030494794
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.030495
+        float physics:upperLimit = 89.969505
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_10" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.04180021
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.9582
+        float physics:upperLimit = 90.0418
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_11" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.02950495
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.0295
+        float physics:upperLimit = 89.9705
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_12" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.049940858
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.95006
+        float physics:upperLimit = 90.04994
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_13" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.038722053
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.03872
+        float physics:upperLimit = 89.96128
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_14" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.043676652
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.95632
+        float physics:upperLimit = 90.04368
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_15" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.030728664
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.03073
+        float physics:upperLimit = 89.96927
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_16" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.0031031827
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.996895
+        float physics:upperLimit = 90.003105
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_17" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.001545279
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.99845
+        float physics:upperLimit = 90.00155
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_18" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -6.9105506
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -96.91055
+        float physics:upperLimit = 83.08945
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_19" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.009828132
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.00983
+        float physics:upperLimit = 89.99017
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_20" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = -0.012940468
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -90.01294
+        float physics:upperLimit = 89.98706
+        float physxJoint:jointFriction = 0.06
+    }
+
+    over "Joint_21" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysxJointAPI"]
+    )
+    {
+        float drive:angular:physics:damping = 0.8
+        float drive:angular:physics:maxForce = 0.3
+        float drive:angular:physics:stiffness = 0
+        float drive:angular:physics:targetPosition = 0.0053141657
+        float drive:angular:physics:targetVelocity = 0
+        uniform token drive:angular:physics:type = "force"
+        float physics:lowerLimit = -89.99468
+        float physics:upperLimit = 90.00532
+        float physxJoint:jointFriction = 0.06
+    }
+}
+

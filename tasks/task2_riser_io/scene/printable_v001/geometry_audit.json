@@ -1,0 +1,321 @@
+{
+  "version": "printable_v001",
+  "units_stl": "mm",
+  "units_usd": "m",
+  "thread": "CUSTOM_D10_P2_NOT_ISO_M10",
+  "physics_ready": false,
+  "print_fit_verified": false,
+  "parts": {
+    "screw_custom_D10_P2": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/screw_custom_D10_P2.stl",
+      "bbox_mm": [
+        [
+          -8.5,
+          -8.5,
+          0.0
+        ],
+        [
+          8.5,
+          8.5,
+          23.0
+        ]
+      ],
+      "dimensions_mm": [
+        17.0,
+        17.0,
+        23.0
+      ],
+      "volume_mm3": 2173.3290507568368,
+      "watertight": true,
+      "faces": 46384,
+      "connected_bodies": 1
+    },
+    "nut_custom_D10_P2_clearance_030": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/nut_custom_D10_P2_clearance_030.stl",
+      "bbox_mm": [
+        [
+          -11.5,
+          -9.9592924118042,
+          0.0
+        ],
+        [
+          11.5,
+          9.9592924118042,
+          10.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.0,
+        19.9185848236084,
+        10.0
+      ],
+      "volume_mm3": 2704.443947506296,
+      "watertight": true,
+      "faces": 24216,
+      "connected_bodies": 1
+    },
+    "fit_nut_clearance_020": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fit_nut_clearance_020.stl",
+      "bbox_mm": [
+        [
+          -11.5,
+          -9.9592924118042,
+          0.0
+        ],
+        [
+          11.5,
+          9.9592924118042,
+          10.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.0,
+        19.9185848236084,
+        10.0
+      ],
+      "volume_mm3": 2731.3126230864286,
+      "watertight": true,
+      "faces": 24216,
+      "connected_bodies": 1
+    },
+    "fit_nut_clearance_040": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fit_nut_clearance_040.stl",
+      "bbox_mm": [
+        [
+          -11.5,
+          -9.9592924118042,
+          0.0
+        ],
+        [
+          11.5,
+          9.9592924118042,
+          10.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.0,
+        19.9185848236084,
+        10.0
+      ],
+      "volume_mm3": 2676.997448376366,
+      "watertight": true,
+      "faces": 24216,
+      "connected_bodies": 1
+    },
+    "ring_terminal_surrogate": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/ring_terminal_surrogate.stl",
+      "bbox_mm": [
+        [
+          -11.0,
+          -11.0,
+          0.0
+        ],
+        [
+          11.0,
+          28.0,
+          9.0
+        ]
+      ],
+      "dimensions_mm": [
+        22.0,
+        39.0,
+        9.0
+      ],
+      "volume_mm3": 1584.2722681763053,
+      "watertight": true,
+      "faces": 1008,
+      "connected_bodies": 1
+    },
+    "fixture_base": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/fixture_base.stl",
+      "bbox_mm": [
+        [
+          -77.0,
+          -35.0,
+          0.0
+        ],
+        [
+          77.0,
+          35.0,
+          18.5
+        ]
+      ],
+      "dimensions_mm": [
+        154.0,
+        70.0,
+        18.5
+      ],
+      "volume_mm3": 61817.69318717521,
+      "watertight": true,
+      "faces": 6284,
+      "connected_bodies": 1
+    },
+    "terminal_board_with_open_ring_seats": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/terminal_board_with_open_ring_seats.stl",
+      "bbox_mm": [
+        [
+          -70.0,
+          -25.0,
+          0.0
+        ],
+        [
+          70.0,
+          25.0,
+          5.5
+        ]
+      ],
+      "dimensions_mm": [
+        140.0,
+        50.0,
+        5.5
+      ],
+      "volume_mm3": 26919.80529117696,
+      "watertight": true,
+      "faces": 5740,
+      "connected_bodies": 1
+    },
+    "screw_tray_four_real_pockets": {
+      "stl": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/printable_v001/stl/screw_tray_four_real_pockets.stl",
+      "bbox_mm": [
+        [
+          -50.0,
+          -50.0,
+          0.0
+        ],
+        [
+          50.0,
+          50.0,
+          20.0
+        ]
+      ],
+      "dimensions_mm": [
+        100.0,
+        100.0,
+        20.0
+      ],
+      "volume_mm3": 191028.74167534822,
+      "watertight": true,
+      "faces": 1556,
+      "connected_bodies": 1
+    }
+  },
+  "checks": {
+    "closed_design_intersection_mm3": {
+      "screw_ring": 0.0,
+      "screw_nut": 0.0,
+      "screw_base": 0.0,
+      "ring_board": 0.0,
+      "nut_base": 0.0
+    },
+    "closed_design_no_volume_overlap": true,
+    "ring_anchors": [
+      {
+        "path": "/wire1/_0347300_ring_terminal",
+        "endpoint_world_m": [
+          -0.3072936697598817,
+          0.08288388151535062,
+          0.7534983156801226
+        ],
+        "ring_world_m": [
+          -0.3299417161859257,
+          0.07887564086841409,
+          0.7499983156801227
+        ],
+        "anchor_error_mm": 0.0,
+        "bottom_world_m": 0.7499983156801227,
+        "cable_diameter_mm": 7.0,
+        "snap_bore_mm": 7.4,
+        "source_cable_tilt_deg": 0.03276911120555975
+      },
+      {
+        "path": "/wire2/_0347300_ring_terminal",
+        "endpoint_world_m": [
+          -0.26956495620367243,
+          0.02215562468150578,
+          0.7541624902368554
+        ],
+        "ring_world_m": [
+          -0.28962886679615973,
+          0.01091109304445322,
+          0.7506624902368555
+        ],
+        "anchor_error_mm": 0.0,
+        "bottom_world_m": 0.7506624902368555,
+        "cable_diameter_mm": 7.0,
+        "snap_bore_mm": 7.4,
+        "source_cable_tilt_deg": 3.9568979050097095
+      },
+      {
+        "path": "/wire3/_0347300_ring_terminal",
+        "endpoint_world_m": [
+          0.2701269365784812,
+          0.13380752341049174,
+          0.753498911726571
+        ],
+        "ring_world_m": [
+          0.2930974433893467,
+          0.1349719188982806,
+          0.7499989117265711
+        ],
+        "anchor_error_mm": 0.0,
+        "bottom_world_m": 0.7499989117265711,
+        "cable_diameter_mm": 7.0,
+        "snap_bore_mm": 7.4,
+        "source_cable_tilt_deg": 0.02429946702441574
+      },
+      {
+        "path": "/wire4/_0347300_ring_terminal",
+        "endpoint_world_m": [
+          0.30143730324379103,
+          0.18451606491509218,
+          0.7546685336709985
+        ],
+        "ring_world_m": [
+          0.3233007702712158,
+          0.19165670981178812,
+          0.7511685336709986
+        ],
+        "anchor_error_mm": 0.0,
+        "bottom_world_m": 0.7511685336709986,
+        "cable_diameter_mm": 7.0,
+        "snap_bore_mm": 7.4,
+        "source_cable_tilt_deg": 0.7338489695073381
+      }
+    ],
+    "composition_errors": [],
+    "printable_body_count_pass": true,
+    "female_thread_radial_clearance_mm": 0.3,
+    "ring_shank_radial_clearance_mm": 0.7,
+    "head_to_fence_radial_clearance_mm": 2.9,
+    "screw_tip_to_base_floor_mm": 1.0,
+    "coaxial_1_mm": 0.0,
+    "coaxial_2_mm": 0.0,
+    "coaxial_3_mm": 0.0,
+    "coaxial_4_mm": 0.0,
+    "all_new_mesh_material_bindings_valid": true,
+    "ring_materials_valid": true,
+    "helix_path_intersection_mm3": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "helix_path_clear": true,
+    "fixed_angle_0p5mm_pull_interference_mm3": 36.899621439831776
+  },
+  "limitations": [
+    "No Kit or PhysX run in this build.",
+    "Full helical contact is authored; no kinematic screw-lock shortcut.",
+    "FDM thread clearance requires coupon test.",
+    "PETG mass and friction are prototype assumptions.",
+    "Fixture static boundary requires actual bench attachment through mounting holes.",
+    "Original cable body poses retained; inherited cable/table contacts not dynamically accepted.",
+    "Printed ring barrel/TPU cable retention is untested."
+  ],
+  "candidate_scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_printable_v001.usda"
+}

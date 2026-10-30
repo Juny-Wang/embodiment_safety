@@ -1,0 +1,100 @@
+[
+  {
+    "file": "stl/cage_source_geometry.stl",
+    "quantity": 1,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/connector_print_repaired.stl",
+    "quantity": 1,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/fixture_base.stl",
+    "quantity": 1,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/guide_column_D36_H35.stl",
+    "quantity": 2,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/guide_mount_screw_D10_P2_shaft66.stl",
+    "quantity": 4,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/nut_custom_D10_P2_clearance_030.stl",
+    "quantity": 8,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/ring_terminal_surrogate.stl",
+    "quantity": 4,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/screw_custom_D10_P2.stl",
+    "quantity": 4,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/screw_tray_four_real_pockets.stl",
+    "quantity": 1,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/terminal_board_with_open_ring_seats.stl",
+    "quantity": 1,
+    "material": "PETG candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/wire1_TPU_U_layout_candidate.stl",
+    "quantity": 1,
+    "material": "TPU candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/wire2_TPU_U_layout_candidate.stl",
+    "quantity": 1,
+    "material": "TPU candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/wire3_TPU_U_layout_candidate.stl",
+    "quantity": 1,
+    "material": "TPU candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  },
+  {
+    "file": "stl/wire4_TPU_U_layout_candidate.stl",
+    "quantity": 1,
+    "material": "TPU candidate",
+    "units": "mm",
+    "physical_print_and_assembly_verified": false
+  }
+]

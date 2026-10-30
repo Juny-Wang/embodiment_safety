@@ -1,0 +1,489 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.33050790966006416, 0.25039588749236236, 1.0015209309545803)
+                double3 target = (-3.0759128946896985, -2.7920638767434625, -0.76140122175657)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/World/Cameras/ExternalOverview"
+        }
+        string local_robot_cache = "/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_latch_open_test_v1/robot_cache/Isaac/IsaacLab/Robots/FrankaEmika/panda_instanceable.usd"
+        dictionary omni_layer = {
+            string authoring_layer = "./manual_franka_scene.usda"
+        }
+        dictionary renderSettings = {
+        }
+        string robot_fix = "2026-10-22 preview Robot restored; explicit single local reference; clean runtime authoring"
+        string robot_initial_pose = "authored home; sole Robot in this layer"
+        string status = "MANUAL_DIAGNOSTIC_NOT_MECHANICAL_OR_TRAINING_ACCEPTED"
+        string visual_pipeline_fix = "2026-10-22: 11 visual branches non-instanceable; physics unchanged; validated through live MCP viewport A/B"
+    }
+    defaultPrim = "World"
+    metersPerUnit = 1
+    subLayers = [
+        @/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/t1_dimm_insert_train.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Xform "Robot" (
+        references = @/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_latch_open_test_v1/robot_cache/Isaac/IsaacLab/Robots/FrankaEmika/panda_instanceable.usd@
+    )
+    {
+        double3 xformOp:translate = (-0.43, 0, 0.75)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        over "panda_link0"
+        {
+            vector3f physics:angularVelocity = (0, 0, 0)
+            vector3f physics:velocity = (0, 0, 0)
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:translate = (-7.152557e-9, 5.820766e-10, 0)
+
+            over "panda_joint1" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = 0
+                float state:angular:physics:position = 0.00030117884
+                float state:angular:physics:velocity = -0.002024534
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link1"
+        {
+            vector3f physics:angularVelocity = (-7.472851e-10, 3.0462174e-12, -0.0020245302)
+            vector3f physics:velocity = (-0.0000011043513, -7.1889583e-9, 4.0666404e-13)
+            quatf xformOp:orient = (1, -6.3501058e-9, 1.315496e-8, 0.0000026252294)
+            float3 xformOp:translate = (-3.695488e-8, -1.4901161e-8, 0.33299994)
+
+            over "panda_joint2" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = -44.999992
+                float state:angular:physics:position = -44.988697
+                float state:angular:physics:velocity = -0.006384685
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link2"
+        {
+            vector3f physics:angularVelocity = (3.260945e-8, -0.006384684, -0.0020245283)
+            vector3f physics:velocity = (-0.0000044607477, 0.0000017504053, -0.000005520227)
+            quatf xformOp:orient = (0.653309, -0.6533074, -0.27053532, -0.2705318)
+            float3 xformOp:translate = (-6.67572e-8, -1.4901161e-8, 0.33300006)
+
+            over "panda_joint3" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = 0
+                float state:angular:physics:position = 0.0020988395
+                float state:angular:physics:velocity = -0.008601575
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link3"
+        {
+            vector3f physics:angularVelocity = (0.0060810647, -0.0063846977, -0.0081079565)
+            vector3f physics:velocity = (-0.000021901033, -8.8745395e-7, -0.00001572714)
+            quatf xformOp:orient = (0.9239173, -0.0000059232116, -0.3825923, 0.000019254163)
+            float3 xformOp:translate = (-0.2234016, -0.0000011660159, 0.5564897)
+
+            over "panda_joint4" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = -134.99997
+                float state:angular:physics:position = -135.05559
+                float state:angular:physics:velocity = 0.24618609
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link4"
+        {
+            vector3f physics:angularVelocity = (0.006088697, -0.25257066, -0.008101578)
+            vector3f physics:velocity = (-0.00020455132, -0.000016337297, 0.00015649757)
+            quatf xformOp:orient = (0.49972233, 0.49969372, 0.50029296, -0.5002907)
+            float3 xformOp:translate = (-0.16505384, 0.0000021588057, 0.6148145)
+
+            over "panda_joint5" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = 0
+                float state:angular:physics:position = 0.0016976376
+                float state:angular:physics:velocity = -0.0068735513
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link5"
+        {
+            vector3f physics:angularVelocity = (-0.00078484113, -0.252571, -0.008093584)
+            vector3f physics:velocity = (-0.0003904421, -0.00005401435, 0.0011886515)
+            quatf xformOp:orient = (0.70669377, -0.00000979584, 0.70751953, 0.000012047589)
+            float3 xformOp:translate = (0.21904227, 0.000016182661, 0.6968663)
+
+            over "panda_joint6" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = 89.999985
+                float state:angular:physics:position = 89.999985
+                float state:angular:physics:velocity = -0.0020088274
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link6"
+        {
+            vector3f physics:angularVelocity = (-0.00078488083, -0.25056198, -0.008093579)
+            vector3f physics:velocity = (-0.0004228711, -0.000076633514, 0.0018959073)
+            quatf xformOp:orient = (0.7071056, 0.7071077, 0.00042383745, -0.00040196517)
+            float3 xformOp:translate = (0.21904224, 0.0000161645, 0.6968663)
+
+            over "panda_joint7" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+            )
+            {
+                float drive:angular:physics:targetPosition = 44.999992
+                float state:angular:physics:position = 44.999992
+                float state:angular:physics:velocity = -0.00003977674
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_hand"
+        {
+            vector3f physics:angularVelocity = (-0.00078487844, -0.25056198, -0.008053798)
+            vector3f physics:velocity = (0.0001802174, -0.00008379914, 0.0020592583)
+            quatf xformOp:orient = (-0.0000015678824, 0.9999998, 0.000015706872, -0.00058383757)
+            float3 xformOp:translate = (0.30691722, 0.00001922797, 0.5897635)
+
+            over "panda_finger_joint1" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:linear"]
+            )
+            {
+                float drive:linear:physics:targetPosition = 0.04
+                float state:linear:physics:position = 0.04
+                float state:linear:physics:velocity = 7.157297e-11
+            }
+
+            over "panda_finger_joint2" (
+                prepend apiSchemas = ["PhysicsJointStateAPI:linear"]
+            )
+            {
+                float drive:linear:physics:targetPosition = 0.04
+                float state:linear:physics:position = 0.039999995
+                float state:linear:physics:velocity = 6.6162187e-10
+            }
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_link7"
+        {
+            vector3f physics:angularVelocity = (-0.00078487844, -0.25056198, -0.008053798)
+            vector3f physics:velocity = (-0.000048824302, -0.000083061444, 0.0020586275)
+            quatf xformOp:orient = (0.00022197611, 0.9238854, -0.38266885, -0.00053999387)
+            float3 xformOp:translate = (0.30704215, 0.000018893741, 0.6967635)
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_leftfinger"
+        {
+            vector3f physics:angularVelocity = (-0.00078487844, -0.25056198, -0.008053798)
+            vector3f physics:velocity = (0.0004273301, -0.00008457918, 0.0020594436)
+            quatf xformOp:orient = (-0.0000015766294, 0.9999998, 0.00001576543, -0.0005838327)
+            float3 xformOp:translate = (0.30685028, -0.039980583, 0.53136337)
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "panda_rightfinger"
+        {
+            vector3f physics:angularVelocity = (-0.00078487844, -0.25056198, -0.008053798)
+            vector3f physics:velocity = (0.00044193474, -0.00008457319, 0.002057857)
+            quatf xformOp:orient = (-0.0000015639187, 0.9999998, 0.000015730038, -0.0005838344)
+            float3 xformOp:translate = (0.30684775, 0.040019408, 0.5313637)
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+    }
+
+    over "physicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        uint physxScene:timeStepsPerSecond = 1000
+    }
+
+    over "MatchedDIMM"
+    {
+        vector3f physics:angularVelocity = (0.017899077, -0.47478786, -0.005765892)
+        vector3f physics:velocity = (-0.00016429908, 7.454253e-8, -0.000048740003)
+        quatf xformOp:orient = (0.7070254, -3.6289757e-7, 4.9799763e-7, -0.7071881)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.03239632282450068, -0.19388708472251892, 0.7510000467300415)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "MatchedRack"
+    {
+        vector3f physics:angularVelocity = (0.015014455, -0.017658535, -0.003649293)
+        vector3f physics:velocity = (-0.000051918796, 0.00005026707, -0.000038494803)
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.04763311777307793, -0.23393060266971588, 0.75)
+        token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    over "MatchedSocket"
+    {
+        quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.01043640033627758, 0.0341257169695799, 0.7660000011324882)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Asset"
+        {
+            over "LeftLatch"
+            {
+                vector3f physics:angularVelocity = (0, 0, 0)
+                vector3f physics:velocity = (0, 0, 0)
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.07000003010034561, -6.549315685333568e-7, 0.002999992575496435)
+                token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            over "RightLatch"
+            {
+                vector3f physics:angularVelocity = (0, 0, 0)
+                vector3f physics:velocity = (0, 0, 0)
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.07000001519918442, -5.729751819671947e-7, 0.002999992575496435)
+                token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+}
+
+over "Render" (
+    hide_in_stage_window = true
+)
+{
+    over "OmniverseKit"
+    {
+        over "HydraTextures"
+        {
+            over "omni_kit_widget_viewport_ViewportTexture_0"
+            {
+                rel camera = </OmniverseKit_Persp>
+                bool omni:rtx:rt:ecoMode:enabled = 0
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_1" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_L>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_2" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_R>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_3" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Cameras/ExternalOverview>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_4" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_L>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_5" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_R>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_6" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Cameras/ExternalOverview>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_7" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_L>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_8" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_R>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_9" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Cameras/ExternalOverview>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    over "OmniverseGlobalRenderSettings"
+    {
+        rel products = [
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_1>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_2>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_3>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_4>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_5>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_6>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_7>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_8>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_9>,
+        ]
+    }
+}
+

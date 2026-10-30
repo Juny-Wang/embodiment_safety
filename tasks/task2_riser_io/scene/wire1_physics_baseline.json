@@ -1,0 +1,824 @@
+{
+  "source": "franka_sim/outputs/T2/riser_io_preview.usda",
+  "recorded_from": "wire1 straightened along local X; joint targets 0, limits \u00b190",
+  "rule": "Later edits change only the named prim or attribute. Do not rewrite other segments, joints, poses, or drives.",
+  "wire_root_xform": {
+    "xformOp:orient": [
+      0.7071067690849304,
+      0.0,
+      0.0,
+      -0.7071067690849304
+    ],
+    "xformOp:scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "xformOp:scale:unitsResolve": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "xformOp:translate": [
+      -0.04478020328343471,
+      0.32316562606993665,
+      0.7612071207643512
+    ],
+    "xformOpOrder": [
+      "xformOp:translate",
+      "xformOp:orient",
+      "xformOp:scale",
+      "xformOp:scale:unitsResolve"
+    ]
+  },
+  "segment_00_anchor": {
+    "physics:angularVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physics:collisionEnabled": true,
+    "physics:kinematicEnabled": true,
+    "physics:rigidBodyEnabled": true,
+    "physics:velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physxRigidBody:angularDamping": 8.0,
+    "physxRigidBody:kinematicEnabled": true,
+    "physxRigidBody:linearDamping": 0.2,
+    "physxRigidBody:maxAngularVelocity": 6.0,
+    "physxRigidBody:maxDepenetrationVelocity": 0.05,
+    "physxRigidBody:maxLinearVelocity": 0.8,
+    "physxRigidBody:solverPositionIterationCount": 16,
+    "physxRigidBody:solverVelocityIterationCount": 4
+  },
+  "segment_01_to_23_shared": {
+    "physics:angularVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physics:kinematicEnabled": false,
+    "physics:rigidBodyEnabled": true,
+    "physics:velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physxRigidBody:angularDamping": 8.0,
+    "physxRigidBody:kinematicEnabled": false,
+    "physxRigidBody:linearDamping": 0.2,
+    "physxRigidBody:maxAngularVelocity": 6.0,
+    "physxRigidBody:maxDepenetrationVelocity": 0.05,
+    "physxRigidBody:maxLinearVelocity": 0.8,
+    "physxRigidBody:solverPositionIterationCount": 16,
+    "physxRigidBody:solverVelocityIterationCount": 4
+  },
+  "segment_00_filtered_pair_count": 23,
+  "joint_drive_shared_distinct": {
+    "stiffness": [
+      0.0
+    ],
+    "damping": [
+      0.8
+    ],
+    "maxForce": [
+      0.3
+    ],
+    "type": [
+      "force"
+    ],
+    "targetVelocity": [
+      0.0
+    ],
+    "limit_margin_deg": 90.0,
+    "jointFriction": 0.06,
+    "articulation_root": "/wire1/Segment_00",
+    "rest": "straight, targetPosition 0"
+  },
+  "joints": [
+    {
+      "joint": "Joint_00",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_01",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_02",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_03",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_04",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_05",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_06",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_07",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_08",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_09",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_10",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_11",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_12",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_13",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_14",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_15",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_16",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_17",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_18",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_19",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_20",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_21",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    },
+    {
+      "joint": "Joint_22",
+      "targetPosition_deg": 0.0,
+      "lowerLimit_deg": -90.0,
+      "upperLimit_deg": 90.0,
+      "stiffness": 0.0,
+      "damping": 0.8,
+      "maxForce": 0.3,
+      "type": "force",
+      "targetVelocity": 0.0,
+      "jointFriction": 0.06
+    }
+  ],
+  "ring_terminal_physics": {
+    "physics:angularVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physics:kinematicEnabled": false,
+    "physics:rigidBodyEnabled": true,
+    "physics:velocity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "ring_terminal_xform": {
+    "xformOp:orient": [
+      0.3760991096496582,
+      -0.6479467153549194,
+      -0.5398335456848145,
+      0.3837892711162567
+    ],
+    "xformOp:scale": [
+      2200.0,
+      2200.0,
+      2200.0
+    ],
+    "xformOp:translate": [
+      217.8369140625,
+      177.50473022460938,
+      -8.077757835388184
+    ],
+    "xformOpOrder": [
+      "xformOp:translate",
+      "xformOp:orient",
+      "xformOp:scale"
+    ]
+  },
+  "fixed_joint": {
+    "physics:breakForce": 3.4028234663852886e+38,
+    "physics:breakTorque": 3.4028234663852886e+38,
+    "physics:localPos0": [
+      -0.01655159704387188,
+      -0.004033165518194437,
+      0.007848182693123817
+    ],
+    "physics:localPos1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "physics:localRot0": [
+      0.5001135468482971,
+      -0.0004542646638583392,
+      -8.981834071164485e-06,
+      -8.981834071164485e-06
+    ],
+    "physics:localRot1": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "scene_and_fixtures": {
+    "/World/physicsScene": {
+      "attributes": {
+        "physics:gravityDirection": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "physxScene:maxPositionIterationCount": 32,
+        "physxScene:maxVelocityIterationCount": 4
+      }
+    },
+    "/PCB_holder": {
+      "attributes": {
+        "physics:kinematicEnabled": false,
+        "physics:rigidBodyEnabled": true,
+        "xformOp:orient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xformOp:scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "xformOp:scale:unitsResolve": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "xformOp:translate": [
+          -0.1542184054851532,
+          -0.04915443553426385,
+          0.7500000596046448
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale",
+          "xformOp:scale:unitsResolve"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexDecomposition",
+            "physics:collisionEnabled": true,
+            "physxConvexDecompositionCollision:maxConvexHulls": 128,
+            "xformOp:orient": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "xformOp:scale": [
+              1.3799999952316284,
+              1.3799999952316284,
+              1.3799999952316284
+            ],
+            "xformOp:translate": [
+              108.22750472244799,
+              -74.78109150312126,
+              -1.4779288903810084e-12
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    },
+    "/Meshy_AI_Circuit_Board_Assembly": {
+      "attributes": {
+        "physics:kinematicEnabled": false,
+        "physics:rigidBodyEnabled": true,
+        "xformOp:orient": [
+          0.6931453943252563,
+          -0.1686437577009201,
+          -0.1691400408744812,
+          -0.6800737977027893
+        ],
+        "xformOp:scale": [
+          0.6789119839668274,
+          0.6789119839668274,
+          0.6789119839668274
+        ],
+        "xformOp:translate": [
+          -0.0526972132826128,
+          -0.09525118125584012,
+          0.8899944093944814
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexDecomposition",
+            "physics:collisionEnabled": true,
+            "physxConvexDecompositionCollision:maxConvexHulls": 128,
+            "xformOp:orient": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "xformOp:scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "xformOp:translate": [
+              -0.0010138672922154202,
+              8.161213852900251e-06,
+              -0.001936341513650186
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    },
+    "/Electronics_140mm_19mm_cage": {
+      "attributes": {
+        "xformOp:orient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xformOp:scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "xformOp:scale:unitsResolve": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "xformOp:translate": [
+          -0.008463357180942321,
+          0.0571332673837895,
+          0.7499999999999976
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale",
+          "xformOp:scale:unitsResolve"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexDecomposition",
+            "physics:collisionEnabled": true,
+            "physxConvexDecompositionCollision:hullVertexLimit": 64,
+            "physxConvexDecompositionCollision:voxelResolution": 5000000,
+            "xformOp:orient": [
+              0.7071067690849304,
+              0.0,
+              0.0,
+              0.7071067690849304
+            ],
+            "xformOp:scale": [
+              1.4363999366760254,
+              1.4363999366760254,
+              1.0574318170547485
+            ],
+            "xformOp:translate": [
+              164.08848371973642,
+              -1.1866845284203009e-07,
+              -6.366462912410498e-12
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    },
+    "/TE_L26620011_4_connector_v2": {
+      "attributes": {
+        "physics:kinematicEnabled": true,
+        "physics:rigidBodyEnabled": true,
+        "xformOp:orient": [
+          0.7071067690849304,
+          0.7071067690849304,
+          0.0,
+          0.0
+        ],
+        "xformOp:scale": [
+          2.180000066757202,
+          2.180000066757202,
+          2.180000066757202
+        ],
+        "xformOp:scale:unitsResolve": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "xformOp:translate": [
+          -0.005645406798653833,
+          0.3261623049210932,
+          0.7504589787698138
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale",
+          "xformOp:scale:unitsResolve"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexHull",
+            "physics:collisionEnabled": true,
+            "xformOp:orient": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "xformOp:scale": [
+              1.2200000286102295,
+              1.2200000286102295,
+              1.2200000286102295
+            ],
+            "xformOp:translate": [
+              -4.234357102723887,
+              -3.509819634928135e-08,
+              -1.0254391190788965
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    },
+    "/TBY21_M3_1": {
+      "attributes": {
+        "physics:kinematicEnabled": true,
+        "physics:rigidBodyEnabled": true,
+        "xformOp:orient": [
+          0.7071067690849304,
+          -8.967287176855674e-18,
+          -0.7071067690849304,
+          -8.967288004036287e-18
+        ],
+        "xformOp:scale": [
+          10.988809585571289,
+          0.716214120388031,
+          0.716214120388031
+        ],
+        "xformOp:scale:unitsResolve": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "xformOp:translate": [
+          -0.013508299062884905,
+          -0.010826314242431974,
+          0.7432384797739549
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale",
+          "xformOp:scale:unitsResolve"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexDecomposition",
+            "physics:collisionEnabled": true,
+            "physxConvexDecompositionCollision:maxConvexHulls": 128,
+            "xformOp:orient": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "xformOp:scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "xformOp:translate": [
+              -8.017366326384945e-09,
+              0.0,
+              -3.5951626520216085
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    },
+    "/TBY21_M3_02": {
+      "attributes": {
+        "physics:kinematicEnabled": true,
+        "physics:rigidBodyEnabled": true,
+        "xformOp:orient": [
+          0.7071067690849304,
+          -8.967276423507711e-18,
+          -0.7071067690849304,
+          -8.967277250688323e-18
+        ],
+        "xformOp:scale": [
+          6.119999885559082,
+          6.119999885559082,
+          6.119999885559082
+        ],
+        "xformOp:scale:unitsResolve": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "xformOp:translate": [
+          -0.12093778669032883,
+          0.223443295249529,
+          0.743239303274926
+        ],
+        "xformOpOrder": [
+          "xformOp:translate",
+          "xformOp:orient",
+          "xformOp:scale",
+          "xformOp:scale:unitsResolve"
+        ]
+      },
+      "children": {
+        "Mesh": {
+          "attributes": {
+            "physics:approximation": "convexHull",
+            "physics:collisionEnabled": true,
+            "xformOp:orient": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "xformOp:scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "xformOp:translate": [
+              4.133931241767641e-07,
+              -6.110667527536862e-13,
+              12.077432445638756
+            ],
+            "xformOpOrder": [
+              "xformOp:translate",
+              "xformOp:orient",
+              "xformOp:scale"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

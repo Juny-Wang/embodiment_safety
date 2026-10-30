@@ -1,0 +1,72 @@
+{
+  "p6": {
+    "old_scale": [
+      2200,
+      2200,
+      2200
+    ],
+    "new_scale": [
+      1000,
+      1000,
+      1000
+    ],
+    "old_world_mult_vs_asset": 2.2,
+    "new_world_mult_vs_asset": 1.0,
+    "reason": "ring 10347300 metersPerUnit=1 (metres); parent FlexibleCable uses unitsResolve=(0.001,0.001,0.001); world=asset*ring_scale*0.001; 1000 restores true size for M4 stud r=0.002 seating; 2200 was 2.2x oversized",
+    "prims_touched": [
+      "/wire1/_0347300_ring_terminal",
+      "/wire2/_0347300_ring_terminal",
+      "/wire3/_0347300_ring_terminal",
+      "/wire4/_0347300_ring_terminal"
+    ],
+    "per_wire_new_scale": {
+      "wire1": "1000, 1000, 1000",
+      "wire2": "1000, 1000, 1000",
+      "wire3": "1000, 1000, 1000",
+      "wire4": "1000, 1000, 1000"
+    },
+    "mesh_over_scale_left": [
+      1.18,
+      1.18,
+      1.18
+    ],
+    "replacements": 4,
+    "backup": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda.bak_pre_p6_20261024_135444",
+    "ring_asset_AABB_m": {
+      "size": [
+        0.016,
+        0.0039,
+        0.008
+      ]
+    },
+    "m4_stud_radius_m": 0.002
+  },
+  "p1p5_still_valid": {
+    "Task1PCB": {
+      "prim": true,
+      "ref": true,
+      "file": true
+    },
+    "PCB_holder": {
+      "prim": true,
+      "ref": true,
+      "file": true
+    },
+    "TBY21_M3_1": {
+      "prim": true,
+      "ref": true,
+      "file": true
+    },
+    "TBY21_M3_02": {
+      "prim": true,
+      "ref": true,
+      "file": true
+    },
+    "PCB_4_Terminal": {
+      "prim": true,
+      "ref": true,
+      "file": true
+    }
+  },
+  "open_path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda"
+}

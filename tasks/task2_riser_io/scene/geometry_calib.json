@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "status": "CAD_FRAMES_MEASURED_KIT_UNVERIFIED",
+  "units": "m",
+  "metric": "CUSTOM_D10_P2_NOT_ISO",
+  "alignment": {
+    "xy_tol_m": 0.0003,
+    "tilt_tol_deg": 1.0,
+    "source": "candidate geometric budget; unvalidated operation gate"
+  },
+  "seat_world_m": [
+    [
+      -0.092,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.064,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.036000000000000004,
+      -0.071,
+      0.768
+    ],
+    [
+      -0.008,
+      -0.071,
+      0.768
+    ]
+  ],
+  "seat_paths": [
+    "/PCB_4_Terminal/Terminal_1_Seat",
+    "/PCB_4_Terminal/Terminal_2_Seat",
+    "/PCB_4_Terminal/Terminal_3_Seat",
+    "/PCB_4_Terminal/Terminal_4_Seat"
+  ],
+  "ring_paths": [
+    "/wire1/_0347300_ring_terminal",
+    "/wire2/_0347300_ring_terminal",
+    "/wire3/_0347300_ring_terminal",
+    "/wire4/_0347300_ring_terminal"
+  ],
+  "screw_paths": [
+    "/ScrewTray/Nest_1/Screw_1",
+    "/ScrewTray/Nest_2/Screw_2",
+    "/ScrewTray/Nest_3/Screw_3",
+    "/ScrewTray/Nest_4/Screw_4"
+  ],
+  "ring_thickness_m": 0.003,
+  "screw_head_underside_local_z_m": 0.018,
+  "thread_pitch_m": 0.002,
+  "physics_ready": false
+}

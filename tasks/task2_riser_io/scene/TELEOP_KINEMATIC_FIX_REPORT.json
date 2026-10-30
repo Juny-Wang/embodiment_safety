@@ -1,0 +1,54 @@
+{
+  "tag": "TELEOP_KINEMATIC_FIX_20261025",
+  "timestamp_local": "20261025_210345",
+  "timezone": "Asia/Shanghai",
+  "kit_log": "/home/ufdwaa/.nvidia-omniverse/logs/Kit/Isaac-Sim Full/5.0/kit_20261025_163038.log",
+  "root_cause": [
+    "START TELEOP -> keyboard_panel.start_teleop -> breakable_neck.reseat_screws",
+    "reseat sets physics:kinematicEnabled=True on /ScrewTray/Nest_*/Screw_* then calls _teleport_physx",
+    "_teleport_physx created isaacsim SingleRigidPrim (init/post_reset calls set_velocities) and tensors view.set_velocities(0)",
+    "PhysX rejects setLinearVelocity/setAngularVelocity on kinematic bodies -> 4x (lin+ang) spam per START",
+    "Evidence: kit log 12:25:19Z and 12:57:06Z — 'Rigid Prim View Device: cpu' then set*Velocity errors, then SCREW_ON_NEST reseat print with physx=['SingleRigidPrim','SingleXFormPrim','tensors_rb_view']",
+    "Secondary: BreakableNeckMonitor / ensure_necks / configure_break_forces were truncated from breakable_neck.py (AttributeError on START)"
+  ],
+  "file_line_evidence": {
+    "breakable_neck._set_screw_physics": "sets kinematic=True then previously authored physics:velocity=0",
+    "breakable_neck._teleport_physx": "SingleRigidPrim + view.set_velocities on kinematic screws",
+    "keyboard_panel.start_teleop": "calls reseat_screws before arm/ENABLE",
+    "kit_log_lines": [
+      642535,
+      817830,
+      818152
+    ]
+  },
+  "fix": [
+    "_teleport_physx(kinematic=True): SingleXFormPrim + tensors set_transforms only; skip SingleRigidPrim and set_velocities",
+    "_set_screw_physics(kinematic=True): do not author USD velocity attrs",
+    "reseat_screws: removed post-kinematic USD velocity zero loop; teleport(..., kinematic=True)",
+    "Restored ensure_necks / configure_break_forces / BreakableNeckMonitor from bak_pre_onnest",
+    "Franka teleop unchanged: still articulation set_dof_position_targets (FIX4)",
+    "SCREW_ON_NEST nest paths + WIRE_JITTER FixedJoint realign preserved"
+  ],
+  "files_changed": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/breakable_neck.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/TELEOP_KINEMATIC_FIX_REPORT.json"
+  ],
+  "backup": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/breakable_neck.py.bak_pre_kinematic_fix_20261025_210345",
+  "user_steps": [
+    "Do NOT kill Isaac. In Script Editor clear box, run ONE line:",
+    "exec(open('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/launch_panel.py', encoding='utf-8').read())",
+    "Console must show: TELEOP_KINEMATIC_FIX_20261025 and WIRE_JITTER_FIX_20261025 (and no AttributeError BreakableNeckMonitor).",
+    "Ensure timeline Playing. Click START TELEOP once.",
+    "Console reseat physx list should include SingleXFormPrim + tensors_rb_view_pose_only + SingleRigidPrim_skipped_kinematic — NOT bare SingleRigidPrim/tensors_rb_view.",
+    "Yellow PhysX set*Velocity toasts should NOT appear on this START.",
+    "Click MAIN viewport once, then arrows / PgUp/PgDn — arm should jog.",
+    "If USDA disk Fetch banner still shows only for wire jitter (not required for this py-only fix)."
+  ],
+  "preserved": [
+    "FIX4_INPUT",
+    "SCREW_ON_NEST",
+    "WIRE_JITTER FixedJoint realign",
+    "franka joint-drive teleop"
+  ]
+}

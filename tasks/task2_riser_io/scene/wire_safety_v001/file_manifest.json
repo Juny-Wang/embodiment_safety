@@ -1,0 +1,621 @@
+{
+  "files": [
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L0_sensor_bench.usda",
+      "relative_path": "L0_sensor_bench.usda",
+      "bytes": 44731,
+      "sha256": "d69ac7399252f05e563c761bd4093d0af11974cc63416f70a120b5d23c9afd09"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L1_one_guide.usda",
+      "relative_path": "L1_one_guide.usda",
+      "bytes": 122290,
+      "sha256": "d822f58fa24c802ba4f62b024e60416452c6807d85572239ab0a6a31f2c06149"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L2_two_guides.usda",
+      "relative_path": "L2_two_guides.usda",
+      "bytes": 199822,
+      "sha256": "c39f5da413ca9f8367d2d3f8b791963d1de79cbcae7157222d010833cc1b4dcb"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/README.md",
+      "relative_path": "README.md",
+      "bytes": 6515,
+      "sha256": "e90d79f260fe104bdb9c44b8a21417a6de842b1d1e0c8dd720c232138e644da7"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/changes.patch",
+      "relative_path": "changes.patch",
+      "bytes": 791935,
+      "sha256": "7d3d94d93af6e6e536e93f2501db95fb946d8f4ea4a9116e730905ff755482ad"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/config.json",
+      "relative_path": "config.json",
+      "bytes": 2105,
+      "sha256": "52c80f8b315a08a9e31cf6f4b3f05df6976dd9e26b06b7bdafe9dba42eaf25f9"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/diff_stat.json",
+      "relative_path": "diff_stat.json",
+      "bytes": 2379,
+      "sha256": "064741636786c22022d33c34f839fa7740e75706a473dbb869e39c94a8f61d0c"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/fixture_assembly.usda",
+      "relative_path": "fixture_assembly.usda",
+      "bytes": 360329,
+      "sha256": "8e6cfca6a3e3ae1ffc63568abef89cdeec516bdb6b81420b54dd7a3088b672dd"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/force_comparison.png",
+      "relative_path": "force_comparison.png",
+      "bytes": 45152,
+      "sha256": "ab2b24b0b831218f7083144d0f218d6e434d7c552d06b351132680897e244e9a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/guide_contact.png",
+      "relative_path": "guide_contact.png",
+      "bytes": 34472,
+      "sha256": "c0c1ad526c32a297e0279d4a5e553f775337e0766d7120307c5c60ac4621ae2c"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/layout.png",
+      "relative_path": "layout.png",
+      "bytes": 38411,
+      "sha256": "768597212e0711eed6f8a748948318466a493f39becef8d1761dadafba6bc3e4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/measured_comparison.gif",
+      "relative_path": "measured_comparison.gif",
+      "bytes": 676230,
+      "sha256": "3ec768c87ba5848e05dd4e97e91f6f4a300875b7aa3bdc7405f056fb803269bd"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/measured_comparison.png",
+      "relative_path": "measured_comparison.png",
+      "bytes": 32413,
+      "sha256": "6e6608256b965dc0ab058436fb957aaafa69e17ffad6588ff041dc3154430c9e"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/printable_fixture.png",
+      "relative_path": "printable_fixture.png",
+      "bytes": 49514,
+      "sha256": "8bf2a880a239fb6c19ff1a1a662bcb75299b817cf9188bd6711fb58eecad6f54"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/acceptance.json",
+      "relative_path": "reports/acceptance.json",
+      "bytes": 14697,
+      "sha256": "69a48aea10bc37abe6411278725f08c2336f610bf3c98671d2a43629c5d76a2f"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/api_provenance.json",
+      "relative_path": "reports/api_provenance.json",
+      "bytes": 596,
+      "sha256": "0901ab3070559fd83a0ba7c15579d38322efb14549dd1fe8c3a6992aa0d1a631"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/batch_execution.json",
+      "relative_path": "reports/batch_execution.json",
+      "bytes": 265,
+      "sha256": "7a0557760c6cd9bdf8a4a2d9d70baf5d407eefb6c8e707fafc360648917310f5"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/finalize.log",
+      "relative_path": "reports/finalize.log",
+      "bytes": 2732,
+      "sha256": "46cdef98989bad99fb9db831a109537bfddd9b1e68b99cd750c04e5171e464b3"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/monitor_invalid_data_test.json",
+      "relative_path": "reports/monitor_invalid_data_test.json",
+      "bytes": 151,
+      "sha256": "b4a6bcc0b1af96202ff9694727f9082d51f9d52c2743321c962d9c778e6e471e"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/monitor_smoke.json",
+      "relative_path": "reports/monitor_smoke.json",
+      "bytes": 500,
+      "sha256": "0f0248e43cead0df4839e0080c6bdb55f28be4655fe3cf409ce07640a769d7a9"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/print_geometry.json",
+      "relative_path": "reports/print_geometry.json",
+      "bytes": 2382,
+      "sha256": "2bd59f408388a744ba6a35c7cc7aa8005726400cdd973ae8d46900704005293c"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/reports/source_audit.json",
+      "relative_path": "reports/source_audit.json",
+      "bytes": 104048,
+      "sha256": "a3236aa212c15390575a5de94f3fdfa9cd2321cf657c42c6c452994867dcf523"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "bytes": 85123,
+      "sha256": "c8d6b29b3b318cc684aaf2efd46941bb5b9b886aad5340a350a5e1a75eb220c4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/frames.json",
+      "relative_path": "runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/frames.json",
+      "bytes": 169470,
+      "sha256": "903e0301fa18c5a26c7ee05417ee2d7f707a3939022ef874fe9519738bd4bf32"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/kit.log",
+      "relative_path": "runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/kit.log",
+      "bytes": 1226758,
+      "sha256": "4d85cb330b23683ee02c707d86cdf712b0957712d5689bc945a13865b2e95fb2"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T132137_418464_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "bytes": 1513,
+      "sha256": "2165a35be5372eca8cd3e8c0db1004d02c9eebb9df0c98ae5efbdc16527a0f5a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "bytes": 104705,
+      "sha256": "11a9ea4ba3696553802145f23becda58210fbe14eb28c288d75f798a14410dee"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/frames.json",
+      "relative_path": "runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/frames.json",
+      "bytes": 174754,
+      "sha256": "ed5f6048b2a8b5447fb0c5b9bf9b51dff66718f65ef54b1073b7861f968c9fb4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/kit.log",
+      "relative_path": "runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/kit.log",
+      "bytes": 1571590,
+      "sha256": "1f239462bb847d3e241995d3709051f6b056cc3048b7c33763e2caf9e5ed4b49"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T132924_676187_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "bytes": 1687,
+      "sha256": "a17655b5c734a1cba3732a8f376af90f959e83c7f5e0b2e2532e08e630fe354d"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "bytes": 115229,
+      "sha256": "39598c026718d2e96f1c1845f16666b10c4e1b20763380f63c1f2a5a8cb2daae"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/frames.json",
+      "relative_path": "runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/frames.json",
+      "bytes": 175039,
+      "sha256": "9a8878bb26262667506d054baf619bcbf51f92a7af147079613f5c0033443ba6"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/kit.log",
+      "relative_path": "runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/kit.log",
+      "bytes": 1107544,
+      "sha256": "dd43578490387c26eaffe0e3a71efe706936f64372b20621945feff8bece1415"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T134720_751737_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "bytes": 1787,
+      "sha256": "7705bc7fe95026229fc8344491825218a1c3226d62cfd98854c2d37a71a2c132"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135120_155716_L0_sensor_bench_x_0N/force_curvature.csv",
+      "relative_path": "runs/20261024T135120_155716_L0_sensor_bench_x_0N/force_curvature.csv",
+      "bytes": 113443,
+      "sha256": "436c0dc5502adda03ab760f700c15b51496e8a5b224835da5592812fe20bab16"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135120_155716_L0_sensor_bench_x_0N/frames.json",
+      "relative_path": "runs/20261024T135120_155716_L0_sensor_bench_x_0N/frames.json",
+      "bytes": 175056,
+      "sha256": "b36257dc776b452a21eab48965ac48fc569140e3ddafcbada13b886cca483362"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135120_155716_L0_sensor_bench_x_0N/kit.log",
+      "relative_path": "runs/20261024T135120_155716_L0_sensor_bench_x_0N/kit.log",
+      "bytes": 1180550,
+      "sha256": "3c980ca9ea63626ee32c84b58e249ae5f772e1e60ba19ae320ef9e06b7398188"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135120_155716_L0_sensor_bench_x_0N/physics_acceptance.json",
+      "relative_path": "runs/20261024T135120_155716_L0_sensor_bench_x_0N/physics_acceptance.json",
+      "bytes": 1787,
+      "sha256": "3a198e8c73ff8403d03974bdc174c550906b8831603c0010e1b116f700697a30"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/force_curvature.csv",
+      "relative_path": "runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/force_curvature.csv",
+      "bytes": 72196,
+      "sha256": "8295edce35e46d010b30c59c82719a0396c2a4d689f7edc2a2a53aa2748f36cf"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/kit.log",
+      "relative_path": "runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/kit.log",
+      "bytes": 2350648,
+      "sha256": "89121898fd2183b89b025513d28edb27c74bb82324c2f01385149de8a00cf920"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/physics_acceptance.json",
+      "relative_path": "runs/20261024T135136_348443_L0_sensor_bench_x_1.5N/physics_acceptance.json",
+      "bytes": 2259,
+      "sha256": "2ee23a104bc419655122642c8bdebb8ab8dac2a9e47e403b347e465b0f6204cb"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135149_886320_L1_one_guide_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T135149_886320_L1_one_guide_y_0.25N/force_curvature.csv",
+      "bytes": 73249,
+      "sha256": "57ae4aff6adc0560d5ad17d8930ae6dfa7dbcca213e0bcd01e330aedc4dff0d4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135149_886320_L1_one_guide_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T135149_886320_L1_one_guide_y_0.25N/kit.log",
+      "bytes": 2308817,
+      "sha256": "c00ad161bb14724e59e4d1eb3038baa89e0c16214db97eb256dec4ca69fcb1a4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135149_886320_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T135149_886320_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "bytes": 2257,
+      "sha256": "8fa07d85e5fae5024bda73297b5e162c64faddbbb9fd94915955c0db15e8282b"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135203_629268_L2_two_guides_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T135203_629268_L2_two_guides_y_0.25N/force_curvature.csv",
+      "bytes": 52777,
+      "sha256": "44e2a130a877e1dac0d6524cf67a6eee6270dcac6d9582e09d34ec2e7eb0c573"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135203_629268_L2_two_guides_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T135203_629268_L2_two_guides_y_0.25N/kit.log",
+      "bytes": 2869417,
+      "sha256": "63b48255ba979213a4bf14334e937aa565e67efe615b25721729bb6696691d58"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T135203_629268_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T135203_629268_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "bytes": 2258,
+      "sha256": "641ce47178786362ec411ea0a02851c70cd384015a6a59b55c5239e7a2ba71d4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/force_curvature.csv",
+      "relative_path": "runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/force_curvature.csv",
+      "bytes": 482416,
+      "sha256": "2517f196ff242438ddfdd15fc1a59a5b0e076005c42991d08ec390973e875dcb"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/frames.json",
+      "relative_path": "runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/frames.json",
+      "bytes": 703323,
+      "sha256": "7187a9cd18a05c8e984f387fe39d96d0a121948ed21f34311545958b5df35105"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/kit.log",
+      "relative_path": "runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/kit.log",
+      "bytes": 1177181,
+      "sha256": "398955e2aff4a244b4f4077ada63af0c97f5a08060625a4474939bee69fbf045"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/physics_acceptance.json",
+      "relative_path": "runs/20261024T140955_342180_L0_sensor_bench_x_1.5N/physics_acceptance.json",
+      "bytes": 1787,
+      "sha256": "1cb7a6fd9fa8f04f0d8623e2fe0c0c0440f324acb8f9c14e2e4e0e1f5af26cca"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/force_curvature.csv",
+      "bytes": 462541,
+      "sha256": "eef6b4ec93fbb192f4a68ca34bd0943c86f6570b76ab7008ed08206b7bb14f22"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/frames.json",
+      "relative_path": "runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/frames.json",
+      "bytes": 700383,
+      "sha256": "9ad00aa2361db069056e04ad0d3feec7f2c879da9d32a3880bd79216a901ebda"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/kit.log",
+      "relative_path": "runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/kit.log",
+      "bytes": 1194479,
+      "sha256": "20d48a5eab1821147b231d1a0a5705204ffdf411ee262d3021d9e7fcd0ef6b2f"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T141435_566951_L0_sensor_bench_x_0.25N/physics_acceptance.json",
+      "bytes": 1788,
+      "sha256": "e2943c03aec158374b1eaf8326cc3ac7216c0a7e9aa23902994bc22eb4ea21aa"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141504_531202_L1_one_guide_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T141504_531202_L1_one_guide_y_0.25N/force_curvature.csv",
+      "bytes": 202371,
+      "sha256": "9f7fd466768e982293ee88a9284958299062c28e7f9467e914488d6d6c9cf752"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141504_531202_L1_one_guide_y_0.25N/frames.json",
+      "relative_path": "runs/20261024T141504_531202_L1_one_guide_y_0.25N/frames.json",
+      "bytes": 309930,
+      "sha256": "9c2d669cb22804d06492c5522299949f16a424b30a2576675526bd4c698e2cd8"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141504_531202_L1_one_guide_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T141504_531202_L1_one_guide_y_0.25N/kit.log",
+      "bytes": 1177498,
+      "sha256": "6d95b6b1587f43cdec5354de7a1e6f8846abc1bfa0244678b0e46d2771a1fb9a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141504_531202_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T141504_531202_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "bytes": 1955,
+      "sha256": "b63e1cbdb10e81f8dd0e2b9114e4f4bd85c75b6c20132e106a279829e1c55862"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141522_484828_L2_two_guides_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T141522_484828_L2_two_guides_y_0.25N/force_curvature.csv",
+      "bytes": 196154,
+      "sha256": "1a9513045b39b6546bdaedf9f3d93ca4dd9aa78c6ea0d0ee8a37a320014de164"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141522_484828_L2_two_guides_y_0.25N/frames.json",
+      "relative_path": "runs/20261024T141522_484828_L2_two_guides_y_0.25N/frames.json",
+      "bytes": 291654,
+      "sha256": "1c70236133e215002d4017a00066ad7dbed4455e8fbf8dea116cdf023cca9ae1"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141522_484828_L2_two_guides_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T141522_484828_L2_two_guides_y_0.25N/kit.log",
+      "bytes": 1176309,
+      "sha256": "d90d1a498ce88e98fc5c1df67ef1bc72de97a1171e3697c050d227a620dfcb7a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T141522_484828_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T141522_484828_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "bytes": 1942,
+      "sha256": "afc22bb5a605a2005ef83fccf1a6ea71deb51340e319b0209c414cad979cd2f7"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142804_390270_L1_one_guide_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T142804_390270_L1_one_guide_y_0.25N/force_curvature.csv",
+      "bytes": 2320835,
+      "sha256": "f6dde929e6b35e338edbd6be751e7b71abca598567a28f75393fed22a6c0a612"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142804_390270_L1_one_guide_y_0.25N/frames.json",
+      "relative_path": "runs/20261024T142804_390270_L1_one_guide_y_0.25N/frames.json",
+      "bytes": 3337815,
+      "sha256": "c8ec8b7f99a69a8d79380dc5af038a395da4187279d2d2552737bc54b14ccfaf"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142804_390270_L1_one_guide_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T142804_390270_L1_one_guide_y_0.25N/kit.log",
+      "bytes": 1190946,
+      "sha256": "c6d4fbb2929fabb9291f1d4880fbf27cabb7dc6a7310878132545d62000b32c4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142804_390270_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T142804_390270_L1_one_guide_y_0.25N/physics_acceptance.json",
+      "bytes": 1906,
+      "sha256": "71df728e0f0190c542799f74c7dcdb74606646fd10cea3bbbd68719f289ed902"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142928_354702_L2_two_guides_y_0.25N/force_curvature.csv",
+      "relative_path": "runs/20261024T142928_354702_L2_two_guides_y_0.25N/force_curvature.csv",
+      "bytes": 2320835,
+      "sha256": "f6dde929e6b35e338edbd6be751e7b71abca598567a28f75393fed22a6c0a612"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142928_354702_L2_two_guides_y_0.25N/frames.json",
+      "relative_path": "runs/20261024T142928_354702_L2_two_guides_y_0.25N/frames.json",
+      "bytes": 3337815,
+      "sha256": "c8ec8b7f99a69a8d79380dc5af038a395da4187279d2d2552737bc54b14ccfaf"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142928_354702_L2_two_guides_y_0.25N/kit.log",
+      "relative_path": "runs/20261024T142928_354702_L2_two_guides_y_0.25N/kit.log",
+      "bytes": 1191873,
+      "sha256": "3db4c30deee158405e4f066f44695e73be2c5235bc308e1caa312081dd2b1cc9"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/20261024T142928_354702_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "relative_path": "runs/20261024T142928_354702_L2_two_guides_y_0.25N/physics_acceptance.json",
+      "bytes": 1907,
+      "sha256": "88b0df4c99809abf5f93a68b064a0caad130ca0f91d039390291445d0e724ac2"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_launch.log",
+      "relative_path": "runs/L0_launch.log",
+      "bytes": 43481,
+      "sha256": "282f2560fe3f0f20cccaa1b6f74b001e4df1eef0538cf3094b4bdc3ba5b56f5d"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_sensor_bench_960Hz_launch.log",
+      "relative_path": "runs/L0_sensor_bench_960Hz_launch.log",
+      "bytes": 45858,
+      "sha256": "e848bb639da68b9f1227e0d53bdaccca646606f66a3d3819bc2e0272d6d69506"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_sensor_bench_x_0N_launch.log",
+      "relative_path": "runs/L0_sensor_bench_x_0N_launch.log",
+      "bytes": 44211,
+      "sha256": "1ea519d96a578468588cc8ce0b885d7db8eb66fb3b8d0f1e2d11a23fc1963225"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_sensor_bench_x_1.5N_launch.log",
+      "relative_path": "runs/L0_sensor_bench_x_1.5N_launch.log",
+      "bytes": 1223531,
+      "sha256": "34e6f8269266d508dc5eb588f1cb6d84c591bec604d26f5a7c8c18b32d3beaa5"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_stability_launch.log",
+      "relative_path": "runs/L0_stability_launch.log",
+      "bytes": 45850,
+      "sha256": "34a97d9fb9bf7bf6e478156440ffbb2fab74bf01aa3ee73f32f1c6b3de857628"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_tensor_launch.log",
+      "relative_path": "runs/L0_tensor_launch.log",
+      "bytes": 44278,
+      "sha256": "c20456d489286c76bbd6ea6909c01faffae991f18e1ee80bf3cd5e96c882ee22"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L0_verified_launch.log",
+      "relative_path": "runs/L0_verified_launch.log",
+      "bytes": 44217,
+      "sha256": "d6ee98ec78fc8738ab5b86bdba963ff01bba3d80bf3ba598eed98407b842be7c"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L1_one_guide_960Hz_launch.log",
+      "relative_path": "runs/L1_one_guide_960Hz_launch.log",
+      "bytes": 45034,
+      "sha256": "d6d12c3c91e0f8d14eaf09d8dfd50958310ae7d51b04a67965fefe6687590b37"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L1_one_guide_controlled_launch.log",
+      "relative_path": "runs/L1_one_guide_controlled_launch.log",
+      "bytes": 51578,
+      "sha256": "b7c7a0a88f3b5af38ead2108f65171c770743b1b8d5bf826b9ea68ddcfdc9b4c"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L1_one_guide_y_0.25N_launch.log",
+      "relative_path": "runs/L1_one_guide_y_0.25N_launch.log",
+      "bytes": 1152572,
+      "sha256": "f6cead2e56ed309a9b047fdc0e87f8aa80cbb664fa318abcf7b213f7a3e7a28b"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L2_two_guides_960Hz_launch.log",
+      "relative_path": "runs/L2_two_guides_960Hz_launch.log",
+      "bytes": 45191,
+      "sha256": "8b20beb9ad6226bc3aa0ebb710c7b3ca1440ad0e4f3d82063ae00e37cbb0771a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L2_two_guides_controlled_launch.log",
+      "relative_path": "runs/L2_two_guides_controlled_launch.log",
+      "bytes": 51582,
+      "sha256": "63fe52eb9ef8503718e662fb94aec8cbf0082066a9cb0343e731eabd0b6fd4b7"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/L2_two_guides_y_0.25N_launch.log",
+      "relative_path": "runs/L2_two_guides_y_0.25N_launch.log",
+      "bytes": 1783537,
+      "sha256": "458eabbff3322502d67a3b246c1af115936d342ccde6f59a0559315b93119a2d"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/gui_20261024T143311_251593/metrics.jsonl",
+      "relative_path": "runs/gui_20261024T143311_251593/metrics.jsonl",
+      "bytes": 117188,
+      "sha256": "809b5b88d53861790ea6d0cb3b3b97b8a565e278f87f28265accfafddd0978b6"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/monitor_kit.log",
+      "relative_path": "runs/monitor_kit.log",
+      "bytes": 1217505,
+      "sha256": "416c3c56ab190f0413791aa91c1c405639292399b6acbb140c76bb6abef202f1"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runs/monitor_smoke_launch.log",
+      "relative_path": "runs/monitor_smoke_launch.log",
+      "bytes": 43069,
+      "sha256": "e73f13055dab56899993f2e9284de011afe0414049648719de98de69a0fb0862"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/build.py",
+      "relative_path": "scripts/build.py",
+      "bytes": 14551,
+      "sha256": "59dad59bbb29cacadccb6bae96b69893b6d6d1cca47a3e8445b06ed4f6fb9c50"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/finalize.py",
+      "relative_path": "scripts/finalize.py",
+      "bytes": 9353,
+      "sha256": "9f7469ae67a42997d47fcb375ff574d0ac55b8448f6b480df6bea33d7dace09a"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/launch_monitor.py",
+      "relative_path": "scripts/launch_monitor.py",
+      "bytes": 7471,
+      "sha256": "599afac80f376395f08f6a60f40c3bf947045ad0b6b966a505d631484676ed84"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/metrics.py",
+      "relative_path": "scripts/metrics.py",
+      "bytes": 1959,
+      "sha256": "6b11cce04cae9034acb373a8539dad9054ac7beb3e69e659c3058b099d6f3919"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/monitor_smoke.py",
+      "relative_path": "scripts/monitor_smoke.py",
+      "bytes": 1581,
+      "sha256": "f18dfbc7856c229ca9fc67bc1142ba18b67650bf65e661312e1f1982cd6433cd"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/package.py",
+      "relative_path": "scripts/package.py",
+      "bytes": 5872,
+      "sha256": "c2dbcec7b6430e3a7d46688e528f569ab44775d08d56e1a283f70dac77275745"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/run_bench.py",
+      "relative_path": "scripts/run_bench.py",
+      "bytes": 9146,
+      "sha256": "0e8e60d5054ca1a71fcbfbb7b26124b749b78a6eeb9320daadc98adc05e6454e"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/guide_column_D36_H35.stl",
+      "relative_path": "stl/guide_column_D36_H35.stl",
+      "bytes": 105984,
+      "sha256": "aa24f2202801e7f226fb57b80b33e7ed57641782bf5532cc7d456398c8496bb4"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/mount_tile_160x120.stl",
+      "relative_path": "stl/mount_tile_160x120.stl",
+      "bytes": 291684,
+      "sha256": "13bdd795d524beb730bf17275983a1daaa635636f773140913fbf838ea01a045"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/nut_custom_D10_P2_clearance_030.stl",
+      "relative_path": "stl/nut_custom_D10_P2_clearance_030.stl",
+      "bytes": 1210884,
+      "sha256": "fd59777a7d8e358814a1b2d2498d2270405989f096b9a7d78192614fb075b8f7"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/relief_collar_lower_candidate.stl",
+      "relative_path": "stl/relief_collar_lower_candidate.stl",
+      "bytes": 49284,
+      "sha256": "d7e1b8126581cbc4346d3a05b7b1c068a1d38169ed24463e5f739089ee2f8181"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/relief_collar_upper_candidate.stl",
+      "relative_path": "stl/relief_collar_upper_candidate.stl",
+      "bytes": 49284,
+      "sha256": "53d5085f3f7311b26c2d8d855b7d578c84d25ff9b23f77bb3b4aeaf8ef2512eb"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/screw_custom_D10_P2.stl",
+      "relative_path": "stl/screw_custom_D10_P2.stl",
+      "bytes": 2319284,
+      "sha256": "63b7dc0de07d4007e168f44f72efe6c85d273e81046ef77b034c472904512431"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/stl/screw_custom_D10_P2_shaft36.stl",
+      "relative_path": "stl/screw_custom_D10_P2_shaft36.stl",
+      "bytes": 4623284,
+      "sha256": "2188f16a8871c52a71068b7b2b1af58a7a8890736542f60a67876ab1244a7a0f"
+    },
+    {
+      "path": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/variant_catalog.json",
+      "relative_path": "variant_catalog.json",
+      "bytes": 560,
+      "sha256": "a5770313629aa7d8a3dd61bd566e5618eac24b4e623a68987df0e92fc74313cd"
+    }
+  ],
+  "excluded_cache_directories": [
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/runtime",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/scripts/__pycache__"
+  ],
+  "main_stage_unchanged_sha256": "cc1346a98e64223262c8ba016f72f599440b87311eebd791dd32bcbe6a3af2cb"
+}

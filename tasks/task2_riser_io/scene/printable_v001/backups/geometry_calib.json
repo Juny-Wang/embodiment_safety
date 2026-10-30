@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "TASK2_STUB_UNMEASURED_2026-10-24",
+  "notes": [
+    "Hole layout assumed from pcb_4_terminal MountHole (\u00b10.06, \u00b10.03) m.",
+    "Alignment tolerances soft until Kit/teleop measurement.",
+    "Do not treat as mechanical acceptance."
+  ],
+  "alignment": {
+    "xy_tol_m": 0.003,
+    "tilt_tol_deg": 5.0,
+    "source": "assumed_for_gates"
+  },
+  "holes_local_m": [
+    {
+      "name": "Hole_1",
+      "x": -0.06,
+      "y": -0.03
+    },
+    {
+      "name": "Hole_2",
+      "x": 0.06,
+      "y": -0.03
+    },
+    {
+      "name": "Hole_3",
+      "x": -0.06,
+      "y": 0.03
+    },
+    {
+      "name": "Hole_4",
+      "x": 0.06,
+      "y": 0.03
+    }
+  ],
+  "pcb4_world": [
+    -0.05,
+    -0.05,
+    0.75
+  ],
+  "nut_plate_world": [
+    -0.05,
+    -0.05,
+    0.744
+  ],
+  "screw_tray_world": [
+    0.22,
+    -0.28,
+    0.75
+  ],
+  "metric": "M4"
+}

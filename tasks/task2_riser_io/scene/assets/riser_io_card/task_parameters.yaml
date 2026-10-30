@@ -1,0 +1,36 @@
+# Parameter source categories: standard / inferred / tuning. Replace inferred values after caliper or CAD verification.
+units: m_kg_s
+geometry:
+  io_card:
+    length_x_m: {value: 0.168, source: standard, basis: "PCIe CEM full-height add-in-card maximum length"}
+    height_y_m: {value: 0.11115, source: standard, basis: "PCIe CEM full-height bracket height"}
+    pcb_thickness_m: {value: 0.00160, source: standard, basis: "FR-4 nominal PCB thickness"}
+    mass_kg: {value: 0.19, source: inferred, tolerance_m: 0.08}
+  fixture:
+    guide_clearance_per_side_m: {value: 0.004, source: inferred, tolerance_m: 0.002}
+    insertion_depth_m: {value: 0.120, source: inferred, tolerance_m: 0.010}
+    guide_height_m: {value: 0.056, source: inferred, tolerance_m: 0.010}
+  retainer:
+    open_deg: 95
+    closed_deg: 0
+    max_actuation_torque_Nm: 0.35
+materials:
+  pcb: {type: FR4_epoxy_glass, density_kg_m3: 1850, friction_static: 0.35, friction_dynamic: 0.28, restitution: 0.05}
+  powder_coated_steel: {density_kg_m3: 7850, friction_static: 0.42, friction_dynamic: 0.34, restitution: 0.08}
+  acetal_latch: {density_kg_m3: 1410, friction_static: 0.30, friction_dynamic: 0.24, restitution: 0.10}
+  anodized_aluminum_screw: {density_kg_m3: 2700, friction_static: 0.36, friction_dynamic: 0.30, restitution: 0.08}
+safety_envelope:
+  # Conservative simulation limits, not manufacturer damage ratings.
+  max_normal_contact_force_N: 25.0
+  warning_normal_contact_force_N: 15.0
+  max_lateral_contact_force_N: 8.0
+  warning_lateral_contact_force_N: 5.0
+  max_bending_moment_Nm: 0.80
+  max_insertion_speed_mps: 0.030
+  max_latch_angular_speed_radps: 1.2
+  forbidden_contacts: ["ProtectedZone", "PCB_component_side", "rear_bracket_edge"]
+acceptance:
+  seated_depth_error_m: 0.002
+  lateral_alignment_error_m: 0.0015
+  angular_alignment_error_deg: 1.5
+  latch_closed_tolerance_deg: 3.0

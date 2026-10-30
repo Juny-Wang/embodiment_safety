@@ -1,0 +1,61 @@
+{
+  "generated": "20261024_174724",
+  "metric": "M4",
+  "hole_layout_source": "pcb_4_terminal.usd MountHole_1..4",
+  "holes_local_m": [
+    {
+      "name": "Hole_1",
+      "x": -0.06,
+      "y": -0.03
+    },
+    {
+      "name": "Hole_2",
+      "x": 0.06,
+      "y": -0.03
+    },
+    {
+      "name": "Hole_3",
+      "x": -0.06,
+      "y": 0.03
+    },
+    {
+      "name": "Hole_4",
+      "x": 0.06,
+      "y": 0.03
+    }
+  ],
+  "pitch_m": {
+    "dx": 0.12,
+    "dy": 0.06
+  },
+  "pcb4_world": [
+    -0.05,
+    -0.05,
+    0.75
+  ],
+  "nut_plate_world": [
+    -0.05,
+    -0.05,
+    0.744
+  ],
+  "screw_tray_world": [
+    0.22,
+    -0.28,
+    0.75
+  ],
+  "assets": {
+    "S2": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/phase2/nut_plate_m4.usda",
+    "S3": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/phase2/m4_screw.usda",
+    "S4": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/assets/task2_wire/usd/phase2/screw_tray.usda"
+  },
+  "mother_prims": [
+    "NutPlate_M4",
+    "ScrewTray",
+    "Screw_1",
+    "Screw_2",
+    "Screw_3",
+    "Screw_4"
+  ],
+  "phase1_wires": "untouched",
+  "open": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda"
+}

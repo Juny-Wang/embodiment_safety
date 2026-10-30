@@ -1,0 +1,33 @@
+[
+  {
+    "order": -100000,
+    "return": false,
+    "trace": [
+      "capture"
+    ]
+  },
+  {
+    "order": -100000,
+    "return": true,
+    "trace": [
+      "capture",
+      "downstream"
+    ]
+  },
+  {
+    "order": 100000,
+    "return": false,
+    "trace": [
+      "downstream",
+      "capture"
+    ]
+  },
+  {
+    "order": 100000,
+    "return": true,
+    "trace": [
+      "downstream",
+      "capture"
+    ]
+  }
+]

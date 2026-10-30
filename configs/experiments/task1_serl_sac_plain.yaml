@@ -1,0 +1,13 @@
+# Task1 × SERL SAC (plain success, no safety constraints)
+task: task1_dimm_insert
+algo: serl
+stage: plain_sac
+env: Embodied-Task1-DimmInsert-Plain-v0
+control_mode: diff_ik
+max_steps: 35000
+start_steps: 1000
+batch_size: 256
+offline_demo: none
+notes: |
+  Scaffold 2026-10-25. Run via algos/serl/run_sac_online.sh after GPU free.
+  Demos: see algos/serl/DEMO_REQUIREMENTS.md

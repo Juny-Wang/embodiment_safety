@@ -1,0 +1,28 @@
+# Experiment: task1_dimm_insert × rsl_rl_ppo × Stage 1A
+task_id: task1_dimm_insert
+algo_id: rsl_rl_ppo
+stage: stage1a
+
+# Authoritative slim scene (real copy, not symlink)
+scene_path: tasks/task1_dimm_insert/scene
+
+# Env factory: fake | isaac_lab
+# --dry-run forces fake; omit --dry-run and set isaac_lab to hit Lab stub path
+backend: fake
+max_episode_steps: 500
+num_envs: 64
+seed: 42
+device: cuda:0
+
+# Algo hyperparams file (relative to repo root or algo package)
+algo_cfg: algos/rsl_rl_ppo/cfg/stage1a.yaml
+
+# Artifacts
+output_dir: outputs/runs/task1_dimm_insert/rsl_rl_ppo/stage1a
+
+notes: |
+  Stage 1A: low-dim state obs from sim (no vision).
+  Default backend=fake keeps FakeEnv smoke.
+  For Lab wiring probe: --backend isaac_lab (no GUI train; construct smoke only).
+  Real learn() needs DirectRLEnv + allow_long_run / --do-learn (see WIRING.md).
+  franka_sim/t1_rl intentionally unused.

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Outputs / demos / logs
+outputs/
+**/runs/
+*.pkl
+*.log
+*.ckpt
+*.pt
+*.pth
+wandb/
+tb_logs/
+tensorboard/
+
+# Isaac / USD caches & backups
+*ShaderCache*
+.cache/
+*.bak*
+*.bak_*
+*.usd[ac].checkpoint*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Large / generated scene junk (keep source usda + scripts)
+**/scene/runs/
+**/teleop_runs/
+**/logs/
+
+# Isaac runtime / GPU caches
+**/runtime/
+**/nv_shadercache/
+**/DerivedDataCache/
+**/ShaderCache/
+**/OmniCache/
+**/cache/
+
+# Scene experiment dumps / reports / backups
+**/scene/**/reports/
+**/scene/**/*.bak*
+**/scene/*.bak*
+**/scene/**/*.patch
+
+# Prefer keeping only published usda at scene root + assets/scripts

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+  "source_scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+  "source_sha256": "cc1346a98e64223262c8ba016f72f599440b87311eebd791dd32bcbe6a3af2cb",
+  "units": {
+    "length": "m",
+    "force": "N",
+    "moment": "N*m",
+    "STL": "mm"
+  },
+  "guide_paths": [
+    "/Task2WireGuides/Post_1",
+    "/Task2WireGuides/Post_2"
+  ],
+  "wire_roots": [
+    "/wire1",
+    "/wire2",
+    "/wire3",
+    "/wire4"
+  ],
+  "thresholds": {
+    "source": "DEMONSTRATION_ONLY_NOT_MATERIAL_LIMIT",
+    "joint_reaction_N": 1.0,
+    "guide_normal_N": 1.0,
+    "min_bend_radius_m": 0.035,
+    "warning_ratio": 0.7,
+    "mode": "warning_only"
+  },
+  "force_location": "Wire-to-guide actual normal contact only; near-end/internal joint reaction unavailable in retained maximal-coordinate chain.",
+  "material_stress_available": false,
+  "strain_relief_verified": false,
+  "monitor_mode": "CONTACT_AND_BEND_ONLY_INTERNAL_LOAD_UNAVAILABLE",
+  "diagnostic_articulation_promoted": false
+}

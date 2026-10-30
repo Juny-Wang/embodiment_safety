@@ -1,0 +1,55 @@
+# RSL-RL PPO hyperparameters — Task1 PLAIN (task completion only)
+# No safety constraints in reward/termination. Parallel to Stage 1A.
+# Mapped to rsl_rl 5.x train_cfg by runner.build_rsl_train_cfg.
+
+stage: plain
+algo: rsl_rl_ppo
+reward_mode: plain
+
+num_envs: 64
+seed: 42
+device: cuda:0
+
+num_steps_per_env: 24
+max_iterations: 10000
+save_interval: 50
+experiment_name: task1_plain_ppo
+run_name: ""
+logger: tensorboard
+
+output_dir: outputs/runs/task1_dimm_insert/rsl_rl_ppo/task1_plain_ppo
+
+learning_rate: 1.0e-3
+gamma: 0.99
+lam: 0.95
+clip_param: 0.2
+entropy_coef: 0.01
+value_loss_coef: 1.0
+max_grad_norm: 1.0
+num_learning_epochs: 5
+num_mini_batches: 4
+desired_kl: 0.01
+use_clipped_value_loss: true
+schedule: adaptive
+init_noise_std: 1.0
+
+actor_hidden_dims: [256, 256, 128]
+critic_hidden_dims: [256, 256, 128]
+activation: elu
+actor_obs_normalization: false
+critic_obs_normalization: false
+
+# Env-side (documented; kit_train_plain applies these)
+w_force_penalty: 0.0
+w_success: 20.0
+w_align: 2.5
+w_approach: 1.5
+near_align_xy_m: 0.04
+disable_safety_terminate: true
+
+notes: |
+  PLAIN = task completion only (DIMM seated + xy + dual latch).
+  NO force_penalty, NO overforce episode fail.
+  Stage1A safety track untouched — use cfg/stage1a.yaml + kit_train.py there.
+  2026-10-25 follow-up: max_iterations 10000; w_align 2.5; w_approach 1.5;
+  near_align_xy_m 0.04 for early reachability. Still NO force_penalty.

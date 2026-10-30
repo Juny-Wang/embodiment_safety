@@ -1,0 +1,648 @@
+#usda 1.0
+(
+    defaultPrim = "FlexibleCable"
+    metersPerUnit = 0.001
+    upAxis = "Z"
+)
+
+def Xform "FlexibleCable"
+{
+    def Capsule "Segment_00" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxRigidBodyAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        uniform bool physxRigidBody:kinematicEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (9.58333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_01" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (28.75000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_02" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (47.91666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_03" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (67.08333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_04" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (86.25000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_05" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (105.41666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_06" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (124.58333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_07" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (143.75000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_08" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (162.91666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_09" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (182.08333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_10" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (201.25000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_11" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (220.41666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_12" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (239.58333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_13" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (258.75000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_14" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (277.91666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_15" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (297.08333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_16" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (316.25000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_17" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (335.41666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_18" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (354.58333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_19" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (373.75000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_20" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (392.91666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_21" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (412.08333333, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_22" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (431.25000000, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Capsule "Segment_23" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+    )
+    {
+        uniform token axis = "X"
+        double height = 19.16666667
+        double radius = 3.50000000
+        uniform token physics:approximation = "convexHull"
+        uniform bool physics:collisionEnabled = true
+        float physics:mass = 0.00075
+        uniform bool physics:rigidBodyEnabled = true
+        color3f[] primvars:displayColor = [(0.16, 0.16, 0.16)]
+        double3 xformOp:translate = (450.41666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def PhysicsRevoluteJoint "Joint_00"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_00>
+        rel physics:body1 = </FlexibleCable/Segment_01>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_01"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_01>
+        rel physics:body1 = </FlexibleCable/Segment_02>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_02"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_02>
+        rel physics:body1 = </FlexibleCable/Segment_03>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_03"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_03>
+        rel physics:body1 = </FlexibleCable/Segment_04>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_04"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_04>
+        rel physics:body1 = </FlexibleCable/Segment_05>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_05"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_05>
+        rel physics:body1 = </FlexibleCable/Segment_06>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_06"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_06>
+        rel physics:body1 = </FlexibleCable/Segment_07>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_07"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_07>
+        rel physics:body1 = </FlexibleCable/Segment_08>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_08"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_08>
+        rel physics:body1 = </FlexibleCable/Segment_09>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_09"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_09>
+        rel physics:body1 = </FlexibleCable/Segment_10>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_10"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_10>
+        rel physics:body1 = </FlexibleCable/Segment_11>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_11"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_11>
+        rel physics:body1 = </FlexibleCable/Segment_12>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_12"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_12>
+        rel physics:body1 = </FlexibleCable/Segment_13>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_13"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_13>
+        rel physics:body1 = </FlexibleCable/Segment_14>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_14"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_14>
+        rel physics:body1 = </FlexibleCable/Segment_15>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_15"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_15>
+        rel physics:body1 = </FlexibleCable/Segment_16>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_16"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_16>
+        rel physics:body1 = </FlexibleCable/Segment_17>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_17"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_17>
+        rel physics:body1 = </FlexibleCable/Segment_18>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_18"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_18>
+        rel physics:body1 = </FlexibleCable/Segment_19>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_19"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_19>
+        rel physics:body1 = </FlexibleCable/Segment_20>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_20"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_20>
+        rel physics:body1 = </FlexibleCable/Segment_21>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_21"
+    {
+        uniform token physics:axis = "Y"
+        rel physics:body0 = </FlexibleCable/Segment_21>
+        rel physics:body1 = </FlexibleCable/Segment_22>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+    def PhysicsRevoluteJoint "Joint_22"
+    {
+        uniform token physics:axis = "Z"
+        rel physics:body0 = </FlexibleCable/Segment_22>
+        rel physics:body1 = </FlexibleCable/Segment_23>
+        point3f physics:localPos0 = (9.58333333, 0, 0)
+        point3f physics:localPos1 = (-9.58333333, 0, 0)
+        float physics:lowerLimit = -12
+        float physics:upperLimit = 12
+    }
+
+}

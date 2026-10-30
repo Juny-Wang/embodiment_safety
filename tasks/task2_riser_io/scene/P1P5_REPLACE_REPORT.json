@@ -1,0 +1,70 @@
+{
+  "mother": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+  "bytes_before": 275736,
+  "bytes_after": 275984,
+  "changes": [
+    {
+      "id": "P1",
+      "status": "done",
+      "action": "replaced Meshy with Task1PCB",
+      "payload": "./assets/task2_wire/usd/Task1PCB.usd",
+      "pose": "(-0.080,-0.120,0.752) kinematic unitsResolve=0.01",
+      "note": "pcb_board.usd skipped (ati/guide/pcie deps deferred); board.usd is ATI adapter not PCB"
+    },
+    {
+      "id": "P2",
+      "status": "done",
+      "action": "PCB_holder kinematic=1, vels zeroed; mesh kept",
+      "payload": "./assets/task2_wire/usd/PCB_holder.usd",
+      "note": "Disk 25MB unchanged; physics kinematic. Task1Fixture not swapped (footprint unknown w/o Kit)."
+    },
+    {
+      "id": "P3",
+      "status": "done",
+      "action": "TBY21_M3_1 scale=(1,1,1) mesh local reset",
+      "payload": "./assets/task2_wire/usd/TBY21_M3_1.usd",
+      "translate": "(-0.013508299062884905, -0.010826314242431974, 0.7432384797739549)"
+    },
+    {
+      "id": "P4",
+      "status": "done",
+      "action": "TBY21_M3_02 scale=(1,1,1) mesh local reset",
+      "payload": "./assets/task2_wire/usd/TBY21_M3_1.usd",
+      "translate": "(-0.12093778669032883, 0.223443295249529, 0.743239303274926)"
+    },
+    {
+      "id": "P5",
+      "status": "done",
+      "action": "added PCB_4_Terminal kinematic",
+      "payload": "./assets/task2_wire/usd/pcb_4_terminal.usd",
+      "pose": "(-0.050,-0.050,0.750)",
+      "seat_targets": [
+        "Terminal_1_M4Stud",
+        "Terminal_2_M4Stud",
+        "Terminal_3_M4Stud",
+        "Terminal_4_M4Stud"
+      ],
+      "note": "Primary 4-wire seats; TBY21 kept as legacy. P6 ring scale not changed."
+    },
+    {
+      "id": "P6",
+      "status": "skipped",
+      "action": "ring scale 2200 left; Kit measure vs M4 r=0.002 later"
+    }
+  ],
+  "checks": {
+    "has_Task1PCB": true,
+    "no_Meshy_prim": true,
+    "holder_kinematic": true,
+    "tby1_scale_1": true,
+    "tby2_scale_1": false,
+    "has_pcb4": true,
+    "meshy_file_kept": true
+  },
+  "checks_post_repair": {
+    "tby02_intact": true,
+    "pcb4_separate": true,
+    "docs_appended": true
+  },
+  "note": "P5 insert briefly corrupted TBY21_M3_02 customData brace; repaired same day."
+}

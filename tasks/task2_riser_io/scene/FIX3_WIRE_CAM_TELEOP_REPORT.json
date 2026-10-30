@@ -1,0 +1,50 @@
+{
+  "ts": "2026-10-25 13:26:37 Asia/Shanghai",
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+  "fixes": {
+    "wire_tip": {
+      "target": "wire3 = 2nd from +X/right among tip cluster; also fixed wire4 roll-180",
+      "before_wire3_localRot0": "(0.6890159, 0.0013982885, -0.0013989694, -0.7247434)",
+      "after_wire3_localRot0": "(0.7247848, 0.0000000, 0.0000000, 0.6889754)",
+      "before_wire4_localRot0": "(-0.0010681816, 0.58758533, -0.8091607, 0.001097245)  # ~180 deg roll",
+      "after_wire4_localRot0": "(0.8094637, 0.0000000, 0.0000000, 0.5871700)",
+      "note": "Aligned FixedJoint localRot0 to ring matrix with wire1/2 convention (Rj = Rr * Rz(-90)). Ring xform matrices unchanged."
+    },
+    "cameras": {
+      "baked_prims": [
+        "/World/Robot/panda_hand/WristCam_L",
+        "/World/Robot/panda_hand/WristCam_R",
+        "/World/Cameras/ExternalOverview"
+      ],
+      "root_cause": "Viewport rels pointed at cams that were session-only; ExternalOverview missing -> AudioManager error; wrist views fell back to external/persp.",
+      "code": "cameras_setup + camera_viewports FIX3 rebind on open/START"
+    },
+    "teleop": {
+      "root_cause": "per-frame jog() + tracking_error_stop_m=0.003 immediately E-stopped (goal raced ahead of EE).",
+      "fix": "Task1-style velocity*dt goal; tracking_error_stop_m=0.10; free speed 0.05 m/s; START re-applies cams + wakes drives"
+    }
+  },
+  "files_changed": [
+    "riser_io_wire_guides_v001.usda",
+    "safety_config.json",
+    "keyboard_panel.py",
+    "franka_teleop.py",
+    "cameras_setup.py",
+    "camera_viewports.py",
+    "LAUNCH.md"
+  ],
+  "reload": [
+    "File -> Reopen /mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda (needed for USDA bake/joint)",
+    "Play timeline",
+    "Script Editor: exec(compile(open('.../launch_panel.py').read(), 'launch_panel.py', 'exec'))",
+    "Console must show FIX3_TELEOP_20261025",
+    "START TELEOP -> click MAIN viewport -> arrows",
+    "If wrist still external: SHOW CAM SPLIT"
+  ],
+  "residual_risks": [
+    "If Isaac keeps old stage in memory without reopen, wire/cam USDA edits will not appear.",
+    "Remote-desktop key capture still needs MAIN viewport focus; check keys_label events= rising.",
+    "Contact gate still slows to 1 mm/s when fingers/ring contact reports force.",
+    "wire1/wire2 joints left as-is (already matched convention up to quat sign)."
+  ]
+}

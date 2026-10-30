@@ -1,0 +1,156 @@
+{
+  "tag": "WIRE_JITTER_FIX_20261025",
+  "timestamp_local": "20261025_164249",
+  "timezone": "Asia/Shanghai",
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+  "backup": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda.bak_pre_jitter_20261025_164249",
+  "root_cause": [
+    "FixedJoint between each wire ring terminal and Segment_23 had large rest-pose frame errors (pos up to ~22mm, rotation ~90-173 deg).",
+    "On Play, PhysX instantly tries to satisfy those FixedJoints on a 0.75g x24 scaled capsule chain -> violent thrashing.",
+    "Secondary: several distal segments rest at/just into table top (z~0.75) with contactOffset chatter on ultra-light bodies; ArticulationRootAPI deleted so maximal-coordinate joints are less stable."
+  ],
+  "fixed_joint_realign": [
+    {
+      "wire": "wire1",
+      "err_mm_before": 8.016,
+      "rot_deg_before": 92.083,
+      "err_mm_after": 0.0,
+      "rot_deg_after": 0.0,
+      "localPos0_before": [
+        0.0,
+        0.023,
+        0.0035
+      ],
+      "localPos0_after": [
+        -0.0078938119,
+        0.0216029566,
+        0.0035
+      ],
+      "localRot0_before": [
+        -0.6426817,
+        -0.0014062674,
+        0.0014070958,
+        0.7661308
+      ],
+      "localRot0_after": [
+        0.5880435251,
+        0.570797152,
+        -0.3993887296,
+        -0.4109550663
+      ]
+    },
+    {
+      "wire": "wire2",
+      "err_mm_before": 22.489,
+      "rot_deg_before": 92.837,
+      "err_mm_after": 0.0,
+      "rot_deg_after": 0.0,
+      "localPos0_before": [
+        0.0,
+        0.023,
+        0.0035
+      ],
+      "localPos0_after": [
+        -0.0196181989,
+        0.0120052602,
+        0.0035
+      ],
+      "localRot0_before": [
+        -0.5062417,
+        0.000928118,
+        -0.0007592496,
+        0.8623908
+      ],
+      "localRot0_after": [
+        0.9062655787,
+        -0.3227207083,
+        0.0570039952,
+        -0.266991741
+      ]
+    },
+    {
+      "wire": "wire3",
+      "err_mm_before": 2.329,
+      "rot_deg_before": 173.423,
+      "err_mm_after": 0.0,
+      "rot_deg_after": 0.0,
+      "localPos0_before": [
+        0.0,
+        0.023,
+        0.0035
+      ],
+      "localPos0_after": [
+        -0.0023258063,
+        0.0228821027,
+        0.0035
+      ],
+      "localRot0_before": [
+        0.7247848,
+        0.0,
+        0.0,
+        0.6889754
+      ],
+      "localRot0_after": [
+        0.5595664224,
+        0.4872847493,
+        -0.4404818107,
+        -0.5053857601
+      ]
+    },
+    {
+      "wire": "wire4",
+      "err_mm_before": 14.281,
+      "rot_deg_before": 157.95,
+      "err_mm_after": 0.0,
+      "rot_deg_after": 0.0,
+      "localPos0_before": [
+        0.0,
+        0.023,
+        0.0035
+      ],
+      "localPos0_after": [
+        -0.0135755886,
+        0.0185661895,
+        0.0035
+      ],
+      "localRot0_before": [
+        0.8094637,
+        0.0,
+        0.0,
+        0.58717
+      ],
+      "localRot0_after": [
+        0.3813770108,
+        -0.806007985,
+        0.4060461248,
+        -0.2000731074
+      ]
+    }
+  ],
+  "secondary_stability": {
+    "wire_root_z_lift_m": 0.01,
+    "angularDamping": "8->40",
+    "linearDamping": "0.2->5",
+    "maxAngularVelocity": "6->2",
+    "maxLinearVelocity": "0.8->0.35",
+    "maxDepenetrationVelocity": "0.05->0.015",
+    "drive_damping": "0.8->12",
+    "jointFriction": "0.06->0.4",
+    "revolute_limits_deg": "+/-90 -> +/-30",
+    "segment_mass_override_kg": 0.004,
+    "physxScene_pos_iters": "32->64",
+    "physxScene_vel_iters": "4->8"
+  },
+  "preserved": [
+    "FIX4 teleop/Z",
+    "SCREW_ON_NEST reseat",
+    "breakForce/breakTorque on FixedJoint",
+    "wire self filteredPairs"
+  ],
+  "user_steps": [
+    "In Isaac: File -> Reload (or Fetch if NEW VERSION DETECTED), do NOT need to kill Kit if reload works.",
+    "If Reload flaky after large USDA edit: Stop sim, File->Open the same usda path again.",
+    "Press Play: wires should sag mildly, not thrash.",
+    "Optional: run launch_panel.py; console may show WIRE_JITTER_FIX_20261025 if banner hooked."
+  ]
+}

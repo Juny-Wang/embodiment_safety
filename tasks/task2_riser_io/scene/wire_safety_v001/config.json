@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "status": "ISOLATED_DIAGNOSTIC_NOT_TRAINING",
+  "units": {
+    "length": "m",
+    "force": "N",
+    "moment": "N*m"
+  },
+  "scenes": {
+    "L0_sensor_bench": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L0_sensor_bench.usda",
+    "L1_one_guide": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L1_one_guide.usda",
+    "L2_two_guides": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/wire_safety_v001/L2_two_guides.usda"
+  },
+  "source_stage": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_preview.usda",
+  "source_sha256": "cc1346a98e64223262c8ba016f72f599440b87311eebd791dd32bcbe6a3af2cb",
+  "wire": {
+    "diameter_m": 0.007,
+    "centerline_length_m": 0.46,
+    "segments": 24,
+    "mass_kg": 0.024,
+    "model": "spherical rigid-link chain; no calibrated elastic or axial constitutive law",
+    "material_stress_available": false
+  },
+  "thresholds": {
+    "source": "DEMONSTRATION_ONLY_NOT_DAMAGE_LIMIT",
+    "connector_force_N": 1.0,
+    "minimum_bend_radius_m": 0.035,
+    "guide_normal_force_N": 1.0,
+    "warning_ratio": 0.7,
+    "mode": "warning_only"
+  },
+  "variants": {
+    "L0": {
+      "guides": 0
+    },
+    "L1": {
+      "guides": 1
+    },
+    "L2": {
+      "guides": 2
+    },
+    "length_and_stiffness_randomization": {
+      "enabled": false,
+      "reason": "requires calibrated material and feasible route checks"
+    }
+  },
+  "gates": {
+    "promote_to_main": false,
+    "strain_relief_effect_verified": false,
+    "full_task_ready": false
+  },
+  "collar": {
+    "bore_m": 0.0074,
+    "wire_m": 0.007,
+    "radial_clearance_m": 0.0002,
+    "preload_N": null,
+    "claim": "locator candidate only; no axial load relief claimed without measured preload/compliance"
+  },
+  "solver": {
+    "physics_hz": 960,
+    "solver": "TGS",
+    "position_iterations": 64,
+    "velocity_iterations": 16
+  },
+  "guide_centers_m": [
+    [
+      0.2,
+      0.04,
+      0
+    ],
+    [
+      0.32,
+      -0.04,
+      0
+    ]
+  ],
+  "variant_randomization_enabled": false
+}
