@@ -24,9 +24,9 @@ class Dataset:
   self.episode=Path(self.manifest["episode"])
  def __len__(self):return len(self.rows)
  def get(self,i):
-  r=self.rows[i];l=r["label"]
-  return dict(observations=policy.load_observation(r["observations"],self.episode,l["progress_before"]),
-   next_observations=policy.load_observation(r["next_observations"],self.episode,l["progress_after"]),
+  r=self.rows[i];l=r["label"];episode=Path(r.get("episode",self.episode))
+  return dict(observations=policy.load_observation(r["observations"],episode,l["progress_before"]),
+   next_observations=policy.load_observation(r["next_observations"],episode,l["progress_after"]),
    actions=np.asarray(r["actions"],np.float32),rewards=np.float32(l["reward"]),
    masks=np.float32(l["mask"]),dones=bool(l["terminated"] or l["truncated"]))
 def prepare(cfg,root):

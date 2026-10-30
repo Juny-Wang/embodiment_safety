@@ -40,10 +40,10 @@ ssh isaac-b "cd /mnt/data2/wjy_SERL/Embodied_Safety && ..."
 ## 实际训练数据
 
 `configs/data_manifest.json` 给出本机路径。
-- 当前可直接训练：1 个已验证完整回合，1349 个保持100ms转移，4050张边界RGB，回报1.40。
+- 当前可直接训练：1个完整回合的1349条转移，加493条严格对齐的历史片段，共1842条。完整回合回报1.40。
 - 原始1350条中的最后1条已位于因果成功终止之后，索引不纳入，原文件不改。
 - 迁入28个有效在线诊断转移，不含人为注入急停样本。
-- 历史15条仍保留；03–15运动/物理重复；旧子步平均动作未直接导入当前replay。
+- 历史15条标签已迁入 outputs/datasets/task1/aligned_history/historical_labels。03–15去重；01/02/03分别选入163/163/167条。\n- 50ms相邻行或100ms内子步只有动作一致、24条指令连续、位置/旋转/夹爪目标逐步积分一致、RGB有效时才接入；其余不平均、不插值伪造。\n- 完整回合因果计算阶段标记，再选取片段；不在片段开头清空奖励历史。片段不冒充新增完整成功回合。
 - 没有独立留出完整评估回合；不能声称“15条独立示范已正式训练”。
 - 大图像和原始记录仍位于远端 franka_sim，只读引用，文件哈希在输出 manifest 内。
 
@@ -83,3 +83,5 @@ python3 -B -m runners.eval --checkpoint <checkpoint.msgpack> --output outputs/ru
 不要同时在同一进程载入旧 franka_sim 包与新仓库包。
 
 固定数据更新成功不等于完整策略任务成功；查看 configs/validation.json 的实际测试范围。
+
+历史对齐回归已通过22项测试，并在 outputs/runs/task1/serl/history_aligned_check 完成2次实际混合更新；日志记录抽到02和03的历史片段。新数据索引有独立哈希，旧索引的checkpoint不会被静默续训到新数据集。

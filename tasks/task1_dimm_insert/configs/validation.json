@@ -1,6 +1,6 @@
 {
   "code_data_preflight_passed": true,
-  "unit_tests_passed": 18,
+  "unit_tests_passed": 22,
   "fixed_data_updates": 2,
   "resume_updates": 1,
   "resume_optimizer_and_sampler_verified": true,
@@ -14,10 +14,10 @@
   ],
   "state_dimension": 31,
   "action_dimension": 7,
-  "demo_transitions": 1349,
+  "demo_transitions": 1842,
   "independent_demo_episodes": 1,
   "initial_online_transitions": 28,
-  "rgb_files_verified": 4050,
+  "rgb_files_verified": 5550,
   "reward_total": 1.4,
   "reward_version": "task1_stage_once_v001",
   "interface_version": "task1_rgb_state31_reward_history_v001",
@@ -34,5 +34,27 @@
   ],
   "final_dependency_subset_update_passed": true,
   "dependency_check_updates": 1,
-  "vendored_python_modules": 24
+  "vendored_python_modules": 24,
+  "historical_alignment": {
+    "passed": true,
+    "tests_passed": 22,
+    "native_transitions": 1349,
+    "historical_aligned_fragments": 493,
+    "total_training_transitions": 1842,
+    "online_transitions": 28,
+    "rgb_files_verified": 5550,
+    "historical_source_selection": {
+      "01": 163,
+      "02": 163,
+      "03": 167
+    },
+    "historical_positive_reward_rows": 1,
+    "learner_updates": 2,
+    "sampled_sources": [
+      "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/raw/02_success_20261029T113515",
+      "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/raw/03_success_20261029T115347"
+    ],
+    "complete_independent_episodes": 1,
+    "scope": "historical fragments integrated into demo replay; not 15 full independent episodes"
+  }
 }

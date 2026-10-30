@@ -34,7 +34,7 @@ def train(dataset,replay,output,*,updates,batch_size=2,utd_ratio=1,seed=0,checkp
    if not all(np.isfinite(np.asarray(x)).all() for x in jax.tree_util.tree_leaves(agent.state.params)):raise ValueError("Nonfinite parameters")
    losses={group:{k:float(np.asarray(v).mean()) for k,v in values.items() if np.asarray(v).dtype.kind in "fiu"} for group,values in metrics.items() if hasattr(values,"items")}
    if not all(np.isfinite(x) for g in losses.values() for x in g.values()):raise ValueError("Nonfinite loss")
-   record=dict(update=offset+i+1,demo_indices=di.tolist(),online_keys=[online[int(j)][1]["key"] for j in oi],
+   record=dict(update=offset+i+1,demo_indices=di.tolist(),demo_sources=[dataset.rows[int(j)].get("episode",str(dataset.episode)) for j in di],online_keys=[online[int(j)][1]["key"] for j in oi],
     rewards=np.asarray(batch["rewards"]).tolist(),losses=losses)
    f.write(json.dumps(record)+"\n");f.flush();print(json.dumps(record),flush=True)
  payload=serialization.to_bytes(agent.state)

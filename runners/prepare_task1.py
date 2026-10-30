@@ -6,7 +6,12 @@ def main():
  c=config(a.config)
  from tasks.task1_dimm_insert.env.dataset import prepare
  from algos.serl.replay import Journal
- m=prepare(c,ROOT)
+ native=dict(c,dataset=c.get("native_dataset",c["dataset"]),data_sources=dict(c["data_sources"]))
+ native["data_sources"]["historical_manifest"]=c["data_sources"].get("historical_source_manifest",c["data_sources"]["historical_manifest"])
+ m=prepare(native,ROOT)
+ if native["dataset"]!=c["dataset"]:
+  from tasks.task1_dimm_insert.env.align_history import align
+  m=align(c,ROOT,resolve(c["dataset"]))
  # Existing source journal is read-only; only committed, eligible records are copied.
  source=Path(c["data_sources"]["prior_online"]);out=resolve(c["replay"]);out.mkdir(parents=True,exist_ok=False)
  count=0

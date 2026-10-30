@@ -1,8 +1,12 @@
 {
-  "transitions": 1349,
+  "transitions": 1842,
   "demo_return": 1.4,
   "eligible_online": 28,
-  "dataset": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/train",
+  "dataset": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/aligned_history",
   "replay": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/online",
-  "raw_data_modified": false
+  "raw_data_modified": false,
+  "native_transitions": 1349,
+  "historical_aligned_fragments": 493,
+  "complete_independent_episodes": 1,
+  "historical_fragment_sources": 3
 }

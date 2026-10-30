@@ -11,7 +11,7 @@ class Contract(unittest.TestCase):
  def setUpClass(cls):
   cls.cfg=config();cls.data=Dataset(resolve(cls.cfg["dataset"]))
  def test_terminal_and_once(self):
-  rows=self.data.rows
+  rows=self.data.rows[:self.data.manifest.get("native_transitions",len(self.data))]
   self.assertTrue(rows[-1]["label"]["success"])
   self.assertEqual(rows[-1]["label"]["mask"],0)
   names=[e["stage"] for r in rows for e in r["label"]["events"]]
@@ -19,7 +19,7 @@ class Contract(unittest.TestCase):
   self.assertAlmostEqual(sum(r["label"]["reward"] for r in rows),1.4)
   self.assertTrue(all(abs(r["dt_s"]-.1)<1e-6 for r in rows))
  def test_progress_boundary(self):
-  rows=self.data.rows
+  rows=self.data.rows[:self.data.manifest.get("native_transitions",len(self.data))]
   for previous,current in zip(rows,rows[1:]):
    self.assertEqual(previous["label"]["progress_after"],current["label"]["progress_before"])
   self.assertEqual(rows[0]["label"]["progress_before"],[0]*4)

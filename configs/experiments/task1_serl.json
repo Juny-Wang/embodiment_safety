@@ -14,7 +14,7 @@
   "demo_fraction": 0.5,
   "updates": 100,
   "platform": "cpu",
-  "dataset": "outputs/datasets/task1/train",
+  "dataset": "outputs/datasets/task1/aligned_history",
   "replay": "outputs/datasets/task1/online",
   "checkpoint": null,
   "output_root": "outputs/runs/task1/serl",
@@ -34,8 +34,10 @@
   },
   "data_sources": {
     "native_episode": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_collection_reproduce_v001/policy_reset_pair_002/cycle_01/episodes/20261030T142631_ca340bad",
-    "historical_manifest": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_stage_reward_v001/historical_shadow_v001/manifest.json",
-    "prior_online": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_persistent_v001/replay"
+    "historical_manifest": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/aligned_history/historical_labels/manifest.json",
+    "prior_online": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_persistent_v001/replay",
+    "historical_source_manifest": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_stage_reward_v001/historical_shadow_v001/manifest.json"
   },
-  "scope": "initial bounded training configuration; complete task success not established"
+  "scope": "initial bounded training configuration; complete task success not established",
+  "native_dataset": "outputs/datasets/task1/train"
 }
