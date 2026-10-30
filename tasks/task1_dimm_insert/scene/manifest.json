@@ -25,7 +25,7 @@
     "/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/socket_franka_install_v008/socket_print_v007_installed.usda": "99590581354305b63b9be8215283fd705fa241e2a9f806854f24b6b9ced540be",
     "/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/t1_dimm_insert_train.usda": "323d47de79782696bff7e03e862a44b8682852c259058a2919d1c52888db573d",
     "/mnt/data2/wjy_SERL/franka_sim/assets/task1_pcb_insert/usd/DIMM/textures/RAM_LP_DefaultMaterial_BaseColor.png": "1f280b1a351fbc4099777d824585e6a5533b4992347ac3a88f0be919451518be",
-    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/teleop/vendor/franka_teleop.py": "7ad64a990f5f68687b5eb1f5b62f149339690c63befd87f34bf4904cc854048b",
+    "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/teleop/vendor/franka_teleop.py": "838a2a641d09696782e6bc193551d0d0c7c80b9423652115f3b07e108be2b801",
     "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/teleop/vendor/cameras_setup.py": "451fe7c408dac43011239fc0a8556f300156bc1f3aa379dcb276a7a0448c660b",
     "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/configs/collection.json": "14ed7f701728408fa3440bfac1c91d820ccfc0d0298559359aee453620527d47",
     "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/configs/safety_source.json": "0e96ccf7817a67367b35c5962b784615f24d21f3fbf719378b0334bc9b1ac95e",

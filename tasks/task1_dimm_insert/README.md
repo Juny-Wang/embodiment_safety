@@ -85,3 +85,5 @@ python3 -B -m runners.eval --checkpoint <checkpoint.msgpack> --output outputs/ru
 固定数据更新成功不等于完整策略任务成功；查看 configs/validation.json 的实际测试范围。
 
 历史对齐回归已通过22项测试，并在 outputs/runs/task1/serl/history_aligned_check 完成2次实际混合更新；日志记录抽到02和03的历史片段。新数据索引有独立哈希，旧索引的checkpoint不会被静默续训到新数据集。
+
+当前回归测试共27项。控制器停止时保存停止前IK残差、候选关节限位余量和目标/实测位姿；真实失败末段按已观测物理步写入终止转移（mask=0），不把已发出但尚未执行的命令计入100ms边界。验证结果见 outputs/runs/task1/serl/aligned_budget100_eval_diagnosed/diagnosis.json；该次策略未完成任务，不代表训练已收敛。

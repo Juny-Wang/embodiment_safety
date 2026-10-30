@@ -29,7 +29,7 @@ try:
  from tasks.task1_dimm_insert.env.boundary import Boundary
  from tasks.task1_dimm_insert.env.execution import install
  from tasks.task1_dimm_insert.env.trace import traced_apply_velocity
- from tasks.task1_dimm_insert.env.transition import labels,validate_action
+ from tasks.task1_dimm_insert.env.transition import labels,validate_action,completed_partial
  prerequisite=resolve(CFG["dataset"])/"manifest.json"
  assert json.loads(prerequisite.read_text())["transitions"]>0
  scene=ROOT/"tasks/task1_dimm_insert/scene/collection.usda"
@@ -113,6 +113,11 @@ try:
  p.native_boundary=Boundary(p,decide,partial)
  finish=p.finish
  def finish_record(outcome,reason=""):
+  global failure,stopped
+  if reason.startswith("controller_disarmed:"):
+   failure=reason;stopped=True
+   write("controller_diagnostics.json",clean(dict(time=p.t,error=p.controller.error,
+     ik=p.controller.ik_diagnostics,control=p.controller.cfg["control"])))
   if p.active:
    p.native_boundary.flush(outcome,reason)
    write("aligned_decisions.json",clean(p.native_boundary.decisions))
@@ -174,7 +179,7 @@ try:
  p.timeline.pause()
  episode=Path(p.last_saved_path)
  if failure:
-  tail=json.loads((OUT/"partial_transition.json").read_text())
+  tail=completed_partial(json.loads((OUT/"partial_transition.json").read_text()))
   final=tail["next_observations"];capture(p.native_boundary.total+1,final)
   write("policy_stop.json",dict(final_observation_index=p.native_boundary.total+1,reason=failure))
  child.wait(timeout=90)
@@ -185,14 +190,14 @@ try:
   label=json.loads((OUT/f"stage_transition_{i:03d}.json").read_text())
   replay.append(dict(label,index=i))
  if failure:
-  tail=json.loads((OUT/"partial_transition.json").read_text())
+  tail=completed_partial(json.loads((OUT/"partial_transition.json").read_text()))
   label=labels(tail["dt_s"],len(tail["controller_commands"]),terminated=True,reason=failure)
-  write("terminal_transition.json",dict(tail,**label,diagnostic_only=True,training_eligible=False))
+  write("terminal_transition.json",dict(tail,**label,diagnostic_only=bool(INJECT),training_eligible=not bool(INJECT)))
  write("replay_labels.json",replay)
  unchanged={str(x):hashlib.sha256(x.read_bytes()).hexdigest()==protected_before[str(x)] for x in protected}
  write("source_integrity.json",dict(all_unchanged=all(unchanged.values()),files=unchanged,hashes=protected_before))
  write("result.json",dict(execution_completed=True,full_transitions=len(rows),physics_commands=executed_steps,
-  policy_actions=calls,network_updates=json.loads((OUT/"worker_result.json").read_text())["network_updates"],injected_stop=bool(INJECT),failure_reason=failure,
+  observed_physics_steps=len(rows)*24+(tail["physics_steps"] if failure else 0),policy_actions=calls,network_updates=json.loads((OUT/"worker_result.json").read_text())["network_updates"],injected_stop=bool(INJECT),failure_reason=failure,
   ee_displacement_m=float(np.linalg.norm(np.array(final["ee_position_m"])-initial["ee_position_m"])),
   episode=str(episode),source_unchanged=all(unchanged.values()),acceptance_pending=True,
   full_task_success=bool(terminal_label and terminal_label["success"]),training_ready=False,native_app_update=True))

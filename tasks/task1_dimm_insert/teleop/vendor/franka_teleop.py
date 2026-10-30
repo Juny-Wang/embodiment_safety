@@ -124,6 +124,15 @@ class FrankaTeleop:
    ok=bool(result.success)
   self.ik_diagnostics={"local_solver_success":bool(ok),"used_verified_cache":used_cache,"position_error_m":float(np.linalg.norm(pe)),
     "orientation_error_rad":float(np.linalg.norm(re)),"fallback_count":self.fallback_count}
+  self.ik_diagnostics.update(
+    candidate_joint_positions=np.asarray(candidate).tolist(),
+    measured_joint_positions=self.get_joint_positions()[self.arm_indices].tolist(),
+    lower_limits_rad=self.lower.tolist(),upper_limits_rad=self.upper.tolist(),
+    joint_margin_rad=np.minimum(candidate-self.lower,self.upper-candidate).tolist(),
+    position_tolerance_m=pos_tol,orientation_tolerance_rad=rot_tol,
+    requested_goal_position_m=np.asarray(gp).tolist(),requested_goal_quaternion_xyzw=gR.as_quat().tolist(),
+    commanded_position_m=np.asarray(p_cmd).tolist(),commanded_quaternion_xyzw=R_cmd.as_quat().tolist(),
+    measured_ee_position_m=np.asarray(p).tolist(),measured_ee_quaternion_xyzw=R.as_quat().tolist())
   if not np.isfinite(candidate).all() or np.any(candidate<self.lower) or np.any(candidate>self.upper) or np.linalg.norm(pe)>pos_tol or np.linalg.norm(re)>rot_tol:
    self.stop("IK RESIDUAL/LIMIT FAILURE - no new motion");return
   self.last_solution=candidate.copy()

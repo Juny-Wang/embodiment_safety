@@ -21,3 +21,18 @@ def validate_action(a):
  if a.shape!=(7,) or not np.isfinite(a).all() or np.max(np.abs(a))>1.00001:
   raise ValueError("Invalid action")
  return a
+
+def completed_partial(tail):
+ """Keep only issued commands with a fully observed physics interval."""
+ start=float(tail["observations"]["sim_time"]);end=float(tail["next_observations"]["sim_time"])
+ dt=end-start;n=round(dt*240)
+ if n<1 or n>24 or abs(dt-n/240)>1e-6:raise ValueError("Partial duration")
+ commands=tail["controller_commands"]
+ done=[c for c in commands if float(c["time"])<end-1e-7]
+ pending=[c for c in commands if float(c["time"])>=end-1e-7]
+ if len(done)!=n or len(pending)>1:raise ValueError("Command/observed step mismatch")
+ for i,c in enumerate(done):
+  if abs(float(c["time"])-(start+i/240))>1e-6:raise ValueError("Noncontiguous command time")
+ if pending and abs(float(pending[0]["time"])-end)>1e-6:raise ValueError("Unexpected pending time")
+ return dict(tail,controller_commands=done,physics_steps=n,issued_command_count=len(commands),
+  unobserved_commands=pending,dt_s=dt)
