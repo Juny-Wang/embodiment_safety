@@ -56,5 +56,15 @@
     ],
     "complete_independent_episodes": 1,
     "scope": "historical fragments integrated into demo replay; not 15 full independent episodes"
+  },
+  "bounded_training_followup": {
+    "updates_this_run": 100,
+    "total_updates": 102,
+    "positive_reward_batches": 1,
+    "historical_terminal_reward_seen": 1.2,
+    "complete_eval_attempts": 1,
+    "successes": 0,
+    "failure_reason": "IK RESIDUAL/LIMIT FAILURE",
+    "report": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/runs/task1/serl/aligned_budget100_eval_checked/evaluation_summary.json"
   }
 }

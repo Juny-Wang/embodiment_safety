@@ -169,7 +169,7 @@ try:
    last=time.monotonic()
   if p.sensor_errors:raise RuntimeError(str(p.sensor_errors))
   if stopped and not p.active:break
-  if p.controller.error and p.enabled:raise RuntimeError(p.controller.error)
+  if p.controller.error and calls>0:raise RuntimeError("controller_fault:"+str(p.controller.error))
   if time.monotonic()-wall>86400:raise TimeoutError("Native actor diagnostic")
  p.timeline.pause()
  episode=Path(p.last_saved_path)
