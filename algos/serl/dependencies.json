@@ -1,0 +1,18 @@
+{
+  "python": "3.10",
+  "packages": {
+    "jax": "0.4.35",
+    "jaxlib": "0.4.34",
+    "flax": "0.8.5",
+    "optax": "0.2.5",
+    "chex": "0.1.90",
+    "numpy": "1.26.0",
+    "scipy": "1.15.3",
+    "Pillow": "11.3.0",
+    "gym": "0.23.1",
+    "einops": "0.8.2",
+    "distrax": "0.1.5"
+  },
+  "third_party_wheels": "/mnt/data2/wjy_SERL/SERL-runs/task1_serl_py310_jax",
+  "project_source": "algos/serl/vendor/serl_launcher"
+}

@@ -1,0 +1,117 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.4737246651546528, -0.026163096943549548, 1.2795077789864562)
+                double3 target = (-0.3772368452976212, -0.03112612211130147, 0.5725160591136085)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    metersPerUnit = 1
+    subLayers = [
+        @patches/dimm_lower_support_v009.usda@,
+        @/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_manual_safety_v002/manual_franka_scene.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "Render" (
+    hide_in_stage_window = true
+)
+{
+    over "OmniverseKit"
+    {
+        over "HydraTextures"
+        {
+            over "omni_kit_widget_viewport_ViewportTexture_0"
+            {
+                rel camera = </OmniverseKit_Persp>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "Replicator" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Cameras/ExternalOverview>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (256, 256)
+            }
+
+            def RenderProduct "Replicator_01" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_L>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (256, 256)
+            }
+
+            def RenderProduct "Replicator_02" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/Robot/panda_hand/WristCam_R>
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (256, 256)
+            }
+        }
+    }
+
+    over "OmniverseGlobalRenderSettings"
+    {
+        rel products = [
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_1>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_2>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_3>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_4>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_5>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_6>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_7>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_8>,
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_9>,
+            </Render/OmniverseKit/HydraTextures/Replicator>,
+            </Render/OmniverseKit/HydraTextures/Replicator_01>,
+            </Render/OmniverseKit/HydraTextures/Replicator_02>,
+        ]
+    }
+}
+
+over "World"
+{
+    over "physicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+    }
+}
+

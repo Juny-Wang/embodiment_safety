@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "physics_hz": 240,
+  "control_hz": 10,
+  "required_cameras": [
+    "external",
+    "wrist_left",
+    "wrist_right"
+  ],
+  "image_resolution": [
+    256,
+    256
+  ],
+  "max_image_age_s": 0.1,
+  "action": {
+    "translation_m_s": 0.32,
+    "rotation_rad_s": 1.57079632679,
+    "gripper_m_s": 0.06,
+    "precision_translation_m_s": 0.006,
+    "precision_rotation_rad_s": 0.0872664626,
+    "max_goal_lead_m": 0.005
+  },
+  "bodies": {
+    "dimm": "/World/MatchedDIMM",
+    "left": "/World/MatchedSocket/Asset/LeftLatch",
+    "right": "/World/MatchedSocket/Asset/RightLatch"
+  },
+  "demonstration_limits": {
+    "left_press_N": 3.0,
+    "right_press_N": 3.0,
+    "dimm_environment_N": 5.0,
+    "finger_left_N": 5.0,
+    "finger_right_N": 5.0
+  },
+  "physics_mode": "legacy_plan_d_assisted",
+  "teleop_assist": {
+    "enabled": false,
+    "note": "Soft XY attract when DIMM tip near socket entrance. ASSIST only \u2014 does NOT auto-success / NOT SERL-safe.",
+    "xy_capture_radius_m": 0.012,
+    "xy_attract_gain": 0.45,
+    "z_window_above_entry_m": 0.025,
+    "z_window_below_entry_m": 0.008,
+    "max_attract_m_s": 0.08
+  },
+  "demonstration_limits_note": "Current diagnostic thresholds only; not material ratings."
+}

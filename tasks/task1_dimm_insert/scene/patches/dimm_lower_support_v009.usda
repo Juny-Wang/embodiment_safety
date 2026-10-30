@@ -1,0 +1,165 @@
+#usda 1.0
+(
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World"
+{
+    def "MatchedDIMM"
+    {
+        def Mesh "LowerPCBSupportLeft" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI"]
+            customData = {
+                string supportPurpose = "Continuous PCB lower-edge support; not individual electrical pins."
+            }
+        )
+        {
+            int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+            int[] faceVertexIndices = [8, 1, 0, 0, 6, 8, 8, 6, 7, 2, 1, 8, 7, 10, 8, 8, 10, 11, 0, 1, 4, 4, 3, 0, 9, 6, 0, 0, 3, 9, 7, 6, 9, 9, 10, 7, 11, 10, 5, 3, 4, 5, 5, 9, 3, 10, 9, 5, 2, 8, 5, 5, 8, 11, 5, 1, 2, 5, 4, 1]
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            custom float physxCollision:contactOffset = 0.00005
+            custom float physxCollision:restOffset = 0
+            point3f[] points = [(-0.064565, -0.00069, 0.0004062813), (-0.064565, -0.00069, 0.00385), (-0.03372944, -0.00069, 0.0038500002), (-0.064565, 0.00069, 0.0004062813), (-0.064565, 0.00069, 0.00385), (-0.03372944, 0.00069, 0.0038500002), (0.004615, -0.00069, 0.000011211772), (0.004815, -0.00069, 0.000011211772), (0.004815, -0.00069, 0.0038500002), (0.004615, 0.00069, 0.000011211772), (0.004815, 0.00069, 0.000011211772), (0.004815, 0.00069, 0.0038500002)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+            token visibility = "invisible"
+        }
+
+        over "Gold_0_0"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_1"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_2"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_3"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_4"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_5"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_6"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_7"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_8"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_9"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_10"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_0_11"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        def Mesh "LowerPCBSupportRight" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI"]
+            customData = {
+                string supportPurpose = "Continuous PCB lower-edge support; not individual electrical pins."
+            }
+        )
+        {
+            int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+            int[] faceVertexIndices = [8, 11, 10, 10, 11, 13, 0, 2, 6, 6, 4, 0, 5, 1, 0, 0, 4, 5, 8, 1, 5, 5, 11, 8, 9, 2, 0, 0, 1, 9, 9, 1, 8, 3, 2, 9, 8, 10, 9, 7, 2, 3, 7, 6, 2, 13, 11, 12, 4, 6, 12, 12, 5, 4, 11, 5, 12, 6, 7, 12, 3, 9, 12, 12, 7, 3, 12, 10, 13, 12, 9, 10]
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            custom float physxCollision:contactOffset = 0.00005
+            custom float physxCollision:restOffset = 0
+            point3f[] points = [(0.006335, -0.00069, 0.000011435969), (0.0065349997, -0.00069, 0.000011435969), (0.006335, -0.00069, 0.00385), (0.013613749, -0.00069, 0.0038500002), (0.006335, 0.00069, 0.000011435969), (0.0065349997, 0.00069, 0.000011435969), (0.006335, 0.00069, 0.00385), (0.013613749, 0.00069, 0.0038500002), (0.064565, -0.00069, 0.0004062813), (0.0500075, -0.00069, 0.0038500002), (0.064565, -0.00069, 0.00385), (0.064565, 0.00069, 0.0004062813), (0.0500075, 0.00069, 0.0038500002), (0.064565, 0.00069, 0.00385)]
+            uniform token purpose = "guide"
+            uniform token subdivisionScheme = "none"
+            token visibility = "invisible"
+        }
+
+        over "Gold_1_0"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_1"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_2"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_3"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_4"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_5"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_6"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_7"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_8"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_9"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+
+        over "Gold_1_10"
+        {
+            custom bool physics:collisionEnabled = 0
+        }
+    }
+}
+

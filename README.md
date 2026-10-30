@@ -1,18 +1,10 @@
-# Embodied_Safety
+# Embodied Safety
 
-Multi-task / multi-algo layout for embodied-safety training (Isaac).
+Task1 代码维护与执行根目录：`/mnt/data2/wjy_SERL/Embodied_Safety`。
 
-- Tasks: `tasks/<id>/` (scene + env contract)
-- Algos: `algos/<name>/` (learning only; rewrite in-tree)
-- Glue: `runners/`
-- Scene for task1: **real copy** at `tasks/task1_dimm_insert/scene/` (final v002)
-- `franka_sim/t1_rl` is **not** used here (DROPPED); see `MIGRATION.md`
+- [Task1 数据、奖励、训练与运行](tasks/task1_dimm_insert/README.md)
+- [目录职责](LAYOUT.md)
+- [迁移说明](MIGRATION.md)
 
-## Stage 1A smoke
-
-```bash
-cd /mnt/data2/wjy_SERL/Embodied_Safety
-PYTHONPATH=. python -m runners.train \
-  --task task1_dimm_insert --algo rsl_rl_ppo \
-  --config configs/experiments/task1_rsl_rl_ppo_stage1a.yaml
-```
+Task2 保持在 `tasks/task2_riser_io`，本次未修改。
+大型 USD 依赖、原始图像与录制数据从远端已有位置只读引用，不提交到 Git。

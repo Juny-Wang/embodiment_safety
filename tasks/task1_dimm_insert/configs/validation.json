@@ -1,0 +1,38 @@
+{
+  "code_data_preflight_passed": true,
+  "unit_tests_passed": 18,
+  "fixed_data_updates": 2,
+  "resume_updates": 1,
+  "resume_optimizer_and_sampler_verified": true,
+  "native_short_rollout_steps": 8,
+  "native_online_rollout_steps": 12,
+  "physics_steps": 288,
+  "online_updates": 1,
+  "actions_after_update": [
+    10,
+    11
+  ],
+  "state_dimension": 31,
+  "action_dimension": 7,
+  "demo_transitions": 1349,
+  "independent_demo_episodes": 1,
+  "initial_online_transitions": 28,
+  "rgb_files_verified": 4050,
+  "reward_total": 1.4,
+  "reward_version": "task1_stage_once_v001",
+  "interface_version": "task1_rgb_state31_reward_history_v001",
+  "source_scene_modified": false,
+  "task2_modified": false,
+  "bounded_training_pipeline_ready": true,
+  "full_task_policy_success_verified": false,
+  "full_policy_training_started": false,
+  "limitations": [
+    "Historical15 demos not silently converted to held100ms actions",
+    "No independent held-out full task episodes",
+    "Scene and original RGB data remain external remote read-only dependencies",
+    "Native rollout verification used explicit low-speed smoke wrapper, not full-action task success"
+  ],
+  "final_dependency_subset_update_passed": true,
+  "dependency_check_updates": 1,
+  "vendored_python_modules": 24
+}

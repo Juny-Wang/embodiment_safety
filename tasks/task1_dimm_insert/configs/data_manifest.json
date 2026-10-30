@@ -1,0 +1,8 @@
+{
+  "transitions": 1349,
+  "demo_return": 1.4,
+  "eligible_online": 28,
+  "dataset": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/train",
+  "replay": "/mnt/data2/wjy_SERL/Embodied_Safety/outputs/datasets/task1/online",
+  "raw_data_modified": false
+}

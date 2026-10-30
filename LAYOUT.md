@@ -1,32 +1,16 @@
-# Layout principles
+# 目录职责
 
-## Separation
+| 目录 | 职责 |
+|---|---|
+| tasks/task1_dimm_insert/env | 观测、动作、阶段奖励、终止、100 ms 边界 |
+| tasks/task1_dimm_insert/teleop | 人工数采、三路相机、安全反馈与控制器 |
+| tasks/task1_dimm_insert/scene | collection.usda 入口、接触补丁、依赖哈希 |
+| tasks/task1_dimm_insert/configs | Task1 数采配置、数据清单 |
+| algos/serl | DrQ-SAC、replay、优化器、仓库内 SERL 依赖 |
+| runners | 数据准备、检查、训练、回合运行、评估 CLI |
+| configs/experiments | 实验组合配置 |
+| tests | 契约与奖励回归测试 |
+| outputs | 不进入 Git 的数据索引、replay、日志和 checkpoint |
 
-| Area | Owns | Must not own |
-|------|------|--------------|
-| `tasks/<id>/` | Scene, env (obs/act/reward/done/reset), task teleop, task-only configs | Training loops, optimizer, networks |
-| `algos/<name>/` | Optimizer, buffer, networks, algo hyperparams | Task reward formulas, USD paths |
-| `runners/` | CLI, registry, glue that wires task env → algo | Business logic |
-| `lib/` | Truly shared interfaces (robot / cameras / safety) | "Temporarily shared" task details |
-| `configs/experiments/` | One YAML per experiment (task × algo × stage) | Source code |
-| `outputs/` | Runs, scene snapshots, baselines (not large git blobs) | Source |
-
-## Contracts
-
-1. Task exposes `make_env(cfg) -> env`; obs/act spaces documented in the task README.
-2. Algo consumes env + algo cfg only; no hard `import tasks.task1_...`.
-3. A run identity is `task_id + algo_id + experiment_yaml`.
-4. Artifacts land at: `outputs/runs/<task>/<algo>/<exp>/`
-
-## Adding
-
-- New task: copy `tasks/_template/`, register in `runners/register.py`.
-- New algo: copy `algos/_template/`, register the same way.
-- Train: `python -m runners.train --task <id> --algo <name> --config configs/experiments/...yaml`
-
-## Stage 1A (current)
-
-- Obs: low-dim sim state only (`tasks/.../env/OBS_SPEC.md`); no camera in policy.
-- Reward/terminate: `REWARD_SPEC.md`; force limits from `scene/safety_config.json` (Plan D demo).
-- Algo: `algos/rsl_rl_ppo` dry-runs FakeEnv; Lab + RSL-RL learn later.
-- Experiment: `configs/experiments/task1_rsl_rl_ppo_stage1a.yaml`
+Task1 只保留当前入口，不保留旧 FakeEnv、旧 Task1 PPO 环境和旧低维 SAC 适配器。
+其他任务和算法预留目录不属于此次 Task1 清理范围。

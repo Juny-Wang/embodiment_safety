@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "task": "task1_dimm_insert",
+  "algo": "serl",
+  "reward_version": "task1_stage_once_v001",
+  "interface_version": "task1_rgb_state31_reward_history_v001",
+  "physics_hz": 240,
+  "control_hz": 10,
+  "timeout_s": 240,
+  "seed": 20261031,
+  "discount": 0.99,
+  "batch_size": 2,
+  "utd_ratio": 1,
+  "demo_fraction": 0.5,
+  "updates": 100,
+  "platform": "cpu",
+  "dataset": "outputs/datasets/task1/train",
+  "replay": "outputs/datasets/task1/online",
+  "checkpoint": null,
+  "output_root": "outputs/runs/task1/serl",
+  "scene": "tasks/task1_dimm_insert/scene/collection.usda",
+  "action": {
+    "translation_m_s": 0.32,
+    "rotation_rad_s": 1.57079632679,
+    "gripper_m_s": 0.06,
+    "max_goal_lead_m": 0.005
+  },
+  "diagnostic_limits_N": {
+    "left_press_N": 3.0,
+    "right_press_N": 3.0,
+    "dimm_environment_N": 5.0,
+    "finger_left_N": 5.0,
+    "finger_right_N": 5.0
+  },
+  "data_sources": {
+    "native_episode": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_collection_reproduce_v001/policy_reset_pair_002/cycle_01/episodes/20261030T142631_ca340bad",
+    "historical_manifest": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_stage_reward_v001/historical_shadow_v001/manifest.json",
+    "prior_online": "/mnt/data2/wjy_SERL/franka_sim/outputs/datasets/task1_dimm_insert/reports/serl_persistent_v001/replay"
+  },
+  "scope": "initial bounded training configuration; complete task success not established"
+}

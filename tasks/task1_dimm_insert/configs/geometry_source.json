@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "status": "LOCAL_FRAME_CALIBRATION_FROM_LIVE_MESH_2026-10-22",
+  "notes": "All boxes/points are in Socket or DIMM LOCAL frames. Moving Socket/DIMM as wholes does not invalidate these. World pose snapshots are informational only. | 2026-10-23 grasp: allow expanded (z 0.018->0.010, x +-0.055->+-0.062); forbid gold top 0.01->0.008. 2mm buffer between forbid/allow.",
+  "frames": {
+    "socket_prim": "/World/MatchedSocket",
+    "socket_asset_prim": "/World/MatchedSocket/Asset",
+    "dimm_prim": "/World/MatchedDIMM",
+    "socket_frame_for_align": "/World/MatchedSocket/Asset",
+    "socket_frame_for_align_note": "Item3: align+tilt+end now use socket_asset_prim (same as force axis). Parent /World/MatchedSocket kept only as composition root."
+  },
+  "world_pose_snapshot_asia_shanghai": {
+    "captured_note": "Live stage after user move; not used by runtime gates",
+    "MatchedSocket": {
+      "translate_m": [
+        0.04224276629366819,
+        0.0341257169695799,
+        0.7660000011324882
+      ],
+      "orient_wxyz": [
+        0.7071067811865476,
+        0.0,
+        0.0,
+        -0.7071067811865475
+      ]
+    },
+    "MatchedDIMM": {
+      "translate_m": [
+        0.02028355374932289,
+        -0.19388702511787415,
+        0.7510002255439758
+      ],
+      "orient_wxyz": [
+        -0.70703214,
+        0.00010133607,
+        -0.00010038788,
+        0.7071814
+      ]
+    },
+    "Robot": {
+      "translate_m": [
+        -0.43,
+        0.0,
+        0.75
+      ]
+    }
+  },
+  "socket_local": {
+    "insertion_axis": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "entry_point": [
+      0.0,
+      0.0,
+      0.0068
+    ],
+    "seated_reference": [
+      0.0,
+      0.0,
+      0.0003963
+    ],
+    "asset_bbox_min": [
+      -0.1,
+      -0.03,
+      -0.016
+    ],
+    "asset_bbox_max": [
+      0.1,
+      0.03,
+      0.023805
+    ],
+    "hook_notch_zones": [
+      {
+        "name": "left_hinge_hook",
+        "hinge_local": [
+          -0.07,
+          0.0,
+          0.003
+        ],
+        "box_min": [
+          -0.085,
+          -0.012,
+          -0.002
+        ],
+        "box_max": [
+          -0.055,
+          0.012,
+          0.022
+        ]
+      },
+      {
+        "name": "right_hinge_hook",
+        "hinge_local": [
+          0.07,
+          0.0,
+          0.003
+        ],
+        "box_min": [
+          0.055,
+          -0.012,
+          -0.002
+        ],
+        "box_max": [
+          0.085,
+          0.012,
+          0.022
+        ]
+      }
+    ]
+  },
+  "dimm_local": {
+    "long_axis": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "normal_axis": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "length_m": 0.13335,
+    "pcb_main_center": [
+      0.0,
+      0.0,
+      0.01668
+    ],
+    "pcb_main_half_extents": [
+      0.064565,
+      0.00069,
+      0.01282
+    ],
+    "top_press_center": [
+      0.0,
+      0.0,
+      0.030351
+    ],
+    "top_press_half_extents": [
+      0.05,
+      0.00069,
+      0.000861
+    ],
+    "grasp_allowed_boxes": [
+      {
+        "name": "pcb_mid_upper_and_top_press",
+        "min": [
+          -0.062,
+          -0.004,
+          0.01
+        ],
+        "max": [
+          0.062,
+          0.004,
+          0.0325
+        ],
+        "role": "allowed_grasp",
+        "note": "Expanded 2026-10-23 for PCB edge/mid grasp; gold fingers remain forbidden below z=0.008. Train ROI unchanged (gold band still excluded)."
+      }
+    ],
+    "grasp_forbidden_boxes": [
+      {
+        "name": "gold_finger_band",
+        "min": [
+          -0.07,
+          -0.0035,
+          -0.001
+        ],
+        "max": [
+          0.07,
+          0.0035,
+          0.008
+        ],
+        "role": "forbidden_grasp",
+        "note": "Shrunk top 0.01->0.008 so mid-PCB edge grasp is not swallowed; still covers gold fingers.",
+        "display_x_range_m": [
+          -0.062,
+          0.062
+        ],
+        "display_note": "Display outline aligned to 124 mm green grasp band. Conservative forbidden-contact classification retains its original 140 mm bounds."
+      }
+    ],
+    "dense_pins_visual_only": {
+      "prim_name_prefix": "Gold_",
+      "collision_enabled": false,
+      "note": "Dense pin cubes remain visual; not used for collision or insertion success."
+    }
+  },
+  "alignment": {
+    "xy_tol_m": 0.0025,
+    "tilt_tol_deg": 2.0,
+    "seated_depth_tol_m": 0.0015,
+    "note_item3": "xy/tilt/seated tols are DEMO; consumed by insertion_clearance. Item4 retunes after baseline. end_difference_tol_mm lives in safety_config.insertion_clearance (1.0 demo).",
+    "clearance_consumes": [
+      "xy_tol_m",
+      "tilt_tol_deg"
+    ],
+    "seated_depth_role": "dual_latched / seated_ok only — not ALIGN block_down"
+  },
+  "latch_lock": {
+    "closed_angle_abs_deg_max": 3.0,
+    "require_both_sides": true,
+    "note": "Angle near 0 is NOT alone proof of lock; dual closed + seated required for release gate."
+  }
+}

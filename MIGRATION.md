@@ -1,54 +1,14 @@
-# Migration status (Embodied_Safety)
+# Task1 维护迁移
 
-Root: `/mnt/data2/wjy_SERL/Embodied_Safety`
+唯一代码维护目录改为 /mnt/data2/wjy_SERL/Embodied_Safety。
+此仓库中不适用的旧 Task1 环境、训练入口、旧场景工作副本与备份已由当前实现替换；
+此前内容仍可从 Git 历史追溯，不另留版本目录。
 
-| Item | Source (franka_sim) | Target | Status |
-| --- | --- | --- | --- |
-| Scene package v002 | `/mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_manual_safety_v002` | `tasks/task1_dimm_insert/scene` (**real copy**) | **DONE** (copied 2026-10-24; original kept as backup) |
-| Training code t1_rl | `/mnt/data2/wjy_SERL/franka_sim/t1_rl` | — | **DROPPED** from Embodied_Safety (not based on final v002; rewrite later in `algos/rsl_rl_ppo/`) |
-| Shared robot/camera | (later) | `lib/` | deferred |
+原始采集数据和基础 USD 资产保持只读外部依赖，未删除、改名或重新保存。
+collection.usda 是原入口文件的内容副本，保持原始几何与引用关系；
+底层资产仍在 franka_sim，因此 Git 仓库本身不是完整资产下载包。
+新索引、在线 replay、checkpoint 都放在本仓库 outputs 下。
 
-## Scene copy (done)
-
-```bash
-test ! -L /mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/scene && echo NOT_SYMLINK
-du -sh /mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/scene
-test -f /mnt/data2/wjy_SERL/Embodied_Safety/tasks/task1_dimm_insert/scene/keyboard_panel.py && echo KP_OK
-test -d /mnt/data2/wjy_SERL/franka_sim/outputs/T1_rl/franka_manual_safety_v002 && echo V002_BACKUP_INTACT
-```
-
-## Algo (DROPPED)
-
-- Removed `algos/rsl_rl_ppo/legacy` symlink.
-- `algos/rsl_rl_ppo/` is a **clean stub** for rewrite (no import of `t1_rl`).
-- `/mnt/data2/wjy_SERL/franka_sim/t1_rl` left in place as historical reference only.
-
-```bash
-test ! -e /mnt/data2/wjy_SERL/Embodied_Safety/algos/rsl_rl_ppo/legacy && echo LEGACY_GONE
-test -d /mnt/data2/wjy_SERL/franka_sim/t1_rl && echo T1RL_KEPT
-```
-
-## Stage 1A PPO scaffold (2026-10-24)
-
-| Item | Path | Status |
-|------|------|--------|
-| Env + FakeEnv + make_env | `tasks/task1_dimm_insert/env/` | DONE (scaffold) |
-| OBS / REWARD specs | `env/OBS_SPEC.md`, `env/REWARD_SPEC.md` | DONE |
-| Algo cfg + train dry-run | `algos/rsl_rl_ppo/cfg/stage1a.yaml`, `train.py` | DONE (scaffold) |
-| Experiment YAML | `configs/experiments/task1_rsl_rl_ppo_stage1a.yaml` | DONE |
-| runners.train wire | imports make_env + algo.train | DONE (no Isaac) |
-
-Smoke:
-
-```bash
-cd /mnt/data2/wjy_SERL/Embodied_Safety
-PYTHONPATH=. python -m runners.train \
-  --task task1_dimm_insert --algo rsl_rl_ppo \
-  --config configs/experiments/task1_rsl_rl_ppo_stage1a.yaml
-```
-
-## Residual (not done)
-
-1. Isaac Lab VecEnv wrapping `tasks/task1_dimm_insert/scene/`.
-2. Real RSL-RL `OnPolicyRunner.learn()` (replace FakeEnv dry-run).
-3. Tune reward weights from teleop baselines; load limits from `safety_config.json` at runtime.
+旧 15 条历史示范的动作记录存在子步平均，不能直接作为当前保持 100 ms 的动作。
+本次显式采用已验证的完整 100 ms 回合，按当前因果终止与奖励重建为 1349 条转移，
+并保留历史示范清单及重复组信息；没有静默修改历史成功标签。
