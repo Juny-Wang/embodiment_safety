@@ -87,3 +87,8 @@ python3 -B -m runners.eval --checkpoint <checkpoint.msgpack> --output outputs/ru
 历史对齐回归已通过22项测试，并在 outputs/runs/task1/serl/history_aligned_check 完成2次实际混合更新；日志记录抽到02和03的历史片段。新数据索引有独立哈希，旧索引的checkpoint不会被静默续训到新数据集。
 
 当前回归测试共27项。控制器停止时保存停止前IK残差、候选关节限位余量和目标/实测位姿；真实失败末段按已观测物理步写入终止转移（mask=0），不把已发出但尚未执行的命令计入100ms边界。验证结果见 outputs/runs/task1/serl/aligned_budget100_eval_diagnosed/diagnosis.json；该次策略未完成任务，不代表训练已收敛。
+
+连续训练批次：python3 -B -m runners.batch --checkpoint <checkpoint.msgpack> --output outputs/runs/task1/serl/<new_batch>。最长1小时，最后预留600秒独立评估。每回合继承上次检查点，使用不同策略采样种子，以新的Isaac进程复位。程序/数据异常停止采样；单回合墙钟超过600秒标记未完成。summary.json
+区分在线采样、更新与隔离评估；未完成的回合可能已写入部分有效转移，不能把完整回合计数当作replay总量。默认场景最大时限仍为240秒仿真时间，奖励和动作尺度不变。
+
+连续训练批次：python3 -B -m runners.batch --checkpoint <checkpoint.msgpack> --output outputs/runs/task1/serl/<new_batch>。最长1小时，最后预留600秒独立评估。每回合继承上次检查点，使用不同策略采样种子，以新的Isaac进程复位。程序/数据异常停止采样；单回合墙钟超过600秒标记未完成。summary.json 区分在线采样、更新与隔离评估；未完成的回合可能已写入部分有效转移，不能把完整回合计数当作replay总量。默认场景最大时限仍为240秒仿真时间，奖励和动作尺度不变。
