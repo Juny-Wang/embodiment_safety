@@ -73,8 +73,10 @@ try:
  if final-1>last:insert(final-1)
  if agent is not None:
   data=serialization.to_bytes(agent.state);(OUT/"checkpoint.msgpack").write_bytes(data)
-  output_meta=dict(meta,updates=meta["updates"]+updates,sampler_rng_state=rng.bit_generator.state,
-   sha256=hashlib.sha256(data).hexdigest())
+  output_meta=dict(meta,updates=meta["updates"]+updates,updates_this_run=updates,
+   online_transitions=len(online),demo_transitions=len(dataset),
+   scope="online mixed learner" if LEARN else "isolated policy rollout; no learning",
+   sampler_rng_state=rng.bit_generator.state,sha256=hashlib.sha256(data).hexdigest())
   (OUT/"checkpoint.json").write_text(json.dumps(output_meta,indent=2))
  write("worker_result.json",dict(passed=True,network_updates=updates,initial_online=initial_online,
   final_online=len(online),new_transitions=final,smoke=SMOKE,learning=LEARN))
