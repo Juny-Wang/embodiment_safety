@@ -9,6 +9,9 @@ def main():
  p.add_argument("--smoke",action="store_true");p.add_argument("--learn",action="store_true")
  p.add_argument("--max-steps",type=int);p.add_argument("--seed",type=int);p.add_argument("--deterministic",action="store_true")
  a=p.parse_args();c=config(a.config);out=resolve(a.output)
+ checkpoint=resolve(a.checkpoint)
+ if not checkpoint.is_file() or not checkpoint.with_suffix(".json").is_file():
+  raise FileNotFoundError("Completed checkpoint and metadata required before starting Isaac: "+str(checkpoint))
  if not out.is_relative_to(ROOT/"outputs"):raise ValueError("Repository outputs only")
  if a.max_steps is not None and a.max_steps<1:raise ValueError("max-steps")
  env=os.environ.copy();env.update(TASK1_CONFIG=str(resolve(a.config)),SERL_INPUT_CHECKPOINT=str(resolve(a.checkpoint)),

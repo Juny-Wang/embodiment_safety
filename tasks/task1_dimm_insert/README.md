@@ -91,3 +91,18 @@ python3 -B -m runners.eval --checkpoint <checkpoint.msgpack> --output outputs/ru
 连续训练批次：python3 -B -m runners.batch --checkpoint <checkpoint.msgpack> --output outputs/runs/task1/serl/<new_batch>。最长1小时，最后预留600秒独立评估。每回合继承上次检查点，使用不同策略采样种子，以新的Isaac进程复位。程序/数据异常停止采样；单回合墙钟超过600秒标记未完成。summary.json 区分在线采样、更新与隔离评估；未完成的回合可能已写入部分有效转移，不能把完整回合计数当作replay总量。默认场景最大时限仍为240秒仿真时间，奖励和动作尺度不变。
 
 首个有界批次 hour_batch_001 用时49.06分钟：35训练回合、1隔离评估，新增1145条训练转移、98次更新，累计204次更新。所有回合阶段奖励为0、完整成功0次，均在IK检查处提前终止。acceptance.json 已核对逐条哈希与终止标签；不能把训练链路通过解读为策略学会任务。该批次旧checkpoint.json中的updates_this_run、online_transitions和scope继承了上游元数据；本批次真实统计以worker_result.json/acceptance.json为准，后续写入已修正，旧产物不静默改写。
+
+
+BC 训练入口：使用学习器Python运行 -B -m runners.pretrain_bc --updates 6000 --batch-size 16 --min-updates 2000 --patience 10 --eval-every 100 --output outputs/runs/task1/serl/<new_bc_run>。
+这是独立BC初始化实验，不覆盖直接SAC检查点。均方误差按平移、旋转、夹爪三组等权；半数均匀抽样，半数按动作类型均衡抽样。
+按每100步时间块留出80..89步检查、75..79及90..94步清除；这是相关轨迹内的检查，不代表独立任务泛化。
+BC更新Actor和图像编码器；Critic未训练，随机标准差未标定。转入普通SAC结构后推理必须一致。
+当前BC检查点只允许确定性评估，未开启SAC微调。记录实际更新次数、样本覆盖率和预算/平台期停止原因。
+评估入口：python3 -B -m runners.eval --checkpoint <bc_checkpoint> --output outputs/runs/task1/serl/<new_eval>；默认完整240秒上限。
+离线回放：使用离线Python -B -m runners.render_rollout --run <eval目录>，只合成已保存RGB，不启动仿真。
+
+评估更正：vendor sample_actions 的确定性参数为 argmax=True，且不传seed。旧deterministic=True参数被忽略，
+因此hour_batch_001/evaluation实际仍为随机采样；见EVALUATION_MODE_CORRECTION.json。旧原始记录保留。
+新动作日志明确记录sampling_mode。BC 400步只是一轮试跑，不作为最终训练效果。
+
+完整BC批次 bc_full_001：4800次更新后按检查集平台期停止，选中4300次检查点；1482条训练样本全部覆盖，检查样本未参与梯度。完整回合 bc_full_001_final_eval 在40.18秒因dimm_environment_N=6.435N超过5N停止，阶段奖励0、姿态相对初始最大偏转90.33度。手掌碰撞体接触PCB，两指接触力为0。任务未通过，未启动SAC微调。原SAC正确确定性对照在2.10秒IK停止、最大偏转142.79度。两者MP4及GIF均在对应输出目录，不改源场景。

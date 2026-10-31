@@ -1,5 +1,5 @@
 """Compatibility factory using existing SERL DrQ and SmallEncoder implementations."""
-def make_agent(seed,observations,action,image_keys,discount=.99):
+def make_agent(seed,observations,action,image_keys,discount=.99,*,bc_train_encoder=False):
     import jax
     import jax.numpy as jnp
     from einops import rearrange
@@ -20,7 +20,11 @@ def make_agent(seed,observations,action,image_keys,discount=.99):
     encoders={k:RawImageEncoder(inner=SmallEncoder(features=(32,64,128,256),
         kernel_sizes=(3,3,3,3),strides=(2,2,2,2),padding="VALID",pool_method="avg",
         bottleneck_dim=256,spatial_block_size=8),name="encoder_"+k) for k in image_keys}
-    encoder=EncodingWrapper(encoder=encoders,use_proprio=True,enable_stacking=True,image_keys=image_keys)
+    class BCEncodingWrapper(EncodingWrapper):
+        def __call__(self,observations,train=False,stop_gradient=False,is_encoded=False):
+            return super().__call__(observations,train=train,stop_gradient=False,is_encoded=is_encoded)
+    encoder_cls=BCEncodingWrapper if bc_train_encoder else EncodingWrapper
+    encoder=encoder_cls(encoder=encoders,use_proprio=True,enable_stacking=True,image_keys=image_keys)
     network=dict(activations=nn.tanh,use_layer_norm=True,hidden_dims=[256,256],activate_final=True)
     backbone=ensemblize(partial(MLP,**network),10)(name="critic_ensemble")
     critic=Critic(encoder=encoder,network=backbone,name="critic")

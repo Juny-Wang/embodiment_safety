@@ -8,6 +8,7 @@ import numpy as np,jax
 from flax import serialization
 from flax.core import freeze
 from algos.serl.agent import make_agent
+from algos.serl.inference import sample_policy
 from algos.serl.replay import Journal
 from tasks.task1_dimm_insert.env.dataset import Dataset
 OUT=Path(sys.argv[1]);SMOKE=os.environ.get("TASK1_SMOKE")=="1"
@@ -20,6 +21,8 @@ try:
  dataset=Dataset(resolve(cfg["dataset"]));journal=Journal(os.environ["SERL_REPLAY_DIR"])
  online=list(journal.records());initial_online=len(online)
  checkpoint=Path(os.environ["SERL_INPUT_CHECKPOINT"]);meta=json.loads(checkpoint.with_suffix(".json").read_text())
+ if meta.get("bc_only") and (LEARN or os.environ.get("TASK1_DETERMINISTIC")!="1"):
+  raise ValueError("BC checkpoint requires deterministic evaluation; critic/std calibration pending")
  payload=checkpoint.read_bytes()
  if hashlib.sha256(payload).hexdigest()!=meta["sha256"]:raise ValueError("Checkpoint hash")
  if meta["interface_version"]!=dataset.manifest["interface_version"] or meta["reward_version"]!=dataset.manifest["reward_version"]:raise ValueError("Contract mismatch")
@@ -59,7 +62,7 @@ try:
    agent,_=agent.update_high_utd(batch,utd_ratio=cfg["utd_ratio"]);jax.block_until_ready(agent.state.params);updates+=1
    if not all(np.isfinite(np.asarray(x)).all() for x in jax.tree_util.tree_leaves(agent.state.params)):raise ValueError("Nonfinite weights")
   action_key,key=jax.random.split(action_key)
-  raw=np.asarray(agent.sample_actions(observations=o,seed=key,deterministic=os.environ.get("TASK1_DETERMINISTIC")=="1"),float)
+  raw=np.asarray(sample_policy(agent,o,key=key,deterministic=os.environ.get("TASK1_DETERMINISTIC")=="1"),float)
   if raw.shape!=(7,) or not np.isfinite(raw).all() or np.max(np.abs(raw))>1.00001:raise ValueError("Policy action")
   a=raw.copy()
   if SMOKE:
@@ -67,7 +70,8 @@ try:
    norm=np.linalg.norm(a[:3])
    if norm>.002/.32:a[:3]*=(.002/.32)/norm
    a[3:]=0
-  write(f"action_{n:03d}.json",dict(index=n,proposed=raw.tolist(),executed=a.tolist(),network_updates=updates))
+  write(f"action_{n:03d}.json",dict(index=n,proposed=raw.tolist(),executed=a.tolist(),network_updates=updates,
+   sampling_mode="argmax" if os.environ.get("TASK1_DETERMINISTIC")=="1" else "seeded_sample"))
   n+=1
  stop=json.loads((OUT/"policy_stop.json").read_text());final=stop["final_observation_index"]
  if final-1>last:insert(final-1)
