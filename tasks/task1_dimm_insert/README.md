@@ -106,3 +106,14 @@ BC更新Actor和图像编码器；Critic未训练，随机标准差未标定。�
 新动作日志明确记录sampling_mode。BC 400步只是一轮试跑，不作为最终训练效果。
 
 完整BC批次 bc_full_001：4800次更新后按检查集平台期停止，选中4300次检查点；1482条训练样本全部覆盖，检查样本未参与梯度。完整回合 bc_full_001_final_eval 在40.18秒因dimm_environment_N=6.435N超过5N停止，阶段奖励0、姿态相对初始最大偏转90.33度。手掌碰撞体接触PCB，两指接触力为0。任务未通过，未启动SAC微调。原SAC正确确定性对照在2.10秒IK停止、最大偏转142.79度。两者MP4及GIF均在对应输出目录，不改源场景。
+
+### Full historical BC pair training
+
+All 15 historical recording directories are included in the BC-only pair dataset, plus the native demonstration. Repeated motion groups are retained with their actual images, not claimed as independent trajectories. Dataset: outputs/datasets/task1/bc_all_demos_001 (20618 pairs). Historical 03-15 contribute all 1228 rows each; 01/02 retain 1638/1667 rows, rejecting 2255 stale/future RGB observations in total.
+
+BC targets are the actual first substep velocity command at the observed boundary, never the averaged 100 ms action. Historical source commands last 50 ms; native commands last 100 ms. Deployment remains 100 ms, requiring closed-loop evaluation. These pairs have no reward/next-state training targets and MUST NOT enter SAC replay. Historical progress inputs use pre-action shadow history. No scene or control thresholds changed.
+
+Prepare: python -m runners.prepare_bc --output outputs/datasets/task1/NEW_DATASET
+Train: python -m runners.pretrain_bc --dataset outputs/datasets/task1/bc_all_demos_001 --output outputs/runs/task1/serl/NEW_RUN --updates 20000 --min-updates 10000 --patience 10 --eval-every 500 --batch-size 16 --cache-size 512
+
+Same elapsed-time blocks are assigned together across repeated trajectories. This is correlated temporal validation, not independent task generalization. Outputs for this run: outputs/runs/task1/serl/bc_all_demos_001/fit.

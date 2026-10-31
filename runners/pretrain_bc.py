@@ -4,6 +4,8 @@ from pathlib import Path
 from .common import ROOT,config,resolve,setup
 def main():
  p=argparse.ArgumentParser()
+ p.add_argument("--dataset",help="Optional BC-only pair dataset; does not change SAC data")
+ p.add_argument("--cache-size",type=int,default=512)
  p.add_argument("--output",required=True);p.add_argument("--updates",type=int,default=400)
  p.add_argument("--batch-size",type=int,default=8);p.add_argument("--learning-rate",type=float,default=1e-4)
  p.add_argument("--eval-every",type=int,default=100)
@@ -17,26 +19,33 @@ def main():
  from flax.traverse_util import flatten_dict
  from algos.serl.agent import make_agent
  from tasks.task1_dimm_insert.env.dataset import Dataset
- if a.updates<1 or a.batch_size<1 or a.eval_every<1:raise ValueError("Positive budget required")
+ if a.updates<1 or a.batch_size<1 or a.eval_every<1 or a.cache_size<1:raise ValueError("Positive budget required")
  if not 0<=a.min_updates<=a.updates or a.patience<0 or a.min_delta<0:raise ValueError("Stopping settings")
  out=resolve(a.output).resolve()
  if not out.is_relative_to(ROOT/"outputs"):raise ValueError("Remote repository outputs only")
  out.mkdir(parents=True,exist_ok=False)
  (out/"run_config.json").write_text(json.dumps(vars(a),indent=2))
- data=Dataset(resolve(cfg["dataset"]));rng=np.random.default_rng(cfg["seed"])
+ if a.dataset:
+  from tasks.task1_dimm_insert.env.bc_dataset import BCDataset
+  data=BCDataset(resolve(a.dataset))
+ else:data=Dataset(resolve(cfg["dataset"]))
+ rng=np.random.default_rng(cfg["seed"])
  # A local blocked interpolation check, NOT independent task generalization.
  train=[];valid=[];purged=[]
  for i,row in enumerate(data.rows):
-  k=int(row.get("index",i))%100
+  k=int(row.get("split_index",row.get("index",i)))%100
   (valid if 80<=k<90 else purged if 75<=k<95 else train).append(i)
  if not valid or not train:raise ValueError("Empty split")
  split=dict(train=train,validation=valid,purged=purged,kind="temporal blocks; correlated trajectories; not independent generalization")
  (out/"split.json").write_text(json.dumps(split,indent=2))
- cache={}
+ from collections import OrderedDict
+ cache=OrderedDict()
  def sample(i):
   if i not in cache:
    r=data.rows[i];o=data.get(i)
    cache[i]=dict(observations=o["observations"],actions=o["actions"])
+   while len(cache)>a.cache_size:cache.popitem(last=False)
+  cache.move_to_end(i)
   return cache[i]
  def batch(ids):
   return freeze(jax.tree_util.tree_map(lambda *v:np.stack(v),*[sample(int(i)) for i in ids]))
@@ -117,7 +126,8 @@ def main():
   sha256=hashlib.sha256(payload).hexdigest(),demo_transitions=len(data),online_transitions=0,
   batch_size=cfg["batch_size"],utd_ratio=cfg["utd_ratio"],discount=cfg["discount"],
   scope="BC initialization; deterministic evaluation only; critic and stochastic std not calibrated",
-  bc_only=True,stochastic_rollout_ready=False)
+  bc_only=True,stochastic_rollout_ready=False,dataset=str(data.path),
+  bc_pair_semantics=data.manifest.get("action_semantics","held100ms"))
  (out/"checkpoint.json").write_text(json.dumps(meta,indent=2))
  report=dict(before=before,after=after,best_update=beststep,updates=actual_updates,wall_s=time.monotonic()-wall,
   split_counts={k:len(split[k]) for k in ("train","validation","purged")},changed_parameter_paths=changed,

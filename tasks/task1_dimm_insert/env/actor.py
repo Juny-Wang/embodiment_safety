@@ -162,8 +162,14 @@ try:
   env["TASK1_MAX_STEPS"]=str(MAX_STEPS)
   env["TASK1_SMOKE"]="1" if SMOKE else "0"
   log=(OUT/"worker.log").open("w")
-  child=subprocess.Popen(["/home/ufdwaa/anaconda3/envs/env_isaaclab/bin/python","-B",
-    str(ROOT/"algos/serl/actor_worker.py"),str(OUT)],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
+  backend=os.environ.get("TASK1_POLICY_BACKEND","serl")
+  if backend not in ("serl","diffusion_policy","recorded_action"):raise ValueError("Unknown policy backend")
+  interpreter=str(ROOT/"algos/diffusion_policy/.venv/bin/python") if backend=="diffusion_policy" else "/home/ufdwaa/anaconda3/envs/env_isaaclab/bin/python"
+  worker=ROOT/("algos/diffusion_policy/worker.py" if backend=="diffusion_policy" else "algos/serl/actor_worker.py")
+  if backend=="recorded_action":
+   interpreter="/usr/bin/python3"
+   worker=ROOT/"tasks/task1_dimm_insert/env/recorded_action_worker.py"
+  child=subprocess.Popen([interpreter,"-B",str(worker),str(OUT)],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
   p.start();p.enable()
  launch_task=asyncio.ensure_future(launch());wall=time.monotonic();last=wall
  while app.is_running():

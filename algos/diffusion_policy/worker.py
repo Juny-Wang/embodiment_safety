@@ -1,0 +1,42 @@
+"""Read-only policy worker: actual observations in, official DP action out."""
+import os,sys,time,json,traceback
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT))
+import numpy as np
+import torch
+from algos.diffusion_policy.common import CAMERAS,build,digest
+OUT=Path(sys.argv[1])
+def write(name,data):
+ p=OUT/name;tmp=p.with_suffix(".tmp");tmp.write_text(json.dumps(data,indent=2));tmp.replace(p)
+try:
+ torch.set_num_threads(2)
+ if os.environ.get("TASK1_ONLINE_LEARN")=="1":raise ValueError("DP evaluation cannot learn")
+ cp=Path(os.environ["SERL_INPUT_CHECKPOINT"]);meta=json.loads(cp.with_suffix(".json").read_text())
+ if digest(cp)!=meta["sha256"]:raise ValueError("Checkpoint changed")
+ seed=int(os.environ.get("TASK1_EPISODE_SEED","42"));torch.manual_seed(seed);torch.cuda.manual_seed_all(seed)
+ state=torch.load(cp,map_location="cpu",weights_only=False);model=build(state["config"])
+ model.load_state_dict(state["ema"]);model=model.cuda().eval()
+ write("loaded_checkpoint.json",dict(path=str(cp),sha256=meta["sha256"],algorithm="diffusion_policy",weights="ema",seed=seed))
+ history=[];n=0
+ while True:
+  request=OUT/f"request_{n:03d}.json";deadline=time.monotonic()+600
+  while not request.exists() and not (OUT/"policy_stop.json").exists():
+   if (OUT/"actor_error.json").exists():raise RuntimeError("Actor failed")
+   if time.monotonic()>deadline:raise TimeoutError("Policy request")
+   time.sleep(.02)
+  if not request.exists():break
+  with np.load(OUT/f"obs_{n:03d}.npz",allow_pickle=False) as f:obs={k:f[k][0].copy() for k in f.files}
+  history.append(obs);history=history[-2:]
+  pair=history if len(history)==2 else [history[0],history[0]]
+  batch={k:torch.from_numpy(np.stack([o[k] for o in pair])).permute(0,3,1,2)[None].float().cuda()/255 for k in CAMERAS}
+  batch["state"]=torch.from_numpy(np.stack([o["state"] for o in pair]))[None].float().cuda()
+  with torch.no_grad():action=model.predict_action(batch)["action"][0,0].cpu().numpy()
+  if action.shape!=(7,) or not np.isfinite(action).all():raise ValueError("Invalid action")
+  executed=np.clip(action,-1,1)
+  write(f"action_{n:03d}.json",dict(index=n,proposed=action.tolist(),executed=executed.tolist(),network_updates=0,
+   sampling_mode="seeded_ddim_eta0",seed=seed,history_frames=len(history),action_horizon=16,executed_chunk=1))
+  n+=1
+ stop=json.loads((OUT/"policy_stop.json").read_text())
+ write("worker_result.json",dict(passed=True,network_updates=0,new_transitions=stop["final_observation_index"],learning=False,algorithm="diffusion_policy"))
+except BaseException:
+ write("worker_error.json",dict(error=traceback.format_exc()));raise

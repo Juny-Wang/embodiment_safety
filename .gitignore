@@ -50,3 +50,6 @@ tensorboard/
 **/scene/**/*.patch
 
 # Prefer keeping only published usda at scene root + assets/scripts
+
+# Pinned upstream checkout; reproduce via algos/diffusion_policy/README.md
+/algos/diffusion_policy/vendor/
