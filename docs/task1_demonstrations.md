@@ -16,10 +16,10 @@ data-valid, smooth, distinct episodes enter `manifest.json`.
 - Free-space paths use a minimum-jerk interpolation plus one smooth seeded bend.
   Horizontal bend offsets are within 15 mm; vertical offsets are 3–12 mm.
   Path endpoint velocity and acceleration are zero.
-- The `smooth_fast_v002` free-space speed limits are 0.10 m/s for approaches and
-  0.08 m/s for transfer. Translational acceleration remains limited to 0.04 m/s².
-- During grasp closure without detected contact, the aperture closes at 4 mm/s
-  above 4 mm, 1.5 mm/s above 2.5 mm, and 0.5 mm/s below that. Detected contact
+- The `smooth_slow_v001` free-space speed limits are 0.05 m/s for approaches and
+  0.04 m/s for transfer. Translational acceleration is limited to 0.04 m/s².
+- During grasp closure without detected contact, the aperture closes at 1.5 mm/s
+  above 4 mm and 0.5 mm/s below that. Detected contact
   uses the existing force feedback and approximately 3 N target.
 - Contact motions, alignment, insertion, and post-release stability criteria use
   the existing qualified expert settings.
@@ -30,29 +30,16 @@ From `/mnt/data2/wjy_SERL/Embodied_Safety` on `isaac-b`:
 
 ```bash
 algos/diffusion_policy/.venv/bin/python -B -m runners.collect_task1 \
-  --output outputs/datasets/task1/smooth_success100_v002 \
-  --seed 2026110204 --workers 2 --successes 3 --max-attempts 3
+  --output outputs/datasets/task1/smooth_success100_v001 \
+  --seed 2026110201 --workers 2 --successes 100 --max-attempts 200
 ```
 
-Compare the pilot against the slow reference:
-
-```bash
-algos/diffusion_policy/.venv/bin/python -B -m runners.compare_task1_collections \
-  --baseline outputs/datasets/task1/smooth_success100_v001 \
-  --candidate outputs/datasets/task1/smooth_success100_v002
-```
-
-The pilot passes when all three attempts are accepted, all three seeds have
-successful slow references, mean duration decreases by at least 10%, and each
-contact channel's mean peak is at most 1.2 times the reference plus 0.1 N.
-This comparison measures demonstration quality and speed, not BC policy success.
-
-Continue an accepted pilot to 100 successful episodes:
+Resume the existing collection, counting previously accepted episodes toward 100:
 
 ```bash
 algos/diffusion_policy/.venv/bin/python -B -m runners.collect_task1 \
-  --output outputs/datasets/task1/smooth_success100_v002 \
-  --seed 2026110204 --workers 2 --resume --successes 100 --max-attempts 200
+  --output outputs/datasets/task1/smooth_success100_v001 \
+  --seed 2026110201 --workers 2 --resume --successes 100 --max-attempts 200
 ```
 
 ## Dataset and acceptance

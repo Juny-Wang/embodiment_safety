@@ -5,8 +5,8 @@ from .smooth_path import SmoothPath
 
 
 class Task1Expert:
-    TRANSIT = {"LEFT_ABOVE": .10, "RIGHT_ABOVE": .10, "GRASP_ABOVE": .10, "TRANSFER": .08}
-    PROFILE = "smooth_fast_v002"
+    PROFILE = "smooth_slow_v001"
+    TRANSIT = {"LEFT_ABOVE": .05, "RIGHT_ABOVE": .05, "GRASP_ABOVE": .05, "TRANSFER": .04}
 
     def __init__(self, panel, seed, variation=1.):
         from pxr import UsdGeom
@@ -127,13 +127,7 @@ class Task1Expert:
                 if width < 0.0005:
                     self.error = 'empty_grasp'
                     return a
-                closing = .0005
-                if max(vals) < .1:
-                    if width > .004:
-                        closing = .004
-                    elif width > .0025:
-                        closing = .0015
-                a[6] = -closing / cfg['gripper_m_s']
+                a[6] = (-0.0015 if width > 0.004 and max(vals) < 0.1 else -0.0005) / cfg['gripper_m_s']
             else:
                 a[6] = float(np.clip(-(3 - np.mean(vals)) * 2e-05, -0.0001, 0.0001)) / cfg['gripper_m_s']
             if self.relative is not None and np.linalg.norm(R.T @ (d - pos) - self.relative) > 0.002:
