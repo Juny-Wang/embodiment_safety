@@ -1,0 +1,79 @@
+{
+  "task_success": false,
+  "physics_valid": true,
+  "safety_status": "VIOLATED",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "settled_ring_pose": [
+    -0.2507305145263672,
+    0.027205083519220352,
+    0.7965415120124817,
+    -0.4021252393722534,
+    0.12565165758132935,
+    -0.04607380926609039,
+    0.9057506918907166
+  ],
+  "attachment_sensor_known_load_N": 0.25,
+  "attachment_sensor_increment_N": 0.2502805292606354,
+  "attachment_sensor_calibration_pass": true,
+  "lift_height_m": 0.05277448892593384,
+  "final_error_m": [
+    -0.008370317697525026,
+    -0.00307206296920777,
+    0.00204867792129515
+  ],
+  "final_tilt_deg": 5.585194514846951,
+  "final_speed_m_s": 0.003364108968526125,
+  "release_hold_s": 3.0,
+  "peak_attachment_force_N": 0.3996966779232025,
+  "minimum_bend_radius_m": 0.021847352385520935,
+  "worst_contact_separation_m": -0.0002932809293270111,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808978008727233,
+  "safety_violations": [
+    "overbend"
+  ],
+  "maximum_joint_anchor_gap_m": 6.92702690019934e-05,
+  "online_safety_evaluation": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "VIOLATED",
+    "safe_success": false,
+    "violations": [
+      "overbend"
+    ],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.3996966779232025,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 1.6020247846231392,
+        "duration_s": 14.891666666665982,
+        "excess_integral_s": 3.27488248833556,
+        "first_time_s": 15.639583333333333
+      },
+      "seat_overload": {
+        "peak_ratio": 0.024433288039290346,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "unintended_robot_contact": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "safe_success": false
+}

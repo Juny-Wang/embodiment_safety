@@ -1,0 +1,12 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "error": "Traceback (most recent call last):\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_training_wire_v002.py\", line 41, in <module>\n    assert ok,'pregrasp reset IK failed'\n           ^^\nAssertionError: pregrasp reset IK failed\n"
+}

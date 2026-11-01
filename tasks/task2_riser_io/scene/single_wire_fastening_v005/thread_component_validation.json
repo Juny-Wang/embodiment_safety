@@ -1,0 +1,13 @@
+{
+  "component": "original helical screw / nut, GPU SDF contact",
+  "torque_applied_Nm": 0.001,
+  "axial_push_N": 0.3,
+  "measured_lead_m_per_revolution": 0.001999257776122089,
+  "designed_lead_m_per_revolution": 0.002,
+  "fitted_samples": 9,
+  "max_path_residual_m": 6.028521784218199e-06,
+  "lowest_tip_z_m": 0.7459999322891235,
+  "head_contacts_nut_at_z_m": 0.746,
+  "max_penetration_m": 3.3702963264659047e-07,
+  "scope": "spindle-aligned component test; not robot full-task acceptance"
+}

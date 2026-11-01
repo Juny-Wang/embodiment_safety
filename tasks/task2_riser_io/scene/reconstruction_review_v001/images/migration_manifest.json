@@ -1,0 +1,79 @@
+{
+  "verified_at_utc": "2026-11-01T06:22:13.217329+00:00",
+  "latest_concept": "concepts/task2_layout_v003_review.png",
+  "concepts_are_generated_schematics_not_simulation_evidence": true,
+  "simulation_images_source_run": "attempt_012",
+  "files": [
+    {
+      "path": "/home/junyao/task2_scene_review/review_initial.jpg",
+      "bytes": 52925,
+      "sha256": "aeac98808ea370117bd64ed33ce221f54d89210dcdfa9231287b98a61e2877fb",
+      "remote": "simulation/review_initial.jpg",
+      "verified": true
+    },
+    {
+      "path": "/home/junyao/task2_scene_review/review_grasp.jpg",
+      "bytes": 45921,
+      "sha256": "8f3e165d27f0fab801c840ad01121f405d20d3ab1acde9709229903fed85cfa0",
+      "remote": "simulation/review_grasp.jpg",
+      "verified": true
+    },
+    {
+      "path": "/home/junyao/task2_scene_review/review_seat_candidate.jpg",
+      "bytes": 45525,
+      "sha256": "8c6fa11f046daeaebd1c625b41984e0be37c8ba922683d817dd192c759940af1",
+      "remote": "simulation/review_seat_candidate.jpg",
+      "verified": true
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7dccc06c-fd07-4d0d-8f75-d44a3647f155.png",
+      "bytes": 1988548,
+      "sha256": "a894c9d7355cc5dded78a3a2a68d98160b1d2bc240161838efc8017a16c22e42",
+      "remote": "concepts/task2_layout_v001.png",
+      "verified": true
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-5461c52b-2c0d-4b82-bb95-11c43dfca47d.png",
+      "bytes": 1978419,
+      "sha256": "aa7999a949fa2c50262a18544f446322c48b60609b60eec926e3a82f665375fc",
+      "remote": "concepts/task2_layout_v002.png",
+      "verified": true
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7d39d280-9c0e-4533-ae14-d3bff7bb6b32.png",
+      "bytes": 2045161,
+      "sha256": "c8c445a05b9fd2b06e2c716f48557051a0dd6347a3e39616f00c64b7aa54cbbb",
+      "remote": "concepts/task2_layout_v003_review.png",
+      "verified": true
+    }
+  ],
+  "local_cleanup": [
+    {
+      "path": "/home/junyao/task2_scene_review/review_initial.jpg",
+      "deleted": true
+    },
+    {
+      "path": "/home/junyao/task2_scene_review/review_grasp.jpg",
+      "deleted": true
+    },
+    {
+      "path": "/home/junyao/task2_scene_review/review_seat_candidate.jpg",
+      "deleted": true
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7dccc06c-fd07-4d0d-8f75-d44a3647f155.png",
+      "deleted": false,
+      "error": "[Errno 30] Read-only file system: '/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7dccc06c-fd07-4d0d-8f75-d44a3647f155.png'"
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-5461c52b-2c0d-4b82-bb95-11c43dfca47d.png",
+      "deleted": false,
+      "error": "[Errno 30] Read-only file system: '/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-5461c52b-2c0d-4b82-bb95-11c43dfca47d.png'"
+    },
+    {
+      "path": "/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7d39d280-9c0e-4533-ae14-d3bff7bb6b32.png",
+      "deleted": false,
+      "error": "[Errno 30] Read-only file system: '/home/junyao/.codex/generated_images/01a1957a-16de-7450-903f-378541e4e169/exec-7d39d280-9c0e-4533-ae14-d3bff7bb6b32.png'"
+    }
+  ]
+}

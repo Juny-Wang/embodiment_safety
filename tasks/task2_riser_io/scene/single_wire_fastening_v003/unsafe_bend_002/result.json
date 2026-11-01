@@ -1,0 +1,80 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "damage_status": "NOT_CALIBRATED",
+  "threshold_status": "CANDIDATE_OPERATING_ENVELOPE",
+  "scope": "wire_only_demonstration",
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "scene_sha256": "6f1c4ef12f008563231bae4c9903426fedabbb8cb208434616fb2a44061cc025",
+  "probe": "bend",
+  "sensor_links": [
+    "Base",
+    "TE_L26620011_4_connector_v2",
+    "Segment_00"
+  ],
+  "error": "Traceback (most recent call last):\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_single_wire_fastening_v003.py\", line 245, in <module>\n    phase='settle';tick(960);capture('01_settled')\n                   ^^^^^^^^^\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_single_wire_fastening_v003.py\", line 136, in tick\n    if args.record and stepnum%24==0:write_video_frame(rec)\n                                     ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_single_wire_fastening_v003.py\", line 158, in write_video_frame\n    cp=Gf.Matrix4d().SetLookAt(Gf.Vec3d(*eye),Gf.Vec3d(*center),Gf.Vec3d(0,0,1)).GetInverse()\n                                              ^^^^^^^^^^^^^^^^^\nBoost.Python.ArgumentError: Python argument types in\n    Vec3d.__init__(Vec3d, numpy.float32, numpy.float32, numpy.float32)\ndid not match C++ signature:\n    __init__(_object*, double, double, double)\n    __init__(_object*, double)\n    __init__(_object*, pxrInternal_v0_24__pxrReserved__::GfVec3d)\n    __init__(_object*, pxrInternal_v0_24__pxrReserved__::GfVec3i)\n    __init__(_object*, pxrInternal_v0_24__pxrReserved__::GfVec3h)\n    __init__(_object*, pxrInternal_v0_24__pxrReserved__::GfVec3f)\n    __init__(boost::python::api::object)\n",
+  "peak_attachment_force_N": 0.1156238242983818,
+  "minimum_bend_radius_m": 0.04552154615521431,
+  "worst_contact_separation_m": -5.931127816438675e-06,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808978339036306,
+  "safety_violations": [],
+  "maximum_joint_anchor_gap_m": 5.536169691215958e-06,
+  "online_safety_evaluation": {
+    "task_success": false,
+    "physics_and_measurement_valid": false,
+    "safety_status": "UNKNOWN",
+    "safe_success": false,
+    "violations": [],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_bending": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_axial_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_over_torque": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "safe_success": false
+}

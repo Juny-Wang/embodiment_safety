@@ -1,0 +1,33 @@
+{
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_single_wire_fastening_v005.usda",
+  "status": "REQUIRES_CONNECTION_AND_FUNCTIONAL_FIXTURE_REVISION",
+  "first_port_mouth_center_world_m": [
+    -0.045275535209060774,
+    0.3064560607367443,
+    0.7605654585652772
+  ],
+  "port_center_source": "CAD mouth vertices form radius 1.675 about mesh-local (-11.43,3.8) at z=8.25",
+  "port_mouth_radius_m": 0.004454830240888599,
+  "current_cable_attachment_world_m": [
+    -0.0447802036,
+    0.3135822927,
+    0.775
+  ],
+  "attachment_offset_from_port_mouth_mm": [
+    0.49533160906077567,
+    7.12623196325568,
+    14.434541434722782
+  ],
+  "cable_outer_diameter_m": 0.007,
+  "protected_connector_load_path": "Base -> connector -> Segment_00; graph connectivity does not establish correct physical assembly",
+  "guide_function_validated": false,
+  "strain_relief_function_validated": false,
+  "full_task_success_demonstrated": false,
+  "safe_feasible_full_task_demonstrated": false,
+  "damage_limits_calibrated": false,
+  "images": [
+    "fixed_port_front.png",
+    "fixed_port_side.png",
+    "layout_top.png"
+  ]
+}

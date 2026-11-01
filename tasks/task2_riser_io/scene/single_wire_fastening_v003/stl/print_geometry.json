@@ -1,0 +1,62 @@
+{
+  "terminal_board": {
+    "watertight": true,
+    "dimensions_mm": [
+      140.00000059604645,
+      50.00000074505806,
+      5.499999970197678
+    ],
+    "coordinates": "millimetres, local part frame"
+  },
+  "cable_support_ramp": {
+    "watertight": true,
+    "dimensions_mm": [
+      60.00000238418579,
+      89.99999985098839,
+      18.999993801116943
+    ],
+    "coordinates": "millimetres, local part frame"
+  },
+  "screw_base": {
+    "watertight": true,
+    "dimensions_mm": [
+      17.000000923871994,
+      17.000000923871994,
+      23.000000044703484
+    ],
+    "coordinates": "millimetres, local part frame"
+  },
+  "screw_grasp_extension": {
+    "watertight": true,
+    "dimensions_mm": [
+      17.000000923871994,
+      14.722432009875774,
+      16.00000075995922
+    ],
+    "coordinates": "millimetres, local part frame"
+  },
+  "pickup_support": {
+    "dimensions_mm": [
+      22,
+      22,
+      18
+    ],
+    "watertight": true
+  },
+  "cable_pickup_support": {
+    "dimensions_mm": [
+      20,
+      45,
+      18
+    ],
+    "watertight": true
+  },
+  "cable_target_plateau": {
+    "dimensions_mm": [
+      20,
+      12,
+      18
+    ],
+    "watertight": true
+  }
+}

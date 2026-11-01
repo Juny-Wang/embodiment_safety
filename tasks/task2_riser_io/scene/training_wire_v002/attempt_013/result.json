@@ -1,0 +1,120 @@
+{
+  "task_success": false,
+  "physics_valid": true,
+  "safety_status": "VIOLATED",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "scene_sha256": "e3fa345d39531c10c967bcee260e67ec305175494cf0d2b01d93276c91fd6470",
+  "probe": "bend_pull",
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "settled_ring_pose": [
+    -0.23555707931518555,
+    0.020647123456001282,
+    0.7705459594726562,
+    -0.02615099772810936,
+    0.14475788176059723,
+    0.059743233025074005,
+    0.9873156547546387
+  ],
+  "attachment_sensor_known_load_N": 0.25,
+  "attachment_sensor_increment_N": 0.25026431679725647,
+  "attachment_sensor_calibration_pass": true,
+  "reset_safety": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "SAFE",
+    "safe_success": false,
+    "violations": [],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.049881696701049805,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 0.7507338312900234,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "seat_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "unintended_robot_contact": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "lift_height_m": 0.06205284595489502,
+  "pull_stopped_force_N": 1.3075535297393799,
+  "final_error_m": [
+    -0.009002648472785951,
+    0.001338606238365167,
+    0.008937484741210922
+  ],
+  "final_tilt_deg": 16.27638535214556,
+  "final_speed_m_s": 0.0027939192950725555,
+  "release_hold_s": 3.0,
+  "peak_attachment_force_N": 1.3234575986862183,
+  "minimum_bend_radius_m": 0.017304478213191032,
+  "worst_contact_separation_m": -0.0003648214042186737,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808978254596392,
+  "safety_violations": [
+    "attachment_overload",
+    "overbend"
+  ],
+  "maximum_joint_anchor_gap_m": 4.913964727416596e-05,
+  "online_safety_evaluation": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "VIOLATED",
+    "safe_success": false,
+    "violations": [
+      "attachment_overload",
+      "overbend"
+    ],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 1.3234575986862183,
+        "duration_s": 0.01875,
+        "excess_integral_s": 0.0027374339600404105,
+        "first_time_s": 31.275
+      },
+      "overbend": {
+        "peak_ratio": 2.022597825187231,
+        "duration_s": 21.006250000003234,
+        "excess_integral_s": 8.245000586805796,
+        "first_time_s": 17.527083333333334
+      },
+      "seat_overload": {
+        "peak_ratio": 0.012075584381818771,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "unintended_robot_contact": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "safe_success": false
+}

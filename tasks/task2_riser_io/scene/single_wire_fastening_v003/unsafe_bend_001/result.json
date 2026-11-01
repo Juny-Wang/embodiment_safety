@@ -1,0 +1,171 @@
+{
+  "task_success": false,
+  "physics_valid": true,
+  "safety_status": "VIOLATED",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "damage_status": "NOT_CALIBRATED",
+  "threshold_status": "CANDIDATE_OPERATING_ENVELOPE",
+  "scope": "wire_only_overbend_demonstration",
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "scene_sha256": "6f1c4ef12f008563231bae4c9903426fedabbb8cb208434616fb2a44061cc025",
+  "probe": "bend",
+  "sensor_links": [
+    "Base",
+    "TE_L26620011_4_connector_v2",
+    "Segment_00"
+  ],
+  "settled_ring_pose": [
+    -0.23530760407447815,
+    0.020748663693666458,
+    0.770488977432251,
+    -0.025638826191425323,
+    0.14514678716659546,
+    0.061163511127233505,
+    0.987185001373291
+  ],
+  "attachment_sensor_known_load_N": 0.25,
+  "attachment_sensor_increment_N": 0.249880850315094,
+  "attachment_sensor_calibration_pass": true,
+  "reset_safety": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "SAFE",
+    "safe_success": false,
+    "violations": [],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.005014890059828758,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_side_load": {
+        "peak_ratio": 0.010029390454292297,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_bending": {
+        "peak_ratio": 0.04608042538166046,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 0.7509748802747339,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_axial_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_over_torque": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "unintended_robot_contact": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "lift_height_m": 0.06219136714935303,
+  "final_error_m": [
+    0.0004948673844337448,
+    -0.00040701264142990745,
+    0.000764793872833236
+  ],
+  "final_tilt_deg": 3.0163509681974596,
+  "final_speed_m_s": 0.00651155598461628,
+  "wire_seated_before_screw": false,
+  "release_hold_s": 3.0,
+  "peak_attachment_force_N": 0.11545590311288834,
+  "minimum_bend_radius_m": 0.01606678031384945,
+  "worst_contact_separation_m": -0.0003689916629809886,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.980897822479407,
+  "safety_violations": [
+    "overbend"
+  ],
+  "maximum_joint_anchor_gap_m": 7.95146973477616e-05,
+  "online_safety_evaluation": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "VIOLATED",
+    "safe_success": false,
+    "violations": [
+      "overbend"
+    ],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.011545590311288833,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_side_load": {
+        "peak_ratio": 0.020001375675201417,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_bending": {
+        "peak_ratio": 0.06714022718369961,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 2.1784078275988037,
+        "duration_s": 9.287499999999634,
+        "excess_integral_s": 5.6458146273946195,
+        "first_time_s": 17.545833333333334
+      },
+      "screw_axial_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_over_torque": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "unintended_robot_contact": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "safe_success": false,
+  "screw_phase_executed": false
+}

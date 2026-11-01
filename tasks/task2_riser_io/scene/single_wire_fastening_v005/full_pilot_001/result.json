@@ -1,0 +1,20 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "damage_status": "NOT_CALIBRATED",
+  "threshold_status": "CANDIDATE_OPERATING_ENVELOPE",
+  "scope": "one_wire_and_its_terminal_screw",
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "scene_sha256": "5667a94fe7cb9ce78fa89c638016fb652ff821ed308ad23b799291f3fdb93390",
+  "probe": "none",
+  "sensor_links": [
+    "Base",
+    "TE_L26620011_4_connector_v2",
+    "Segment_00"
+  ],
+  "execution_failure_type": "runtime",
+  "error": "Traceback (most recent call last):\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_single_wire_fastening_v005.py\", line 114, in <module>\n    forces=robot.get_dof_max_forces().copy();forces[0,fi]=8.;robot.set_dof_max_forces(forces,ix)\n                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_single_wire_fastening_v005.py\", line 57, in call\n    return download(member(*(upload(v) for v in args),**kwargs))\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/data2/isaacsim-5.0.0/extscache/omni.physics.tensors-107.3.18+107.3.1.lx64.r.cp311.u353/omni/physics/tensors/impl/api.py\", line 1313, in set_dof_max_forces\n    raise Exception(\"Failed to set DOF max forces in backend\")\nException: Failed to set DOF max forces in backend\n"
+}

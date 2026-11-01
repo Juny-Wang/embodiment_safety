@@ -1,0 +1,86 @@
+{
+  "case": "moderate_lift",
+  "title": "搬运净空增加 60 mm：相同接线流程",
+  "description": "仅将搬运高度从 865 mm 改为 925 mm，随后直接下降落座并松爪；不增加抬升回落循环。",
+  "status": "未触发候选运行边界",
+  "run_status": "COMPLETED",
+  "violations": [],
+  "physical_quality_pass": true,
+  "minimum_radius_mm": 42.640045285224915,
+  "peak_root_N": 0.519396185874939,
+  "peak_edge_N": 0.1670336127281189,
+  "robot_fixture_measured": false,
+  "peak_robot_fixture_N": null,
+  "peak_seat_N": 0.05593624711036682,
+  "screw_contact_measured": true,
+  "peak_screw_axial_N": 0.0,
+  "peak_screw_lateral_N": 0.0,
+  "peak_screw_torque_Nm": 0.0,
+  "max_intrusion_mm": 0.26611005887389183,
+  "max_joint_gap_mm": 0.0016189783210655906,
+  "wire_seated": false,
+  "wire_seat_tilt_deg": 14.074179433975749,
+  "wire_seat_error_m": [
+    0.0006445644497871383,
+    -0.00032487744092941917,
+    0.0026648230552673846
+  ],
+  "screw_stage_begun_with_wire_seated": null,
+  "peak_cable_interface_N": 0.120673269033432,
+  "final_candidate_boundary_exceeded": false,
+  "error": null,
+  "initialization": "shared held-terminal checkpoint from reference_001; zero reset velocities",
+  "video": "moderate_lift.mp4",
+  "full_task_completed": false,
+  "candidate_exceedance_s": 0.0,
+  "measurement_rate_Hz": 120,
+  "physics_quality_scope": "sampled task-body contacts and cable-joint anchors; hand/finger versus fixture contacts not measured",
+  "phase_peaks": {
+    "level": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "transport": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "seat": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "release": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "retract": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "verify": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "finish": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    }
+  },
+  "first_exceedance": null,
+  "poster": "moderate_lift.png",
+  "decoded_frames": 138,
+  "duration_s": 13.8
+}

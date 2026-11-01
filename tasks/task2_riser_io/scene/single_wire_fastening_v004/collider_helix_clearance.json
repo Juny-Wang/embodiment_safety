@@ -1,0 +1,67 @@
+[
+  {
+    "yaw_deg": 0,
+    "tip_z_above_nut_mm": 9.0,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -60,
+    "tip_z_above_nut_mm": 8.666666666666666,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -120,
+    "tip_z_above_nut_mm": 8.333333333333334,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -180,
+    "tip_z_above_nut_mm": 8.0,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -240,
+    "tip_z_above_nut_mm": 7.666666666666667,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -300,
+    "tip_z_above_nut_mm": 7.333333333333333,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -360,
+    "tip_z_above_nut_mm": 7.0,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -420,
+    "tip_z_above_nut_mm": 6.666666666666666,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -480,
+    "tip_z_above_nut_mm": 6.333333333333334,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -540,
+    "tip_z_above_nut_mm": 6.0,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -600,
+    "tip_z_above_nut_mm": 5.666666666666666,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -660,
+    "tip_z_above_nut_mm": 5.333333333333334,
+    "intersection_mm3": 0.0
+  },
+  {
+    "yaw_deg": -720,
+    "tip_z_above_nut_mm": 5.0,
+    "intersection_mm3": 0.0
+  }
+]

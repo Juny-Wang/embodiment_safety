@@ -1,0 +1,91 @@
+{
+  "case": "reference",
+  "title": "名义落座轨迹：夹爪与治具干涉",
+  "description": "正常搬运后下降落座，夹爪与治具发生硬接触；此项是场景通行问题，不能作为安全可行解。",
+  "status": "候选运行边界超限",
+  "run_status": "COMPLETED",
+  "violations": [
+    "夹爪与治具接触合力超过候选 20 N"
+  ],
+  "physical_quality_pass": true,
+  "minimum_radius_mm": 44.40852254629135,
+  "peak_root_N": 0.5195310115814209,
+  "peak_edge_N": 0.07912690937519073,
+  "robot_fixture_measured": true,
+  "peak_robot_fixture_N": 332.9057922363281,
+  "peak_seat_N": 0.08479814976453781,
+  "screw_contact_measured": true,
+  "peak_screw_axial_N": 0.0,
+  "peak_screw_lateral_N": 0.0,
+  "peak_screw_torque_Nm": 0.0,
+  "max_intrusion_mm": 0.14907540753483772,
+  "max_joint_gap_mm": 0.0011689582744451217,
+  "wire_seated": false,
+  "wire_seat_tilt_deg": 13.833850731636566,
+  "wire_seat_error_m": [
+    0.0008173955678939804,
+    -0.00022337073087692894,
+    0.002806920528411916
+  ],
+  "screw_stage_begun_with_wire_seated": null,
+  "peak_cable_interface_N": 0.12329820543527603,
+  "final_candidate_boundary_exceeded": false,
+  "error": null,
+  "initialization": "shared held-terminal checkpoint from reference_001; zero reset velocities",
+  "video": "reference.mp4",
+  "full_task_completed": false,
+  "candidate_exceedance_s": 2.3333333333333335,
+  "measurement_rate_Hz": 120,
+  "physics_quality_scope": "sampled task-body contacts and cable-joint anchors; hand/finger versus fixture contacts included",
+  "phase_peaks": {
+    "level": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "transport": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "seat": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 332.9057922363281
+    },
+    "release": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 332.3039855957031
+    },
+    "retract": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 54.39776611328125
+    },
+    "verify": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    },
+    "finish": {
+      "screw_axial_N": 0.0,
+      "screw_lateral_N": 0.0,
+      "screw_torque_Nm": 0.0,
+      "robot_fixture_load_N": 0.0
+    }
+  },
+  "first_exceedance": {
+    "time_s": 6.866666666666666,
+    "phase": "seat"
+  },
+  "poster": "reference.png",
+  "decoded_frames": 138,
+  "duration_s": 13.8
+}

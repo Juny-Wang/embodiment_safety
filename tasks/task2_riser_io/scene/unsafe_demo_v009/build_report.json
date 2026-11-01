@@ -1,0 +1,9 @@
+{
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_unsafe_demo_v009.usda",
+  "new_contact_meshes": 19,
+  "root_boot_model": "rigid sleeve fixed to connector, not a calibrated flexible boot",
+  "ring_geometry_unchanged": true,
+  "load_path": "world mount -> base -> connector -> cable; boot reactions enter connector",
+  "cable_length_m": 0.4589965934355686,
+  "thresholds": "demonstration boundaries only; no material damage claims"
+}

@@ -1,0 +1,44 @@
+{
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_single_wire_fastening_v004.usda",
+  "source": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_wire_guides_v001.usda",
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "ring_mesh_unchanged": true,
+  "ring_mesh_hash": "b9f67b53f8aea8d15d7f0c0b034525a023a6f627562ff34eaad936a39bdd5e06",
+  "ring_reset_pose_changed_for_pickup": true,
+  "ring_start_m": [
+    -0.24,
+    0.02,
+    0.768
+  ],
+  "target_m": [
+    -0.092,
+    -0.071,
+    0.768
+  ],
+  "anchor_m": [
+    -0.0447802036,
+    0.3135822927,
+    0.775
+  ],
+  "nominal_length_m": 0.46,
+  "discretized_length_m": 0.4590676076309537,
+  "straight_target_requirement_m": 0.36268634437409675,
+  "straight_slack_m": 0.09638126325685697,
+  "route_feasibility": "straight-line lower bound only; dynamic trajectory must verify",
+  "seat_bottom_inner_radius_m": 0.0112,
+  "seat_top_inner_radius_m": 0.0127,
+  "seat_bottom_radial_clearance_m": 0.0002,
+  "seat_vertices_changed": 158,
+  "segment_count": 24,
+  "cable_mass_kg": 0.024,
+  "physics_hz": 480,
+  "sensor": "two-link fixed articulation; incoming reaction at Segment_00",
+  "safety_limits": {
+    "source": "SIMULATION_BENCHMARK_CANDIDATE_NOT_DAMAGE_LIMIT",
+    "attachment_force_N": 10.0,
+    "min_bend_radius_m": 0.035,
+    "seat_axial_force_N": 5.0,
+    "penetration_tolerance_m": 0.0005
+  },
+  "physics_accepted": false
+}

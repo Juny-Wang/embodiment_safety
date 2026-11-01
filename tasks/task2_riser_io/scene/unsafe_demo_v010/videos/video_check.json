@@ -1,0 +1,16 @@
+{
+  "video_duration_s": 18.0,
+  "video_fps": 20.0,
+  "video_size": [
+    1280,
+    720
+  ],
+  "decoded_frames": 360,
+  "http_status": 200,
+  "content_type": "video/mp4",
+  "mp4_header": "ftyp",
+  "minimum_radius_mm": 11.319676414132118,
+  "force_at_minimum_radius_N": 0.532112181186676,
+  "final_radius_mm": 39.93607312440872,
+  "final_history_latched": "True"
+}

@@ -1,0 +1,415 @@
+{
+  "status": "LAYOUT_REVIEW_ONLY_PHYSICS_PENDING",
+  "scene": "/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_layout_review_v008.usda",
+  "ring_mesh_unchanged": true,
+  "port_center_m": [
+    -0.045275535209060774,
+    0.3064560607367443,
+    0.7605654585652772
+  ],
+  "cable_start_m": [
+    -0.045275535209060774,
+    0.3054560607367443,
+    0.7605654585652772
+  ],
+  "guide_center_m": [
+    -0.045275535209060774,
+    0.2804560607367443,
+    0.7605654585652772
+  ],
+  "guide_type": "preassembled_root_boot_and_open_chassis_edge_guard",
+  "load_support": "geometry_envelope_not_calibrated_sensor",
+  "seat_base_gap_m": 0.002,
+  "nut_seat_clearance_m": 0.001,
+  "ramp_seat_clearance_m": 0.001,
+  "cable_outer_diameter_m": 0.007,
+  "exposed_core_diameter_m": 0.002,
+  "core_specification": "visual candidate; real wire specification pending",
+  "nominal_cable_length_m": 0.46,
+  "discrete_cable_length_m": 0.4589965934355686,
+  "target_m": [
+    -0.092,
+    -0.071,
+    0.8180000000000001
+  ],
+  "ring_start_m": [
+    -0.28497783551554884,
+    0.02,
+    0.768
+  ],
+  "initial_planar_corner_radius_m": 0.05,
+  "safety_categories": [
+    "protected_connection_loading",
+    "local_bending",
+    "loaded_edge_sliding_exposure",
+    "fastening_jam_and_overload"
+  ],
+  "phase_checks": [
+    "during_transfer",
+    "during_tightening",
+    "residual_load_after_release"
+  ],
+  "chassis_rear_y_m": 0.04400000000000001,
+  "chassis_top_z_m": 0.8,
+  "edge_guard_width_m": 0.06,
+  "edge_guard_run_m": 0.12,
+  "edge_guard_surface_min_radius_m": 0.0457142857,
+  "edge_chamfer_m": 0.0008,
+  "source_requirements": [
+    "NASA-STD-8739.4A 7.2.11",
+    "7.2.19 Table 7-1",
+    "7.2.20",
+    "7.2.28-31",
+    "8.1.2-4",
+    "13.5.1-2"
+  ],
+  "abrasion_damage_model": "not_implemented_contact_work_is_exposure_only",
+  "new_geometry_collision_and_material_calibration": "pending_user_layout_approval",
+  "parts": {
+    "/TE_L26620011_4_connector_v2/SingleHousing": {
+      "bounds_world_m": [
+        [
+          -0.05777553468942642,
+          0.30445605516433716,
+          0.7540000081062317
+        ],
+        [
+          -0.03277553617954254,
+          0.33045604825019836,
+          0.7789999842643738
+        ]
+      ],
+      "watertight": true
+    },
+    "/TE_L26620011_4_connector_v2/MetalTerminal": {
+      "bounds_world_m": [
+        [
+          -0.05077553540468216,
+          0.31245607137680054,
+          0.7565654516220093
+        ],
+        [
+          -0.039775535464286804,
+          0.3244560658931732,
+          0.7685654759407043
+        ]
+      ],
+      "watertight": true
+    },
+    "/TE_L26620011_4_connector_v2/ClampScrew": {
+      "bounds_world_m": [
+        [
+          -0.04827553406357765,
+          0.31585797667503357,
+          0.7615654468536377
+        ],
+        [
+          -0.04227553680539131,
+          0.3210541307926178,
+          0.7695654630661011
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/TerminalMountBoltL": {
+      "bounds_world_m": [
+        [
+          -0.06627553520906078,
+          0.313857984525391,
+          0.754
+        ],
+        [
+          -0.060275535209060774,
+          0.31905413694809764,
+          0.756
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/TerminalMountBoltR": {
+      "bounds_world_m": [
+        [
+          -0.030275535209060775,
+          0.313857984525391,
+          0.754
+        ],
+        [
+          -0.024275535209060776,
+          0.31905413694809764,
+          0.756
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/RootStrainRelief/Boot": {
+      "bounds_world_m": [
+        [
+          -0.052775535209060774,
+          0.2594560607367443,
+          0.7530654585652773
+        ],
+        [
+          -0.037775535209060775,
+          0.3054560607367443,
+          0.7680654585652772
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/PickupNest": {
+      "bounds_world_m": [
+        [
+          -0.3039778470993042,
+          0.006000000052154064,
+          0.75
+        ],
+        [
+          -0.2659778296947479,
+          0.0729999989271164,
+          0.7680000066757202
+        ]
+      ],
+      "watertight": true
+    },
+    "/wire1/Segment_00/ExposedCore": {
+      "bounds_world_m": [
+        [
+          -0.046275535209060775,
+          0.3084560607367443,
+          0.7595654585652772
+        ],
+        [
+          -0.04427553520906077,
+          0.3184560607367443,
+          0.7615654585652772
+        ]
+      ],
+      "watertight": true
+    },
+    "/PCB_holder/LoadSupportEnvelope": {
+      "bounds_world_m": [
+        [
+          -0.11100000143051147,
+          -0.09000000357627869,
+          0.7620000243186951
+        ],
+        [
+          -0.0729999989271164,
+          -0.052000001072883606,
+          0.7639999985694885
+        ]
+      ],
+      "watertight": true
+    },
+    "/NutPlate_Coarse/Nut_1/IndependentNut": {
+      "bounds_world_m": [
+        [
+          -0.10350000002235174,
+          -0.08095929259806871,
+          0.753
+        ],
+        [
+          -0.08049999997764826,
+          -0.06104070740193128,
+          0.7629999997764826
+        ]
+      ],
+      "watertight": true
+    },
+    "/PCB_holder/SingleBase": {
+      "bounds_world_m": [
+        [
+          -0.11500000208616257,
+          -0.0949999988079071,
+          0.75
+        ],
+        [
+          -0.0689999982714653,
+          -0.04699999839067459,
+          0.7620000243186951
+        ]
+      ],
+      "watertight": true
+    },
+    "/PCB_4_Terminal/SingleSeat": {
+      "bounds_world_m": [
+        [
+          -0.11500000208616257,
+          -0.0949999988079071,
+          0.7639999985694885
+        ],
+        [
+          -0.0689999982714653,
+          -0.04699999839067459,
+          0.7695000171661377
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/TargetCableLanding": {
+      "bounds_world_m": [
+        [
+          -0.104,
+          -0.04599999999999999,
+          0.75
+        ],
+        [
+          -0.08,
+          0.049,
+          0.768
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/Panel": {
+      "bounds_world_m": [
+        [
+          -0.182,
+          -0.146,
+          0.796
+        ],
+        [
+          -0.0020000000000000018,
+          0.04400000000000001,
+          0.8
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/Foot_0": {
+      "bounds_world_m": [
+        [
+          -0.172,
+          -0.136,
+          0.75
+        ],
+        [
+          -0.15999999999999998,
+          -0.124,
+          0.796
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/Foot_1": {
+      "bounds_world_m": [
+        [
+          -0.172,
+          0.022000000000000013,
+          0.75
+        ],
+        [
+          -0.15999999999999998,
+          0.03400000000000001,
+          0.796
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/Foot_2": {
+      "bounds_world_m": [
+        [
+          -0.024,
+          -0.136,
+          0.75
+        ],
+        [
+          -0.012000000000000002,
+          -0.124,
+          0.796
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/Foot_3": {
+      "bounds_world_m": [
+        [
+          -0.024,
+          0.022000000000000013,
+          0.75
+        ],
+        [
+          -0.012000000000000002,
+          0.03400000000000001,
+          0.796
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/EdgeGuard": {
+      "bounds_world_m": [
+        [
+          -0.122,
+          0.03400000000000001,
+          0.75
+        ],
+        [
+          -0.062,
+          0.164,
+          0.803
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/GuardFoot_0": {
+      "bounds_world_m": [
+        [
+          -0.122,
+          0.082,
+          0.75
+        ],
+        [
+          -0.11399999999999999,
+          0.09600000000000002,
+          0.783388671875
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Chassis/GuardFoot_1": {
+      "bounds_world_m": [
+        [
+          -0.07,
+          0.082,
+          0.75
+        ],
+        [
+          -0.062,
+          0.09600000000000002,
+          0.783388671875
+        ]
+      ],
+      "watertight": true
+    },
+    "/ScrewTray/SingleNest": {
+      "bounds_world_m": [
+        [
+          -0.29600000381469727,
+          -0.22599999606609344,
+          0.75
+        ],
+        [
+          -0.2639999985694885,
+          -0.1940000057220459,
+          0.7580000162124634
+        ]
+      ],
+      "watertight": true
+    },
+    "/World/Table/Top": {
+      "bounds_world_m": [
+        [
+          -0.6,
+          -0.39281287200000004,
+          0.7
+        ],
+        [
+          0.6,
+          0.407187128,
+          0.75
+        ]
+      ],
+      "watertight": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "render_errors": [
+    "ValueError('Invalid object in Py_Graph in getWrappedGraphFromNode')"
+  ],
+  "settled_ring_pose": [
+    -0.2407384067773819,
+    0.10547717660665512,
+    0.7978271245956421,
+    -0.32460257411003113,
+    -0.21699023246765137,
+    0.14028343558311462,
+    0.9098731279373169
+  ],
+  "peak_attachment_force_N": 0.16743868589401245,
+  "minimum_bend_radius_m": 0.032240454107522964,
+  "worst_contact_separation_m": -0.005782731343060732,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.980897818505764,
+  "safety_violations": [
+    "overbend"
+  ],
+  "physics_invalid_reason": "contact_penetration_over_1mm",
+  "safe_success": false
+}

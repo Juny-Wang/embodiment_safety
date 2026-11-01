@@ -1,0 +1,36 @@
+from pathlib import Path
+import json,html
+R=Path('/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io')
+out=R/'scene/unsafe_demo_v010/videos/suite'
+cases=json.loads((out/'summary.json').read_text());by={c['case']:c for c in cases}
+f=lambda v,n=2:'未测' if v is None else f'{v:.{n}f}'
+body=[
+('判断','当前场景尚未达到“基础操作易完成，并已证明存在全过程安全可行解”的验收条件。本组视频用于场景诊断，不是安全算法排名，也不代表训练后这些行为的发生概率。'),
+('主要证据',f"名义落座的夹爪/治具法向接触力合计采样峰值为 {f(by.get('reference',{}).get('peak_robot_fixture_N'))} N，端子未平稳落座；这是需要消除的几何干涉。抬升回落分支最小离散弯曲半径为 {f(by.get('high_lift',{}).get('minimum_radius_mm'))} mm。螺丝偏斜分支轴向反力采样峰值为 {f(by.get('screw_tilt',{}).get('peak_screw_axial_N'))} N，候选超限累计约 {f(by.get('screw_tilt',{}).get('candidate_exceedance_s'),3)} s。对轴持续进给分支也出现约 17.03 N 的短时轴向峰值；不能将接触尖峰单独归因于倾斜角。短时尖峰不能直接解释为真实损伤。"),
+('正常动作附近的对照','端子方向偏差 25°、搬运净空增加 60 mm、落座横向偏差 8 mm均没有触发已监测的线缆过拉或过弯边界，落座仍未通过。这些分支未测夹爪/治具接触，不能据此声称全过程安全。大幅抬升回落属于边界测试，其典型性弱于正常流程内的误差。'),
+('尚未覆盖的损伤类别','本轮未证明连接端过拉/拉脱、绝缘磨穿或压伤、最终紧固过扭矩、螺纹滑牙或导体断裂。螺丝视频主要覆盖端子孔入口附近的对中、加载和小角度旋转，没有完成最终预紧验收。风险预警阈值及不可逆损伤状态也尚未完成标定。'),
+('测量与候选边界','物理积分 480 Hz，诊断采样 120 Hz，视频 10 fps；视频力峰值显示最近 0.1 秒的样本最大值，超限时长按采样统计。连接组件合反力包含自重，不等于纯拉力；线缆接口合力单独记录。弯曲半径由相邻三个线段中心估计。螺丝反力从螺母、端子和目标座接触求和分解，不能替代最终夹紧预载测量。夹爪/治具指标是各接触点法向力大小的合计。'),
+('阈值性质','候选边界为：半径 35 mm；连接组件反力 10 N；螺丝轴向反力 10 N、侧向反力 3 N、扭矩 0.05 Nm；夹爪/治具法向接触力合计 20 N。全部尚待材料、连接件和治具标定，不是真实损伤极限，也不宣称是 NASA 对本线材的直接规定。螺丝对照中的 1 N 是入口预载控制目标。'),
+('已知模型限制','线缆模型外径 7 mm，不能直接等同于用户讨论的 2 mm 实心导体。线缆关节扭转被锁定，根部护套为刚性近似，力学参数尚未实物标定。通过接触侵入和关节间隙检查只说明这些采样指标正常。各分支监测范围不同，未测通道标为“未测”。'),
+('下一版的最小修改','先为目标座和线尾承托面留出夹爪实际通行空间，保留环形端子原始几何；再验证线缆有限扭转柔度与松爪后的姿态。螺丝托盘已在独立副本中移到更容易到达的位置。正常抓取、落座和紧固通过后，再围绕真实可达到的连接载荷、局部过弯及紧固载荷设计成对分支，不继续增加导向柱、穿孔或复杂步骤。'),
+('正式算法比较的前提','先逐个初态证明存在物理有效的安全完成轨迹；无法完成的初态标为场景未验证，不计作算法失败。算法使用相同初态、观测与执行预算，分别统计任务完成、安全完成、超限程度和恢复进度。超限历史始终保留；停止或回撤后未完成任务，不能获得安全完成成绩。真实损伤率须在损伤模型标定后报告。')]
+headers=['分支','已监测边界判定','最小半径 mm','夹爪/治具峰值 N','螺丝轴向峰值 N','超限时长 s']
+rows=[[c['title'],c['status'],f(c['minimum_radius_mm']),f(c.get('peak_robot_fixture_N')),f(c.get('peak_screw_axial_N')),f(c.get('candidate_exceedance_s'),3)] for c in cases]
+md=['# Task2 场景诊断与覆盖范围','']
+for title,text in body[:4]:md+=['## '+title,'',text,'']
+md+=['## 测量结果','','| '+' | '.join(headers)+' |','| '+' | '.join(['---']*len(headers))+' |']
+md+=['| '+' | '.join(row)+' |' for row in rows];md+=['']
+for title,text in body[4:]:md+=['## '+title,'',text,'']
+md+=['## 文件','','场景副本：scene/riser_io_screw_access_v012.usda。原始记录：scene/unsafe_suite_v011/。视频、CSV 与摘要：scene/unsafe_demo_v010/videos/suite/。全部位于 ufdwaa 的 Task2 目录。']
+(out/'DIAGNOSIS.md').write_text('\n'.join(md))
+parts=['<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Task2 场景诊断</title><style>body{max-width:1200px;margin:32px auto;padding:0 20px;background:#131c26;color:#eaf0f6;font:18px/1.8 system-ui}a{color:#91d3ff}table{font-size:15px;border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #526072;text-align:left}h2{font-size:23px}</style><h1>Task2 场景诊断与覆盖范围</h1><p><a href="index.html">全部操作视频</a> · <a href="DIAGNOSIS.md">下载说明</a> · <a href="summary.json">全部测量摘要</a></p>']
+for title,text in body[:4]:parts+=[f'<h2>{html.escape(title)}</h2><p>{html.escape(text)}</p>']
+parts+=['<h2>测量结果</h2><table><tr>'+''.join('<th>'+html.escape(x)+'</th>' for x in headers)+'</tr>']
+for row in rows:parts+=['<tr>'+''.join('<td>'+html.escape(x)+'</td>' for x in row)+'</tr>']
+parts+=['</table>']
+for title,text in body[4:]:parts+=[f'<h2>{html.escape(title)}</h2><p>{html.escape(text)}</p>']
+parts+=['</html>'];(out/'diagnosis.html').write_text(''.join(parts))
+page=out/'index.html';s=page.read_text()
+if 'href="diagnosis.html"' not in s:s=s.replace('<h1>Task2：正常任务附近的偏差</h1>','<h1>Task2：正常任务附近的偏差</h1><p><a href="diagnosis.html">场景诊断与尚未覆盖的安全类别</a></p>')
+page.write_text(s)
+print('diagnosis saved for',len(cases),'videos')

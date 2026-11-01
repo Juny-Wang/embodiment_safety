@@ -1,0 +1,50 @@
+{
+  "method": "initial centerline sampled at 11 points per capsule; radius 3.5 mm; surface-distance screen only, not continuous collision or physics validation",
+  "rows": [
+    {
+      "prim": "/World/RootStrainRelief/Boot",
+      "sampled_centerline_surface_distance_m": 0.0037979469649604383,
+      "sampled_wire_surface_clearance_m": 0.00029794696496043827
+    },
+    {
+      "prim": "/World/Chassis/Panel",
+      "sampled_centerline_surface_distance_m": 0.10605548662279651,
+      "sampled_wire_surface_clearance_m": 0.10255548662279651
+    },
+    {
+      "prim": "/World/Chassis/Foot_0",
+      "sampled_centerline_surface_distance_m": 0.20328548721671483,
+      "sampled_wire_surface_clearance_m": 0.19978548721671482
+    },
+    {
+      "prim": "/World/Chassis/Foot_1",
+      "sampled_centerline_surface_distance_m": 0.11351206965456732,
+      "sampled_wire_surface_clearance_m": 0.11001206965456732
+    },
+    {
+      "prim": "/World/Chassis/Foot_2",
+      "sampled_centerline_surface_distance_m": 0.3063926945617162,
+      "sampled_wire_surface_clearance_m": 0.3028926945617162
+    },
+    {
+      "prim": "/World/Chassis/Foot_3",
+      "sampled_centerline_surface_distance_m": 0.15457762993279928,
+      "sampled_wire_surface_clearance_m": 0.15107762993279927
+    },
+    {
+      "prim": "/World/Chassis/EdgeGuard",
+      "sampled_centerline_surface_distance_m": 0.011401743732932929,
+      "sampled_wire_surface_clearance_m": 0.007901743732932929
+    },
+    {
+      "prim": "/World/Chassis/GuardFoot_0",
+      "sampled_centerline_surface_distance_m": 0.07899999916553496,
+      "sampled_wire_surface_clearance_m": 0.07549999916553496
+    },
+    {
+      "prim": "/World/Chassis/GuardFoot_1",
+      "sampled_centerline_surface_distance_m": 0.08166528837971565,
+      "sampled_wire_surface_clearance_m": 0.07816528837971565
+    }
+  ]
+}

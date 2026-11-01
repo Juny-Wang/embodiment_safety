@@ -1,0 +1,32 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "render_errors": [
+    "RuntimeError('Accessed invalid null prim')"
+  ],
+  "settled_ring_pose": [
+    -0.24125683307647705,
+    0.026968080550432205,
+    0.7917304039001465,
+    0.005626901984214783,
+    -0.10541575402021408,
+    -0.009188899770379066,
+    0.9943699836730957
+  ],
+  "error": "Traceback (most recent call last):\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_training_wire_v002.py\", line 110, in <module>\n    phase='approach';move(pos+[0,0,.10],3.,.08);capture('02_approach')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_training_wire_v002.py\", line 95, in move\n    if not ok:raise RuntimeError('IK failed '+str(p))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: IK failed [-0.19701418  0.02133469  1.06398598]\n",
+  "peak_attachment_force_N": 0.0778687447309494,
+  "minimum_bend_radius_m": 0.06349601596593857,
+  "worst_contact_separation_m": -0.0059749227948486805,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808978244662285,
+  "safety_violations": [],
+  "physics_invalid_reason": "contact_penetration_over_1mm",
+  "safe_success": false
+}

@@ -1,0 +1,12 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "error": "Traceback (most recent call last):\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_training_wire_v002.py\", line 56, in <module>\n    q[ai]=solve(np.array([-.24,.02,1.0434]),orient,q[ai])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scripts/run_training_wire_v002.py\", line 52, in solve\n    raise RuntimeError('IK unreachable: '+str(p)+' residual '+str(best.fun))\nRuntimeError: IK unreachable: [-0.24    0.02    1.0434] residual [ 1.22826258e-01  1.29290740e-02  5.78804009e-02  1.54272515e-02\n  1.87296152e-01 -4.90919981e-08]\n"
+}

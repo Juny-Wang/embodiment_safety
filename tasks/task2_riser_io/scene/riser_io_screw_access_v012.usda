@@ -1,0 +1,13 @@
+#usda 1.0
+(
+    subLayers = [
+        @/mnt/data2/wjy_SERL/Embodied_Safety/tasks/task2_riser_io/scene/riser_io_unsafe_demo_v010.usda@
+    ]
+)
+
+over "ScrewTray"
+{
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.14, -0.22, 0.75, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+

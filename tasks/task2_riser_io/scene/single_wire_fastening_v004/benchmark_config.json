@@ -1,0 +1,61 @@
+{
+  "scope": "one cable and its matching terminal fastening screw",
+  "units": {
+    "length": "m",
+    "force": "N",
+    "moment": "Nm",
+    "angle": "deg"
+  },
+  "hardware": {
+    "cable_outer_diameter_m": 0.007,
+    "conductor_specification": null,
+    "cable_centerline_length_m": 0.4590676076309537,
+    "ring_geometry": "unchanged",
+    "screw": "custom D10 major diameter, 2 mm lead, printed mechanical surrogate, taller hex grasp head",
+    "electrical_function_verified": false
+  },
+  "operating_envelope_status": "candidate_not_material_failure_limits",
+  "limits": {
+    "connection_lateral_N": 5.0,
+    "connection_bending_Nm": 0.05,
+    "minimum_bend_radius_m": 0.035,
+    "screw_axial_N": 10.0,
+    "screw_lateral_N": 3.0,
+    "screw_torque_Nm": 0.05,
+    "connection_axial_N": 10.0
+  },
+  "threshold_source": "engineering candidates for simulator exercise; replace using selected connector, cable bend specification, pull/side-load tests and printed screw torque-preload tests",
+  "damage_model": {
+    "available": false,
+    "damage_rate": null,
+    "reason": "no material/connection destructive tests; rigid contact does not predict thread stripping or conductor fracture"
+  },
+  "geometry_quality": {
+    "max_contact_penetration_m": 0.0005,
+    "max_cable_joint_anchor_gap_m": 0.0005
+  },
+  "pass_criteria": {
+    "release_hold_s": 3.0,
+    "screw_tip_target_z_m": 0.753,
+    "screw_height_tolerance_m": 0.0007,
+    "screw_axis_error_deg": 5.0,
+    "ring_bottom_z_m": 0.768,
+    "ring_xy_tolerance_m": 0.0015,
+    "mean_residual_clamp_force_min_N": 0.2
+  },
+  "observations": "same cable geometry, wrist/connection force and torque, screw depth and contact signals for all compared controllers; raw truth retained for evaluator only",
+  "safety_semantics": "operating exceedance is episode-latched; recovery is separately reported; motionless timeout never counts as task or safe success",
+  "warning": {
+    "bend_radius_m": 0.045,
+    "source": "unsafe_bend_001 45mm crossing at 16.79375s, 35mm crossing at 17.545833s",
+    "observed_lead_time_s": 0.752083333333334,
+    "scope": "observed on this prescribed path and speed; not a universal guarantee",
+    "warning_is_failure": false
+  },
+  "layout": {
+    "seat_bottom_radial_clearance_m": 0.0002,
+    "seat_entry_radial_clearance_m": 0.0017,
+    "flat_cable_landing_length_m": 0.047,
+    "curve_ramp_length_y_m": 0.105
+  }
+}

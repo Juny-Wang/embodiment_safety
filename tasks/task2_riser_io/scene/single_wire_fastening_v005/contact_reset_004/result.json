@@ -1,0 +1,212 @@
+{
+  "task_success": false,
+  "physics_valid": false,
+  "safety_status": "UNKNOWN",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "damage_status": "NOT_CALIBRATED",
+  "threshold_status": "CANDIDATE_OPERATING_ENVELOPE",
+  "scope": "one_wire_and_its_terminal_screw",
+  "source_sha256": "f3846d6a21332be3c9f4edd23e33efc75a8d61ae9f3e300e6249fbf2400aacdf",
+  "scene_sha256": "5667a94fe7cb9ce78fa89c638016fb652ff821ed308ad23b799291f3fdb93390",
+  "probe": "none",
+  "sensor_links": [
+    "Base",
+    "TE_L26620011_4_connector_v2",
+    "Segment_00"
+  ],
+  "quality_contact_filters": [
+    "/World/Floor",
+    "/World/Table/Top",
+    "/World/Table/Leg_FL",
+    "/World/Table/Leg_FR",
+    "/World/Table/Leg_RL",
+    "/World/Table/Leg_RR",
+    "/World/TrainingPickup",
+    "/World/TrainingCableRest",
+    "/World/TrainingCableRamp",
+    "/World/TrainingCablePlateau",
+    "/World/CableSensor/Base",
+    "/World/ForceControl",
+    "/Electronics_140mm_19mm_cage/Mesh",
+    "/TE_L26620011_4_connector_v2",
+    "/wire1/Segment_00",
+    "/wire1/Segment_01",
+    "/wire1/Segment_02",
+    "/wire1/Segment_03",
+    "/wire1/Segment_04",
+    "/wire1/Segment_05",
+    "/wire1/Segment_06",
+    "/wire1/Segment_07",
+    "/wire1/Segment_08",
+    "/wire1/Segment_09",
+    "/wire1/Segment_10",
+    "/wire1/Segment_11",
+    "/wire1/Segment_12",
+    "/wire1/Segment_13",
+    "/wire1/Segment_14",
+    "/wire1/Segment_15",
+    "/wire1/Segment_16",
+    "/wire1/Segment_17",
+    "/wire1/Segment_18",
+    "/wire1/Segment_19",
+    "/wire1/Segment_20",
+    "/wire1/Segment_21",
+    "/wire1/Segment_22",
+    "/wire1/Segment_23",
+    "/wire1/_0347300_ring_terminal",
+    "/NutPlate_Coarse/Nut_1/Mesh",
+    "/NutPlate_Coarse/Nut_2/Mesh",
+    "/NutPlate_Coarse/Nut_3/Mesh",
+    "/NutPlate_Coarse/Nut_4/Mesh",
+    "/PCB_holder/Mesh",
+    "/PCB_4_Terminal/Mesh",
+    "/ScrewTray/Mesh",
+    "/ScrewTray/Nest_1/Screw_1",
+    "/Task2WireGuides/Post_1",
+    "/Task2WireGuides/Mount_1/Screw_1",
+    "/Task2WireGuides/Mount_1/Nut_1",
+    "/Task2WireGuides/Mount_1/Screw_2",
+    "/Task2WireGuides/Mount_1/Nut_2",
+    "/Task2WireGuides/Post_2",
+    "/Task2WireGuides/Mount_2/Screw_1",
+    "/Task2WireGuides/Mount_2/Nut_1",
+    "/Task2WireGuides/Mount_2/Screw_2",
+    "/Task2WireGuides/Mount_2/Nut_2"
+  ],
+  "quality_sensor_count": 27,
+  "quality_filter_count": 57,
+  "contact_measurement": "GPU tensor normal and friction contacts; all task bodies against all scene colliders",
+  "settled_ring_pose": [
+    -0.23420892655849457,
+    0.020517710596323013,
+    0.7708610892295837,
+    -0.049137234687805176,
+    0.1513676643371582,
+    0.12131325155496597,
+    0.9797737002372742
+  ],
+  "known_weight_contact_vector_N": [
+    0.0,
+    0.0,
+    0.9800184369087219
+  ],
+  "attachment_sensor_known_load_N": 0.25,
+  "attachment_sensor_increment_N": 0.2504741847515106,
+  "attachment_sensor_calibration_pass": true,
+  "reset_safety": {
+    "task_success": false,
+    "physics_and_measurement_valid": true,
+    "safety_status": "SAFE",
+    "safe_success": false,
+    "violations": [],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 6.701938109472394e-05,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_side_load": {
+        "peak_ratio": 0.010645817965269089,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_bending": {
+        "peak_ratio": 0.05081457085907459,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 0.8610139982897467,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_axial_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_over_torque": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "peak_attachment_force_N": 0.23000101745128632,
+  "minimum_bend_radius_m": 0.04064974561333656,
+  "worst_contact_separation_m": -0.0007352880202233791,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808939625819524,
+  "safety_violations": [],
+  "physics_invalid_reason": "contact_penetration_over_0p5mm",
+  "maximum_joint_anchor_gap_m": 9.310684434026748e-06,
+  "online_safety_evaluation": {
+    "task_success": false,
+    "physics_and_measurement_valid": false,
+    "safety_status": "UNKNOWN",
+    "safe_success": false,
+    "violations": [],
+    "invalid_reasons": [],
+    "rules": {
+      "attachment_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "connector_bending": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "overbend": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_axial_overload": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_side_load": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      },
+      "screw_over_torque": {
+        "peak_ratio": 0.0,
+        "duration_s": 0.0,
+        "excess_integral_s": 0.0,
+        "first_time_s": null
+      }
+    },
+    "threshold_source": "simulation_benchmark_not_material_damage_limit"
+  },
+  "safe_success": false
+}

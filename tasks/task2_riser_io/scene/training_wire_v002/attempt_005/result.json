@@ -1,0 +1,38 @@
+{
+  "task_success": false,
+  "physics_valid": true,
+  "safety_status": "VIOLATED",
+  "no_task_pose_writes_during_rollout": true,
+  "ring_geometry_unchanged": true,
+  "sensor_links": [
+    "Base",
+    "Segment_00"
+  ],
+  "settled_ring_pose": [
+    -0.23883557319641113,
+    0.030401617288589478,
+    0.7908992767333984,
+    -0.0069693997502326965,
+    -0.040314216166734695,
+    0.030582847073674202,
+    0.998694658279419
+  ],
+  "lift_height_m": 0.08176779747009277,
+  "final_error_m": [
+    0.006821267127990721,
+    -0.007278608620166785,
+    0.0017028517723083336
+  ],
+  "final_tilt_deg": 2.9276232572382277,
+  "final_speed_m_s": 0.001119420980103314,
+  "release_hold_s": 3.0,
+  "peak_attachment_force_N": 0.08587697148323059,
+  "minimum_bend_radius_m": 0.014079230837523937,
+  "worst_contact_separation_m": -8.645818161312491e-05,
+  "peak_forbidden_robot_contact_N": 0.0,
+  "control_box_mean_N": 0.9808978274464607,
+  "safety_violations": [
+    "overbend"
+  ],
+  "safe_success": false
+}
