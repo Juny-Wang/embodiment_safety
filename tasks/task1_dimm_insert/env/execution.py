@@ -1,6 +1,7 @@
 """Isolated policy execution candidate. No Isaac imports at module load."""
 import copy
 import math
+from types import MethodType
 
 CONTROL = dict(ik_period_s=.05, ik_position_tolerance_m=.00005,
                ik_rotation_tolerance_rad=.0005, ik_max_evaluations=400)
@@ -18,7 +19,11 @@ class StartupRelease:
             self.released[side]=True
         return self.released[side]
 
-def install(panel,emit):
+def install(panel,emit,ik_solver="trf"):
+    from .ik_controller import tick
+    if ik_solver not in ("trf","dogbox_trf"):raise ValueError("Unknown IK solver")
+    panel.controller.cfg["control"]["ik_solver"]=ik_solver
+    panel.controller.tick=MethodType(tick,panel.controller)
     panel.controller.cfg["control"].update(CONTROL)
     panel.cfg["action"].update(ACTION)
     frozen=copy.deepcopy(dict(control=panel.controller.cfg["control"],

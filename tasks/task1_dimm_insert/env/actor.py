@@ -26,7 +26,7 @@ INJECT=int(sys.argv[sys.argv.index("--inject-stop-after")+1]) if "--inject-stop-
 assert INJECT in (0,7)
 def write(n,x):
  p=OUT/n;q=p.with_suffix(p.suffix+".tmp");q.write_text(json.dumps(x,indent=2));q.replace(p)
-app=None;p=None;child=None;log=None
+app=None;p=None;child=None;log=None;ik_log=None
 try:
  from isaacsim import SimulationApp
  app=SimulationApp({"headless":True,"renderer":"RayTracedLighting","width":640,"height":480,"sync_loads":True})
@@ -173,14 +173,26 @@ try:
   x=apply(c,a,dt,cfg);executed_steps+=1;return x
  runtime.apply_velocity=counted
  async def launch():
-  global frozen,check,child,log
+  global frozen,check,child,log,ik_log
   p.timeline.play()
   for _ in range(180):await omni.kit.app.get_app().next_update_async()
   p.initialize()
   for _ in range(60):await omni.kit.app.get_app().next_update_async()
   limits=p.controller.view.get_dof_max_forces().copy();limits[0,p.controller.fingers]=5.
   p.controller.view.set_dof_max_forces(limits,np.array([0],dtype=np.uint32))
-  frozen,check=install(p,lambda row:write("unexpected_startup_release.json",row))
+  frozen,check=install(p,lambda row:write("unexpected_startup_release.json",row),
+    ik_solver=os.environ.get("TASK1_IK_SOLVER","trf"))
+  ik_log=(OUT/"ik_trace.jsonl").open("x",buffering=1)
+  tick=p.controller.tick
+  def timed_tick(dt):
+   previous=p.controller.ik_diagnostics
+   start=time.perf_counter()
+   tick(dt)
+   elapsed=time.perf_counter()-start
+   if p.controller.ik_diagnostics is not previous:
+    ik_log.write(json.dumps(clean(dict(p.controller.ik_diagnostics,
+      sim_time=p.t,tick_wall_s=elapsed)))+"\n")
+  p.controller.tick=timed_tick
   write("execution_configuration.json",clean(frozen))
   poses={k:v.get_transforms()[0].copy() for k,v in p.bodies.items()}
   metrics=p.task_metrics(poses)
@@ -264,5 +276,6 @@ finally:
  if warning_log:
   warning_log.close()
   write("safety_warning_summary.json",dict(warnings.summary(),evidence_warning_intervals=evidence_warning_intervals))
+ if ik_log:ik_log.close()
  if log:log.close()
  if app:app.close()

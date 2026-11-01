@@ -51,8 +51,11 @@ def main():
     p.add_argument("--seed", type=int, default=20261101)
     p.add_argument("--eval", action="store_true")
     p.add_argument("--baseline", action="store_true", help="Evaluate DP alone with identical base inference")
+    p.add_argument("--ik-solver", choices=("trf", "dogbox_trf"), default="trf")
     a = p.parse_args()
     evaluation = a.eval or a.baseline
+    if a.ik_solver != "trf" and not evaluation:
+        raise ValueError("Alternative IK solver is currently evaluation-only")
     if a.episodes < 1 or a.max_steps < 1 or not math.isfinite(a.wall_timeout_s) or a.wall_timeout_s <= 0:
         raise ValueError("Positive episode, step and wall-time budgets required")
     if a.eval and not a.baseline and not a.checkpoint:
@@ -82,7 +85,7 @@ def main():
     write_json(out / "config.json", cfg)
     report = dict(algorithm=cfg["algorithm"], base_checkpoint=str(base),
                   initial_checkpoint=str(checkpoint) if checkpoint else None,
-                  learning=not evaluation, baseline=a.baseline, status="running",
+                  learning=not evaluation, baseline=a.baseline, status="running", ik_solver=a.ik_solver,
                   config=cfg, episodes=[], network_updates=0, new_transitions=0)
     def save():
         write_json(out / "summary.json", report)
@@ -93,6 +96,7 @@ def main():
             env = os.environ.copy()
             env.update(TASK1_POLICY_BACKEND="dp_sac", TASK1_SAFETY_MODE="stop",
                        TASK1_EVAL="1" if evaluation else "0", TASK1_DIAGNOSTIC_STOP_STAGE="",
+                       TASK1_IK_SOLVER=a.ik_solver,
                        DP_SAC_CONFIG=str(out / "config.json"), DP_SAC_BASELINE="1" if a.baseline else "0")
             env.pop("DP_SAC_CHECKPOINT", None)
             if checkpoint:
