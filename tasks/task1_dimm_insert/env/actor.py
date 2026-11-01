@@ -194,9 +194,12 @@ try:
   env["TASK1_SMOKE"]="1" if SMOKE else "0"
   log=(OUT/"worker.log").open("w")
   backend=os.environ.get("TASK1_POLICY_BACKEND","serl")
-  if backend not in ("serl","diffusion_policy","recorded_action"):raise ValueError("Unknown policy backend")
+  if backend not in ("serl","diffusion_policy","recorded_action","dp_sac"):raise ValueError("Unknown policy backend")
   interpreter=str(ROOT/"algos/diffusion_policy/.venv/bin/python") if backend=="diffusion_policy" else "/home/ufdwaa/anaconda3/envs/env_isaaclab/bin/python"
   worker=ROOT/("algos/diffusion_policy/worker.py" if backend=="diffusion_policy" else "algos/serl/actor_worker.py")
+  if backend=="dp_sac":
+   interpreter=str(ROOT/"algos/diffusion_policy/.venv/bin/python")
+   worker=ROOT/"algos/dp_sac/worker.py"
   if backend=="recorded_action":
    interpreter="/usr/bin/python3"
    worker=ROOT/"tasks/task1_dimm_insert/env/recorded_action_worker.py"
@@ -205,7 +208,7 @@ try:
   p.active.meta.update(safety_mode=SAFETY_MODE,diagnostic_only=SAFETY_MODE=="warn",
    eligible_for_training=SAFETY_MODE!="warn")
   write("safety_mode.json",dict(mode=SAFETY_MODE,limits=p.cfg["demonstration_limits"],
-   source_scene_unchanged=True,network_updates_allowed=False,force_actuation_unchanged=True))
+   source_scene_unchanged=True,network_updates_allowed=os.environ.get("TASK1_ONLINE_LEARN")=="1",force_actuation_unchanged=True))
  launch_task=asyncio.ensure_future(launch());wall=time.monotonic();last=wall
  while app.is_running():
   app.update()

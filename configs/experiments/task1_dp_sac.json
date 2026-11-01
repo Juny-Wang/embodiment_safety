@@ -1,0 +1,19 @@
+{
+  "algorithm": "dp_residual_sac",
+  "state_representation": "rotation6d33_v002",
+  "state_dim": 33,
+  "n_obs_steps": 2,
+  "device": "cuda",
+  "hidden_dim": 256,
+  "residual_scale": [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05],
+  "discount": 0.99,
+  "tau": 0.005,
+  "learning_rate": 0.0003,
+  "initial_alpha": 0.01,
+  "target_entropy": -7.0,
+  "batch_size": 64,
+  "learning_starts": 128,
+  "updates_per_step": 1,
+  "replay_capacity": 20000,
+  "checkpoint_every": 100
+}
