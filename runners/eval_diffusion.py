@@ -1,4 +1,4 @@
-"""Full Task1 evaluation with a bounded wall-clock budget per episode."""
+"""Task1 evaluation; explicit zero budgets disable evaluation time limits."""
 import os, sys, json, subprocess, hashlib, time, signal
 from pathlib import Path
 from .common import ROOT, resolve
@@ -24,13 +24,28 @@ def stop_group(proc):
         pass
     proc.wait(timeout=5)
 
+def terminal_details(labels):
+    final = labels[-1] if labels else {}
+    failures = [x["failure"] for x in labels if x.get("failure")]
+    return dict(stage_failure=failures[-1] if failures else None,
+                stage_terminated=bool(final.get("terminated", False)),
+                stage_truncated=bool(final.get("truncated", False)))
+
+def reconcile_result(result, labels_summary):
+    row = {**result, **labels_summary}
+    row["actor_failure_reason"] = result.get("actor_failure_reason", result.get("failure_reason"))
+    if labels_summary.get("stage_failure"):
+        row["failure_reason"] = labels_summary["stage_failure"]
+    return row
+
 def label_summary(dest):
     files = sorted(dest.glob("stage_transition_*.json"),
                    key=lambda p: int(p.stem.rsplit("_", 1)[1]))
     labels = [json.loads(p.read_text()) for p in files]
     return dict(full_transitions=len(labels),
                 reward=sum(x["reward"] for x in labels),
-                stages=[e["stage"] for x in labels for e in x["events"]])
+                stages=[e["stage"] for x in labels for e in x["events"]],
+                **terminal_details(labels))
 
 def timeout_result(dest, wall_s, limit):
     result = dict(completed=True, execution_completed=False,
@@ -42,6 +57,12 @@ def timeout_result(dest, wall_s, limit):
     write_json(dest / "evaluation_timeout.json", result)
     return result
 
+def wall_wait_timeout(seconds):
+    import math
+    if not math.isfinite(seconds) or seconds < 0:
+        raise ValueError("Wall timeout must be finite and nonnegative; 0 disables it")
+    return None if seconds == 0 else seconds
+
 def main():
     import argparse
     p = argparse.ArgumentParser()
@@ -51,9 +72,11 @@ def main():
     p.add_argument("--max-steps", type=int)
     p.add_argument("--wall-timeout-s", type=float, default=1800)
     p.add_argument("--resume", action="store_true")
+    p.add_argument("--safety-mode", choices=("stop","warn"), default="stop")
     a = p.parse_args()
-    if not 0 < a.wall_timeout_s < float("inf") or a.episodes < 1:
-        raise ValueError("Positive finite wall timeout and episode count required")
+    wait_timeout = wall_wait_timeout(a.wall_timeout_s)
+    if a.episodes < 1:
+        raise ValueError("Positive episode count required")
     cp, out = resolve(a.checkpoint), resolve(a.output)
     if not out.is_relative_to(ROOT / "outputs"):
         raise ValueError("Outputs only")
@@ -63,7 +86,7 @@ def main():
         raise ValueError("Checkpoint")
     if a.resume:
         report = json.loads((out / "summary.json").read_text())
-        if report["checkpoint"] != str(cp) or report["requested"] != a.episodes:
+        if report["checkpoint"] != str(cp) or report["requested"] != a.episodes or report.get("safety_mode","stop") != a.safety_mode:
             raise ValueError("Resume checkpoint/count mismatch")
         if any(not x.get("completed", False) for x in report["episodes"]):
             raise ValueError("Finalize interrupted episodes before resuming")
@@ -71,7 +94,7 @@ def main():
         out.mkdir(parents=True, exist_ok=False)
         report = dict(algorithm="diffusion_policy", checkpoint=str(cp),
                       requested=a.episodes, episodes=[])
-    report.update(status="running", wall_timeout_s=a.wall_timeout_s)
+    report.update(status="running", wall_timeout_s=a.wall_timeout_s,wall_timeout_enabled=wait_timeout is not None,max_steps=a.max_steps,safety_mode=a.safety_mode,diagnostic_only=a.safety_mode=="warn")
     def save():
         report["completed"] = sum(x.get("completed", False) for x in report["episodes"])
         report["successes"] = sum(x.get("full_task_success", False) for x in report["episodes"])
@@ -91,11 +114,11 @@ def main():
             report["episodes"].append(row)
             save()
             env = os.environ.copy()
-            env.update(TASK1_POLICY_BACKEND="diffusion_policy", TASK1_EVAL="1")
+            env.update(TASK1_POLICY_BACKEND="diffusion_policy", TASK1_EVAL="1", TASK1_SAFETY_MODE=a.safety_mode)
             cmd = [sys.executable, "-B", "-m", "runners.eval",
                    "--checkpoint", str(cp), "--output", str(dest),
                    "--seed", str(20261031 + i)]
-            if a.max_steps:
+            if a.max_steps is not None:
                 cmd += ["--max-steps", str(a.max_steps)]
             start = time.monotonic()
             timed_out = False
@@ -105,7 +128,7 @@ def main():
                 row["pid"] = proc.pid
                 save()
                 try:
-                    rc = proc.wait(timeout=a.wall_timeout_s)
+                    rc = proc.wait(timeout=wait_timeout)
                 except subprocess.TimeoutExpired:
                     timed_out = True
                     stop_group(proc)
@@ -119,9 +142,8 @@ def main():
             result = json.loads((dest / "result.json").read_text())
             if not result["source_unchanged"] or result["network_updates"] != 0:
                 raise RuntimeError("Evaluation contract changed")
-            row.update(result, completed=True, wall_s=time.monotonic()-start,
-                       wall_timeout=False)
-            row.update(label_summary(dest))
+            row.update(reconcile_result(result, label_summary(dest)), completed=True,
+                       wall_s=time.monotonic()-start, wall_timeout=False)
             save()
         report["status"] = "finished"
         report["success_rate"] = report["successes"] / a.episodes

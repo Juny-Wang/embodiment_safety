@@ -8,7 +8,19 @@ from runners.common import config,resolve
 CFG=config(os.environ.get("TASK1_CONFIG","configs/experiments/task1_serl.json"))
 MAX_STEPS=int(os.environ.get("TASK1_MAX_STEPS",round(CFG["timeout_s"]*10)))
 SMOKE=os.environ.get("TASK1_SMOKE","0")=="1"
+if MAX_STEPS<0 or (MAX_STEPS==0 and (os.environ.get("TASK1_EVAL")!="1" or os.environ.get("TASK1_ONLINE_LEARN")=="1")):
+ raise ValueError("Unlimited steps are evaluation-only")
+SIM_TIMEOUT=None if MAX_STEPS==0 else MAX_STEPS*.1
 terminal_label=None
+from tasks.task1_dimm_insert.env.warning_mode import validate_safety_mode,WarningTracker
+SAFETY_MODE=validate_safety_mode(os.environ.get("TASK1_SAFETY_MODE","stop"),
+    os.environ.get("TASK1_EVAL")=="1",os.environ.get("TASK1_ONLINE_LEARN")=="1")
+warnings=WarningTracker()
+warning_log=(OUT/"safety_warnings.jsonl").open("x",buffering=1) if SAFETY_MODE=="warn" else None
+evidence_warning_intervals=0
+from tasks.task1_dimm_insert.env.diagnostic_stop import validate_stage_stop,stage_verified
+STOP_STAGE=validate_stage_stop(os.environ.get("TASK1_DIAGNOSTIC_STOP_STAGE",""),
+    os.environ.get("TASK1_EVAL")=="1",os.environ.get("TASK1_ONLINE_LEARN")=="1")
 
 INJECT=int(sys.argv[sys.argv.index("--inject-stop-after")+1]) if "--inject-stop-after" in sys.argv else 0
 assert INJECT in (0,7)
@@ -58,10 +70,10 @@ try:
  frozen=None;check=None
  live_frames=[]; evidence_monitor=None; evaluator=None; last_obs=None
  def capture(n,raw):
-  global evidence_monitor,evaluator,last_obs,terminal_label
+  global evidence_monitor,evaluator,last_obs,terminal_label,evidence_warning_intervals
   if evaluator is None:
    q=UsdGeom.XformCache().GetLocalToWorldTransform(stage.GetPrimAtPath("/World/MatchedSocket/Asset")).ExtractRotationQuat().GetNormalized()
-   evaluator=EpisodeCoordinator([*q.GetImaginary(),q.GetReal()],timeout_s=MAX_STEPS*.1);evaluator.reset(raw);evidence_monitor=Evidence(raw)
+   evaluator=EpisodeCoordinator([*q.GetImaginary(),q.GetReal()],timeout_s=SIM_TIMEOUT,safety_mode=SAFETY_MODE);evaluator.reset(raw);evidence_monitor=Evidence(raw)
   elif n>0:
    frames=list(live_frames)
    measured=evidence_monitor.update(raw,last_obs["sim_time"],frames)
@@ -73,6 +85,10 @@ try:
    else:
     label=evaluator.step(raw,measured,peaks)
 
+   if SAFETY_MODE=="warn":
+    evidence_warning_intervals+=bool(label.get("end",{}).get("warnings"))
+    label.update(diagnostic_only=True,valid_for_training=False,safety_mode=SAFETY_MODE)
+    write("safety_warning_summary.json",dict(warnings.summary(),evidence_warning_intervals=evidence_warning_intervals))
    terminal_label=label
    write(f"stage_transition_{n-1:03d}.json",dict(index=n-1,**label))
   live_frames.clear();last_obs=clean(raw)
@@ -97,6 +113,15 @@ try:
    p.finish("success_request" if terminal_label["success"] else "interrupted",terminal_label.get("failure") or "episode_end")
    p.disable()
    write("policy_stop.json",dict(final_observation_index=n,reason="episode_end"))
+   return np.zeros(7)
+  if stage_verified(terminal_label,STOP_STAGE):
+   final=clean(raw);stopped=True
+   write("diagnostic_stage_stop.json",dict(stage=STOP_STAGE,sim_time=p.t,
+     observation_index=n,stage_label=terminal_label,full_task_success=False,
+     scope="Stop after existing measured stage event, not a new success definition"))
+   p.finish("interrupted","diagnostic_stage_verified:"+STOP_STAGE)
+   p.disable()
+   write("policy_stop.json",dict(final_observation_index=n,reason="diagnostic_stage_verified:"+STOP_STAGE))
    return np.zeros(7)
   write(f"request_{n:03d}.json",dict(index=n,sim_time=p.t))
   deadline=time.monotonic()+360
@@ -129,8 +154,14 @@ try:
   contacts=measured(dt)
   if p.active:
    live_frames.append((executed_steps,dict(sim_time=p.t,contacts=contacts,metrics=p.contact_metrics,controller_error=p.controller.error)))
-  for k,limit in p.cfg["demonstration_limits"].items():
-   if float(p.contact_metrics.get(k,0) or 0)>limit:failure="force_limit:"+k
+  if SAFETY_MODE=="warn":
+   event=warnings.observe(p.t,p.contact_metrics,p.cfg["demonstration_limits"])
+   if event is not None and p.active:
+    event.update(physics_command_index=executed_steps)
+    warning_log.write(json.dumps(event,allow_nan=False)+"\n")
+  else:
+   for k,limit in p.cfg["demonstration_limits"].items():
+    if float(p.contact_metrics.get(k,0) or 0)>limit:failure="force_limit:"+k
   if INJECT and executed_steps>=INJECT and not failure:failure="diagnostic_stop_injected"
   if failure and p.enabled:
    p.enabled=False;p.controller.stop(failure);stopped=True
@@ -171,6 +202,10 @@ try:
    worker=ROOT/"tasks/task1_dimm_insert/env/recorded_action_worker.py"
   child=subprocess.Popen([interpreter,"-B",str(worker),str(OUT)],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
   p.start();p.enable()
+  p.active.meta.update(safety_mode=SAFETY_MODE,diagnostic_only=SAFETY_MODE=="warn",
+   eligible_for_training=SAFETY_MODE!="warn")
+  write("safety_mode.json",dict(mode=SAFETY_MODE,limits=p.cfg["demonstration_limits"],
+   source_scene_unchanged=True,network_updates_allowed=False,force_actuation_unchanged=True))
  launch_task=asyncio.ensure_future(launch());wall=time.monotonic();last=wall
  while app.is_running():
   app.update()
@@ -181,7 +216,7 @@ try:
   if p.sensor_errors:raise RuntimeError(str(p.sensor_errors))
   if stopped and not p.active:break
   if p.controller.error and calls>0:raise RuntimeError("controller_fault:"+str(p.controller.error))
-  if time.monotonic()-wall>86400:raise TimeoutError("Native actor diagnostic")
+  if MAX_STEPS!=0 and time.monotonic()-wall>86400:raise TimeoutError("Native actor diagnostic")
  p.timeline.pause()
  episode=Path(p.last_saved_path)
  if failure:
@@ -206,7 +241,11 @@ try:
   observed_physics_steps=len(rows)*24+(tail["physics_steps"] if failure else 0),policy_actions=calls,network_updates=json.loads((OUT/"worker_result.json").read_text())["network_updates"],injected_stop=bool(INJECT),failure_reason=failure,
   ee_displacement_m=float(np.linalg.norm(np.array(final["ee_position_m"])-initial["ee_position_m"])),
   episode=str(episode),source_unchanged=all(unchanged.values()),acceptance_pending=True,
-  full_task_success=bool(terminal_label and terminal_label["success"]),training_ready=False,native_app_update=True))
+  full_task_success=bool(terminal_label and terminal_label["success"] and (SAFETY_MODE!="warn" or (warnings.frames==0 and evidence_warning_intervals==0))),
+   task_completion_observed=bool(terminal_label and terminal_label["success"]),
+   safety_mode=SAFETY_MODE,safety_warnings=warnings.summary(),evidence_warning_intervals=evidence_warning_intervals,
+   safety_pass=False if warnings.frames or evidence_warning_intervals else None,
+   diagnostic_only=SAFETY_MODE=="warn",training_ready=False,native_app_update=True))
 except Exception:
  write("actor_error.json",dict(error=traceback.format_exc()));traceback.print_exc()
 finally:
@@ -219,5 +258,8 @@ finally:
   child.terminate()
   try:child.wait(timeout=10)
   except subprocess.TimeoutExpired:child.kill()
+ if warning_log:
+  warning_log.close()
+  write("safety_warning_summary.json",dict(warnings.summary(),evidence_warning_intervals=evidence_warning_intervals))
  if log:log.close()
  if app:app.close()

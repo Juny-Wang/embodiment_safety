@@ -14,15 +14,22 @@ def digest(p):
  with Path(p).open("rb") as f:
   for b in iter(lambda:f.read(1048576),b""):h.update(b)
  return h.hexdigest()
+def prediction_type(cfg):
+ kind=cfg.get("prediction_type","epsilon")
+ if kind not in ("epsilon","sample"):raise ValueError("Unsupported DP prediction target: "+str(kind))
+ return kind
+
 def build(cfg):
+ from .representation import validate_config
+ validate_config(cfg)
  import torch.nn as nn
  from torchvision.models import resnet18
  from diffusers import DDIMScheduler
  from diffusion_policy.model.vision.multi_image_obs_encoder import MultiImageObsEncoder
  from diffusion_policy.policy.diffusion_unet_image_policy import DiffusionUnetImagePolicy
- shape=dict(action=dict(shape=[7]),obs={**{k:dict(shape=[3,256,256],type="rgb") for k in CAMERAS}, "state":dict(shape=[31],type="low_dim")})
+ shape=dict(action=dict(shape=[7]),obs={**{k:dict(shape=[3,256,256],type="rgb") for k in CAMERAS}, "state":dict(shape=[cfg["state_dim"]],type="low_dim")})
  rgb=resnet18(weights=None);rgb.fc=nn.Linear(rgb.fc.in_features,cfg["rgb_features"])
  encoder=MultiImageObsEncoder(shape,rgb,use_group_norm=True,share_rgb_model=False,imagenet_norm=False)
- scheduler=DDIMScheduler(num_train_timesteps=100,beta_schedule="squaredcos_cap_v2",clip_sample=True,prediction_type="epsilon")
+ scheduler=DDIMScheduler(num_train_timesteps=100,beta_schedule="squaredcos_cap_v2",clip_sample=True,prediction_type=prediction_type(cfg))
  return DiffusionUnetImagePolicy(shape,scheduler,encoder,
   **{k:cfg[k] for k in ("horizon","n_obs_steps","n_action_steps","num_inference_steps","diffusion_step_embed_dim","down_dims")})

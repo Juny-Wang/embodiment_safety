@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "task": "task1_dimm_insert",
+  "algorithm": "diffusion_policy",
+  "bc_only": true,
+  "scope": "native-full-fit-all",
+  "state_representation": "rotation6d33_v002",
+  "prediction_type": "sample",
+  "action_range_eps": 1e-08,
+  "data": "outputs/datasets/task1/diffusion_sequences_v001",
+  "output": "outputs/runs/task1/diffusion_policy/full_flow_bc_v001",
+  "steps": 30000,
+  "batch_size": 8,
+  "eval_every": 1000,
+  "evaluation": {
+    "episodes": 1,
+    "max_steps": 2400,
+    "wall_timeout_s": 1800,
+    "diagnostic_stop_stage": "",
+    "opening_checks_retained": true,
+    "reward_version": "task1_stage_once_v001",
+    "full_task_only_success": true
+  },
+  "training_data_caveat": "Full native 100ms trajectory fit, not 15 independent demonstrations or held-out validation",
+  "task_scope": "Open both latches, grasp permitted band, lift, align, insert, contact-close, release and retract",
+  "no_scene_or_safety_changes": true
+}

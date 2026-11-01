@@ -2,10 +2,10 @@
 from .termination import EpisodeEnd
 from .milestones import Evaluator
 class Episode:
- def __init__(self,socket_quat,timeout_s=240.):
-  self.socket_quat=socket_quat;self.timeout_s=timeout_s;self.end=None
+ def __init__(self,socket_quat,timeout_s=240.,safety_mode="stop"):
+  self.socket_quat=socket_quat;self.timeout_s=timeout_s;self.end=None;self.safety_mode=safety_mode
  def reset(self,initial):
-  self.end=EpisodeEnd(initial,self.timeout_s);self.evaluator=Evaluator(self.socket_quat)
+  self.end=EpisodeEnd(initial,self.timeout_s,safety_mode=self.safety_mode);self.evaluator=Evaluator(self.socket_quat)
   self.previous_time=initial["sim_time"]
   return self.evaluator.reward.progress()
  def step(self,o,e,peaks):
