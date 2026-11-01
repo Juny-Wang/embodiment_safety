@@ -13,6 +13,7 @@ import numpy as np
 import torch
 from algos.dp_sac.base import FrozenDP
 from algos.dp_sac.sac import SAC, compose_action, transition_mask
+from algos.dp_sac.policy_decorator import PolicyDecorator
 
 
 def write_json(path, value):
@@ -32,7 +33,9 @@ def run(out):
         raise ValueError("Evaluation cannot update SAC")
     seed = int(os.environ["TASK1_EPISODE_SEED"])
     base = FrozenDP(os.environ["SERL_INPUT_CHECKPOINT"], cfg["device"], seed)
-    agent = SAC(base.feature_dim, cfg, cfg["device"], seed)
+    decorator = cfg["algorithm"] == "policy_decorator"
+    agent_class = PolicyDecorator if decorator else SAC
+    agent = agent_class(base.feature_dim, cfg, cfg["device"], seed)
     resume = os.environ.get("DP_SAC_CHECKPOINT")
     if resume:
         saved = torch.load(resume, map_location="cpu", weights_only=False)
@@ -41,17 +44,20 @@ def run(out):
         agent.load_state_dict(saved["sac"])
     start_updates, start_total = agent.updates, agent.replay.total
     write_json(out / "loaded_checkpoint.json", dict(
-        algorithm="dp_residual_sac", base_checkpoint=str(base.path), weights="ema",
+        algorithm=cfg["algorithm"], base_checkpoint=str(base.path), weights="ema",
         residual_checkpoint=resume, base_frozen=True, state_dim=33, history_frames=2,
         feature_dim=base.feature_dim, residual_scale=cfg["residual_scale"], learning=learn,
         initial_updates=start_updates, initial_online=start_total, base_seed=seed))
 
     def save():
-        metadata = dict(algorithm="dp_residual_sac", base_checkpoint=str(base.path),
+        metadata = dict(algorithm=cfg["algorithm"], base_checkpoint=str(base.path),
                         config=cfg, updates=agent.updates, online_transitions=agent.replay.total,
                         replay_size=agent.replay.size, base_frozen=True,
                         interface_version="task1_rgb_state33_rot6d_reward_history_v002",
                         reward_version="task1_stage_once_v001")
+        if decorator:
+            metadata.update(behavior_steps=agent.behavior_steps,
+                            residual_probability=min(agent.behavior_steps / cfg["progressive_exploration_steps"], 1.))
         tmp = out / "checkpoint.pt.tmp"
         torch.save(dict(metadata, sac=agent.state_dict()), tmp)
         tmp.replace(out / "checkpoint.pt")
@@ -84,6 +90,9 @@ def run(out):
             for _ in range(cfg["updates_per_step"]):
                 row = agent.update()
                 row.update(transition=index, online_transitions=agent.replay.total)
+                if decorator:
+                    row.update(behavior_steps=agent.behavior_steps,
+                               residual_probability=min(agent.behavior_steps / cfg["progressive_exploration_steps"], 1.))
                 metrics.write(json.dumps(row, allow_nan=False) + "\n")
         if agent.replay.total % cfg["checkpoint_every"] == 0:
             save()
@@ -108,15 +117,19 @@ def run(out):
             if previous is not None:
                 insert(previous, features)
             warming = learn and agent.replay.total < cfg["learning_starts"]
-            residual = np.zeros(7, np.float32) if baseline or warming else agent.action(features, not learn)
+            if decorator and not baseline:
+                residual, behavior = agent.behavior_action(features, learn)
+            else:
+                residual = np.zeros(7, np.float32) if baseline or warming else agent.action(features, not learn)
+                behavior = dict(sampling_mode="dp_only" if baseline or warming else
+                                "residual_sample" if learn else "residual_mean")
             action = compose_action(action_base, residual, cfg["residual_scale"])
             write_json(out / f"action_{n:03d}.json", dict(
                 index=n, base_action=action_base.tolist(), residual_action=residual.tolist(),
                 residual_scale=cfg["residual_scale"], applied_residual=(action-action_base).tolist(),
                 proposed=(action_base + np.asarray(cfg["residual_scale"])*residual).tolist(),
                 executed=action.tolist(), network_updates=agent.updates-start_updates,
-                sampling_mode="dp_only" if baseline or warming else "residual_sample" if learn else "residual_mean",
-                base_sampling="seeded_ddim_eta0", base_seed=seed))
+                base_sampling="seeded_ddim_eta0", base_seed=seed, **behavior))
             previous = n, features, residual
             n += 1
         final = json.loads((out / "policy_stop.json").read_text())["final_observation_index"]
@@ -128,7 +141,7 @@ def run(out):
         if learn:
             save()
         write_json(out / "worker_result.json", dict(
-            passed=True, algorithm="dp_residual_sac", learning=learn, base_frozen=True,
+            passed=True, algorithm=cfg["algorithm"], learning=learn, base_frozen=True,
             network_updates=agent.updates-start_updates, cumulative_updates=agent.updates,
             initial_online=start_total, final_online=agent.replay.total,
             new_transitions=accepted, rejected_transitions=rejected,

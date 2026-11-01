@@ -15,9 +15,13 @@ DEFAULT_BASE = "outputs/runs/task1/diffusion_policy/full_flow_bc_v001/train/last
 
 
 def validate_config(cfg):
-    if (cfg["algorithm"] != "dp_residual_sac" or cfg["state_dim"] != 33 or
+    if (cfg["algorithm"] not in ("dp_residual_sac", "policy_decorator") or cfg["state_dim"] != 33 or
         cfg["state_representation"] != "rotation6d33_v002" or cfg["n_obs_steps"] != 2):
         raise ValueError("Expected DP-SAC with two rotation6d33 frames")
+    if cfg["algorithm"] == "policy_decorator":
+        horizon = cfg["progressive_exploration_steps"]
+        if not isinstance(horizon, int) or horizon < 1:
+            raise ValueError("Positive progressive exploration horizon required")
     scale = cfg["residual_scale"]
     if len(scale) != 7 or not all(math.isfinite(x) and 0 < x <= 1 for x in scale):
         raise ValueError("Seven positive residual scales <=1 required")
@@ -55,7 +59,7 @@ def main():
         raise ValueError("Residual evaluation requires --checkpoint; use --baseline for DP alone")
     checkpoint = resolve(a.checkpoint).resolve() if a.checkpoint else None
     metadata = json.loads(checkpoint.with_suffix(".json").read_text()) if checkpoint else None
-    if checkpoint and (not checkpoint.is_file() or metadata["algorithm"] != "dp_residual_sac"):
+    if checkpoint and (not checkpoint.is_file() or metadata["algorithm"] not in ("dp_residual_sac", "policy_decorator")):
         raise ValueError("Completed residual SAC checkpoint required")
     base = resolve(a.base_checkpoint or (metadata["base_checkpoint"] if metadata else DEFAULT_BASE)).resolve()
     base_meta = json.loads(base.with_suffix(".json").read_text())
@@ -76,7 +80,7 @@ def main():
         raise ValueError("Repository outputs only")
     out.mkdir(parents=True, exist_ok=False)
     write_json(out / "config.json", cfg)
-    report = dict(algorithm="dp_residual_sac", base_checkpoint=str(base),
+    report = dict(algorithm=cfg["algorithm"], base_checkpoint=str(base),
                   initial_checkpoint=str(checkpoint) if checkpoint else None,
                   learning=not evaluation, baseline=a.baseline, status="running",
                   config=cfg, episodes=[], network_updates=0, new_transitions=0)

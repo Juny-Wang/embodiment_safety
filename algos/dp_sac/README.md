@@ -67,3 +67,10 @@ updates, not policy convergence. DP remains stochastic under seeded DDIM initial
 noise; residual evaluation uses its mean. Residual bounds limit how far the
 learned controller can depart from DP. Cached replay features require the base
 checkpoint and normalizers to remain fixed.
+
+## Policy Decorator
+
+The `policy_decorator` backend adds progressive exploration, an observation-only
+residual actor and critics over the summed action. See
+[Policy Decorator for Task1](POLICY_DECORATOR.md) for the method, configuration
+and matched-seed pilot.
